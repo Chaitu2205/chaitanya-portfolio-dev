@@ -284,78 +284,202 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-4 bg-muted/30">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
-            About <span className="text-gradient">Me</span>
-          </h2>
-          <Card className="border-2 shadow-lg">
-            <CardContent className="p-8 md:p-12">
-              <p className="text-lg leading-relaxed text-foreground/90">
-                I am a final-year B.Tech CSE (Data Science) student passionate about building practical solutions 
-                using Python, SQL, machine learning, and web technologies. I enjoy working on real-world projects 
-                that challenge my problem-solving skills and help me grow technically. I'm actively seeking 
-                opportunities to apply my knowledge, learn from experienced professionals, and contribute to 
-                impactful technology-driven work.
-              </p>
-            </CardContent>
-          </Card>
+      <section id="about" className="relative py-20 px-4 bg-muted/30 overflow-hidden">
+        {/* Background Decoration */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-10 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 left-10 w-80 h-80 bg-secondary/5 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="text-center mb-16 animate-fade-in">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              About <span className="text-gradient">Me</span>
+            </h2>
+            <div className="h-1 w-24 bg-gradient-to-r from-primary via-secondary to-accent rounded-full mx-auto"></div>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            {/* Left Side - Text Content */}
+            <Card className="border-2 border-primary/20 shadow-xl hover:shadow-2xl transition-all group animate-slide-up">
+              <CardContent className="p-8 md:p-10 relative overflow-hidden">
+                {/* Decorative Corner */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-full"></div>
+                
+                <p className="text-lg leading-relaxed text-foreground/90 relative z-10">
+                  I am a final-year B.Tech CSE (Data Science) student passionate about building practical solutions 
+                  using <span className="font-semibold text-primary">Python</span>, <span className="font-semibold text-secondary">SQL</span>, <span className="font-semibold text-accent">machine learning</span>, and web technologies. I enjoy working on real-world projects 
+                  that challenge my problem-solving skills and help me grow technically. I'm actively seeking 
+                  opportunities to apply my knowledge, learn from experienced professionals, and contribute to 
+                  impactful technology-driven work.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Right Side - Highlight Cards */}
+            <div className="space-y-4 animate-slide-up" style={{ animationDelay: '0.1s' }}>
+              <Card className="bg-gradient-to-br from-primary/10 to-primary/5 border-primary/30 shadow-lg hover:shadow-xl hover:scale-105 transition-all group">
+                <CardContent className="p-6 flex items-start gap-4">
+                  <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <Code className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg mb-1">Problem Solver</h3>
+                    <p className="text-sm text-foreground/70">Tackling complex challenges with creative technical solutions</p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-gradient-to-br from-secondary/10 to-secondary/5 border-secondary/30 shadow-lg hover:shadow-xl hover:scale-105 transition-all group">
+                <CardContent className="p-6 flex items-start gap-4">
+                  <div className="w-12 h-12 bg-secondary/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <Brain className="w-6 h-6 text-secondary" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg mb-1">Continuous Learner</h3>
+                    <p className="text-sm text-foreground/70">Always exploring new technologies and methodologies</p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-gradient-to-br from-accent/10 to-accent/5 border-accent/30 shadow-lg hover:shadow-xl hover:scale-105 transition-all group">
+                <CardContent className="p-6 flex items-start gap-4">
+                  <div className="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <Award className="w-6 h-6 text-accent" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg mb-1">Team Player</h3>
+                    <p className="text-sm text-foreground/70">Collaborating effectively to achieve common goals</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Education Section */}
-      <section id="education" className="py-20 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="flex items-center justify-center gap-3 mb-12">
-            <GraduationCap className="w-10 h-10 text-primary" />
-            <h2 className="text-4xl md:text-5xl font-bold">
-              Edu<span className="text-gradient">cation</span>
-            </h2>
+      <section id="education" className="relative py-20 px-4 overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-secondary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
+        </div>
+
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="text-center mb-16 animate-fade-in">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                <GraduationCap className="w-7 h-7 text-primary" />
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold">
+                Edu<span className="text-gradient">cation</span>
+              </h2>
+            </div>
+            <div className="h-1 w-24 bg-gradient-to-r from-primary via-secondary to-accent rounded-full mx-auto"></div>
           </div>
-          <div className="space-y-6">
-            <Card className="border-l-4 border-l-primary shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <CardTitle className="text-2xl">Bachelor of Technology in Computer Science and Engineering (Data Science)</CardTitle>
-                <CardDescription className="text-base">
-                  Dadi Institute of Engineering and Technology (DIET), Anakapalle, Andhra Pradesh
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-4 text-sm">
-                  <span className="px-3 py-1 bg-primary/10 text-primary rounded-full font-medium">2022 – 2026</span>
-                  <span className="px-3 py-1 bg-secondary/10 text-secondary rounded-full font-medium">Current CGPA: 7.45</span>
-                </div>
-              </CardContent>
-            </Card>
 
-            <Card className="border-l-4 border-l-secondary shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <CardTitle className="text-2xl">Intermediate (Board of Intermediate Education, A.P.)</CardTitle>
-                <CardDescription className="text-base">
-                  Sri Chaitanya Junior College, Gajuwaka, Visakhapatnam
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-4 text-sm">
-                  <span className="px-3 py-1 bg-primary/10 text-primary rounded-full font-medium">2020 – 2022</span>
-                  <span className="px-3 py-1 bg-secondary/10 text-secondary rounded-full font-medium">81%</span>
-                </div>
-              </CardContent>
-            </Card>
+          {/* Timeline */}
+          <div className="relative">
+            {/* Timeline Line */}
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-accent transform -translate-x-1/2"></div>
 
-            <Card className="border-l-4 border-l-accent shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <CardTitle className="text-2xl">Schooling</CardTitle>
-                <CardDescription className="text-base">
-                  Life Way School, Visakhapatnam, Andhra Pradesh
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-foreground/80">
-                  Completed schooling with strong foundation in mathematics and science.
-                </p>
-              </CardContent>
-            </Card>
+            <div className="space-y-12">
+              {/* Bachelor's Degree */}
+              <div className="relative animate-slide-up">
+                <div className="md:grid md:grid-cols-2 md:gap-8 items-center">
+                  <div className="md:text-right mb-4 md:mb-0">
+                    <div className="inline-block md:block">
+                      <span className="px-4 py-2 bg-primary text-primary-foreground rounded-full font-semibold text-sm shadow-lg">
+                        2022 – 2026
+                      </span>
+                    </div>
+                  </div>
+                  <Card className="border-2 border-primary/30 shadow-xl hover:shadow-2xl transition-all hover:scale-105 group relative">
+                    {/* Timeline Dot */}
+                    <div className="hidden md:block absolute -left-[42px] top-8 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg group-hover:scale-125 transition-transform"></div>
+                    
+                    <CardHeader className="bg-gradient-to-br from-primary/10 to-transparent">
+                      <CardTitle className="text-xl md:text-2xl">Bachelor of Technology in CSE (Data Science)</CardTitle>
+                      <CardDescription className="text-base flex items-start gap-2">
+                        <MapPin className="w-4 h-4 mt-1 text-primary flex-shrink-0" />
+                        <span>Dadi Institute of Engineering and Technology (DIET), Anakapalle, Andhra Pradesh</span>
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="pt-4">
+                      <div className="flex items-center gap-2">
+                        <div className="px-4 py-2 bg-secondary/10 text-secondary rounded-lg font-medium text-sm">
+                          Current CGPA: 7.45
+                        </div>
+                        <div className="px-3 py-1 bg-primary/10 text-primary rounded-lg text-xs font-medium">
+                          In Progress
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+
+              {/* Intermediate */}
+              <div className="relative animate-slide-up" style={{ animationDelay: '0.1s' }}>
+                <div className="md:grid md:grid-cols-2 md:gap-8 items-center">
+                  <div className="md:col-start-2 mb-4 md:mb-0">
+                    <div className="inline-block">
+                      <span className="px-4 py-2 bg-secondary text-secondary-foreground rounded-full font-semibold text-sm shadow-lg">
+                        2020 – 2022
+                      </span>
+                    </div>
+                  </div>
+                  <Card className="border-2 border-secondary/30 shadow-xl hover:shadow-2xl transition-all hover:scale-105 group relative md:col-start-1 md:row-start-1">
+                    {/* Timeline Dot */}
+                    <div className="hidden md:block absolute -right-[42px] top-8 w-4 h-4 bg-secondary rounded-full border-4 border-background shadow-lg group-hover:scale-125 transition-transform"></div>
+                    
+                    <CardHeader className="bg-gradient-to-bl from-secondary/10 to-transparent">
+                      <CardTitle className="text-xl md:text-2xl">Intermediate (Board of Intermediate Education, A.P.)</CardTitle>
+                      <CardDescription className="text-base flex items-start gap-2">
+                        <MapPin className="w-4 h-4 mt-1 text-secondary flex-shrink-0" />
+                        <span>Sri Chaitanya Junior College, Gajuwaka, Visakhapatnam</span>
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="pt-4">
+                      <div className="px-4 py-2 bg-secondary/10 text-secondary rounded-lg font-medium text-sm inline-block">
+                        Percentage: 81%
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+
+              {/* Schooling */}
+              <div className="relative animate-slide-up" style={{ animationDelay: '0.2s' }}>
+                <div className="md:grid md:grid-cols-2 md:gap-8 items-center">
+                  <div className="md:text-right mb-4 md:mb-0">
+                    <div className="inline-block md:block">
+                      <span className="px-4 py-2 bg-accent text-accent-foreground rounded-full font-semibold text-sm shadow-lg">
+                        Completed
+                      </span>
+                    </div>
+                  </div>
+                  <Card className="border-2 border-accent/30 shadow-xl hover:shadow-2xl transition-all hover:scale-105 group relative">
+                    {/* Timeline Dot */}
+                    <div className="hidden md:block absolute -left-[42px] top-8 w-4 h-4 bg-accent rounded-full border-4 border-background shadow-lg group-hover:scale-125 transition-transform"></div>
+                    
+                    <CardHeader className="bg-gradient-to-br from-accent/10 to-transparent">
+                      <CardTitle className="text-xl md:text-2xl">Schooling</CardTitle>
+                      <CardDescription className="text-base flex items-start gap-2">
+                        <MapPin className="w-4 h-4 mt-1 text-accent flex-shrink-0" />
+                        <span>Life Way School, Visakhapatnam, Andhra Pradesh</span>
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="pt-4">
+                      <p className="text-foreground/80">
+                        Completed schooling with strong foundation in mathematics and science.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -410,38 +534,84 @@ const Index = () => {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="flex items-center justify-center gap-3 mb-12">
-            <Code className="w-10 h-10 text-primary" />
-            <h2 className="text-4xl md:text-5xl font-bold">
-              Ski<span className="text-gradient">lls</span>
-            </h2>
+      <section id="skills" className="relative py-20 px-4 overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/3 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-1/4 left-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }}></div>
+          
+          {/* Floating Icons */}
+          <div className="absolute top-20 left-1/4 w-16 h-16 border-2 border-primary/10 rounded-lg rotate-12 animate-float"></div>
+          <div className="absolute bottom-32 right-1/4 w-12 h-12 border-2 border-secondary/10 rounded-full animate-float" style={{ animationDelay: '0.8s' }}></div>
+        </div>
+
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="text-center mb-16 animate-fade-in">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                <Code className="w-7 h-7 text-primary" />
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold">
+                Ski<span className="text-gradient">lls</span>
+              </h2>
+            </div>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              A comprehensive toolkit for building data-driven solutions
+            </p>
+            <div className="h-1 w-24 bg-gradient-to-r from-primary via-secondary to-accent rounded-full mx-auto mt-4"></div>
           </div>
+          
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {Object.entries(skills).map(([category, items]) => (
-              <Card key={category} className="shadow-lg hover:shadow-xl transition-all hover:scale-105">
-                <CardHeader className="bg-gradient-to-br from-primary/5 to-secondary/5">
-                  <CardTitle className="text-xl flex items-center gap-2">
-                    {category === "Programming" && <Code className="w-5 h-5 text-primary" />}
-                    {category === "Data Science & Analytics" && <Database className="w-5 h-5 text-primary" />}
-                    {category === "Machine Learning & AI" && <Brain className="w-5 h-5 text-primary" />}
-                    {category === "Tools & Libraries" && <Award className="w-5 h-5 text-primary" />}
-                    {category === "Databases" && <Database className="w-5 h-5 text-primary" />}
-                    {category === "Soft Skills" && <Award className="w-5 h-5 text-primary" />}
-                    {category}
+            {Object.entries(skills).map(([category, items], idx) => (
+              <Card 
+                key={category} 
+                className="shadow-lg hover:shadow-2xl transition-all hover:scale-105 border-2 border-transparent hover:border-primary/30 group animate-slide-up relative overflow-hidden"
+                style={{ animationDelay: `${idx * 0.1}s` }}
+              >
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-transparent to-secondary/0 group-hover:from-primary/5 group-hover:to-secondary/5 transition-all"></div>
+                
+                <CardHeader className="relative z-10">
+                  <CardTitle className="text-lg md:text-xl flex items-center gap-3">
+                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                      category === "Programming" ? "bg-primary/10" :
+                      category === "Data Science & Analytics" ? "bg-secondary/10" :
+                      category === "Machine Learning & AI" ? "bg-accent/10" :
+                      category === "Tools & Libraries" ? "bg-primary/10" :
+                      category === "Databases" ? "bg-secondary/10" :
+                      "bg-accent/10"
+                    }`}>
+                      {category === "Programming" && <Code className="w-5 h-5 text-primary" />}
+                      {category === "Data Science & Analytics" && <Database className="w-5 h-5 text-secondary" />}
+                      {category === "Machine Learning & AI" && <Brain className="w-5 h-5 text-accent" />}
+                      {category === "Tools & Libraries" && <Award className="w-5 h-5 text-primary" />}
+                      {category === "Databases" && <Database className="w-5 h-5 text-secondary" />}
+                      {category === "Soft Skills" && <Award className="w-5 h-5 text-accent" />}
+                    </div>
+                    <span className="group-hover:text-primary transition-colors">{category}</span>
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="pt-4">
+                <CardContent className="pt-4 relative z-10">
                   <div className="flex flex-wrap gap-2">
-                    {items.map((skill) => (
+                    {items.map((skill, skillIdx) => (
                       <span
                         key={skill}
-                        className="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full hover:bg-primary/20 transition-colors"
+                        className={`px-3 py-1.5 text-sm rounded-full font-medium transition-all hover:scale-110 hover:shadow-md ${
+                          skillIdx % 3 === 0 ? "bg-primary/10 text-primary hover:bg-primary/20" :
+                          skillIdx % 3 === 1 ? "bg-secondary/10 text-secondary hover:bg-secondary/20" :
+                          "bg-accent/10 text-accent hover:bg-accent/20"
+                        }`}
                       >
                         {skill}
                       </span>
                     ))}
+                  </div>
+                  
+                  {/* Skill Count Badge */}
+                  <div className="mt-4 pt-4 border-t border-border/50">
+                    <span className="text-xs text-muted-foreground font-medium">
+                      {items.length} {items.length === 1 ? 'skill' : 'skills'}
+                    </span>
                   </div>
                 </CardContent>
               </Card>
@@ -451,32 +621,71 @@ const Index = () => {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-4 bg-muted/30">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
-            My <span className="text-gradient">Projects</span>
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
+      <section id="projects" className="relative py-20 px-4 bg-muted/30 overflow-hidden">
+        {/* Background Decoration */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-20 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-secondary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.2s' }}></div>
+        </div>
+
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="text-center mb-16 animate-fade-in">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              My <span className="text-gradient">Projects</span>
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Real-world applications showcasing data science and machine learning expertise
+            </p>
+            <div className="h-1 w-24 bg-gradient-to-r from-primary via-secondary to-accent rounded-full mx-auto mt-4"></div>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <Card key={index} className="shadow-lg hover:shadow-2xl transition-all hover:scale-105 border-2 hover:border-primary/30">
-                <CardHeader>
-                  <CardTitle className="text-2xl flex items-start justify-between gap-2">
-                    <span>{project.title}</span>
-                    <ExternalLink className="w-5 h-5 text-primary flex-shrink-0" />
+              <Card 
+                key={index} 
+                className="shadow-xl hover:shadow-2xl transition-all hover:scale-105 border-2 border-transparent hover:border-primary/30 group animate-slide-up relative overflow-hidden"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                {/* Gradient Background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-transparent to-secondary/0 group-hover:from-primary/5 group-hover:to-secondary/5 transition-all"></div>
+                
+                {/* Project Number Badge */}
+                <div className="absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                  {index + 1}
+                </div>
+
+                <CardHeader className="relative z-10 pb-4">
+                  <CardTitle className="text-xl md:text-2xl pr-16 group-hover:text-primary transition-colors leading-tight">
+                    {project.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-foreground/80 leading-relaxed">{project.description}</p>
+                
+                <CardContent className="space-y-4 relative z-10">
+                  <p className="text-foreground/80 leading-relaxed">
+                    {project.description}
+                  </p>
+                  
                   {project.note && (
-                    <p className="text-sm italic text-secondary">{project.note}</p>
+                    <div className="flex items-start gap-2 p-3 bg-secondary/5 border-l-4 border-secondary rounded-r">
+                      <ExternalLink className="w-4 h-4 text-secondary mt-0.5 flex-shrink-0" />
+                      <p className="text-sm italic text-secondary">{project.note}</p>
+                    </div>
                   )}
-                  <div>
-                    <p className="text-sm font-semibold mb-2 text-foreground/70">Tech Stack:</p>
+                  
+                  <div className="pt-2">
+                    <p className="text-sm font-semibold mb-3 text-foreground/70 flex items-center gap-2">
+                      <Code className="w-4 h-4" />
+                      Tech Stack
+                    </p>
                     <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech) => (
+                      {project.tech.map((tech, techIdx) => (
                         <span
                           key={tech}
-                          className="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full"
+                          className={`px-3 py-1.5 text-sm rounded-lg font-medium transition-all hover:scale-110 ${
+                            techIdx % 3 === 0 ? "bg-primary/10 text-primary border border-primary/20" :
+                            techIdx % 3 === 1 ? "bg-secondary/10 text-secondary border border-secondary/20" :
+                            "bg-accent/10 text-accent border border-accent/20"
+                          }`}
                         >
                           {tech}
                         </span>
@@ -491,44 +700,91 @@ const Index = () => {
       </section>
 
       {/* Achievements Section */}
-      <section id="achievements" className="py-20 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="flex items-center justify-center gap-3 mb-12">
-            <Award className="w-10 h-10 text-primary" />
-            <h2 className="text-4xl md:text-5xl font-bold">
-              Achieve<span className="text-gradient">ments</span>
-            </h2>
+      <section id="achievements" className="relative py-20 px-4 overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '0.8s' }}></div>
+        </div>
+
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="text-center mb-16 animate-fade-in">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                <Award className="w-7 h-7 text-primary" />
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold">
+                Achieve<span className="text-gradient">ments</span>
+              </h2>
+            </div>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Milestones that define my journey in technology and leadership
+            </p>
+            <div className="h-1 w-24 bg-gradient-to-r from-primary via-secondary to-accent rounded-full mx-auto mt-4"></div>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            <Card className="shadow-lg hover:shadow-xl transition-all border-l-4 border-l-primary">
-              <CardContent className="pt-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                  <Award className="w-6 h-6 text-primary" />
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Achievement 1 */}
+            <Card className="shadow-xl hover:shadow-2xl transition-all hover:scale-105 border-2 border-transparent hover:border-primary/40 group animate-slide-up relative overflow-hidden">
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/10 group-hover:to-primary/5 transition-all"></div>
+              
+              {/* Decorative Corner */}
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-primary/20 to-transparent rounded-bl-full"></div>
+              
+              <CardContent className="pt-8 relative z-10">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/60 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform">
+                  <Award className="w-8 h-8 text-white" />
+                </div>
+                <div className="mb-3">
+                  <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full">LEADERSHIP</span>
                 </div>
                 <p className="text-foreground/90 leading-relaxed">
-                  Team Lead at Samsung Hackathon, developed "Medi Predict" — an AI model for lung disease 
-                  detection reported with around 90% accuracy.
+                  <span className="font-bold text-primary">Team Lead at Samsung Hackathon</span>, developed "Medi Predict" — an AI model for lung disease 
+                  detection reported with around <span className="font-semibold text-primary">90% accuracy</span>.
                 </p>
               </CardContent>
             </Card>
-            <Card className="shadow-lg hover:shadow-xl transition-all border-l-4 border-l-secondary">
-              <CardContent className="pt-6">
-                <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mb-4">
-                  <Code className="w-6 h-6 text-secondary" />
+
+            {/* Achievement 2 */}
+            <Card className="shadow-xl hover:shadow-2xl transition-all hover:scale-105 border-2 border-transparent hover:border-secondary/40 group animate-slide-up relative overflow-hidden" style={{ animationDelay: '0.1s' }}>
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-secondary/0 to-secondary/0 group-hover:from-secondary/10 group-hover:to-secondary/5 transition-all"></div>
+              
+              {/* Decorative Corner */}
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-secondary/20 to-transparent rounded-bl-full"></div>
+              
+              <CardContent className="pt-8 relative z-10">
+                <div className="w-16 h-16 bg-gradient-to-br from-secondary to-secondary/60 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform">
+                  <Code className="w-8 h-8 text-white" />
+                </div>
+                <div className="mb-3">
+                  <span className="px-3 py-1 bg-secondary/10 text-secondary text-xs font-bold rounded-full">PROBLEM SOLVING</span>
                 </div>
                 <p className="text-foreground/90 leading-relaxed">
-                  Solved 200+ problems on competitive coding platforms like CodeChef, with notable performance 
+                  Solved <span className="font-bold text-secondary">200+ problems</span> on competitive coding platforms like CodeChef, with notable performance 
                   on LeetCode and HackerRank.
                 </p>
               </CardContent>
             </Card>
-            <Card className="shadow-lg hover:shadow-xl transition-all border-l-4 border-l-accent">
-              <CardContent className="pt-6">
-                <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mb-4">
-                  <Award className="w-6 h-6 text-accent" />
+
+            {/* Achievement 3 */}
+            <Card className="shadow-xl hover:shadow-2xl transition-all hover:scale-105 border-2 border-transparent hover:border-accent/40 group animate-slide-up relative overflow-hidden" style={{ animationDelay: '0.2s' }}>
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/0 to-accent/0 group-hover:from-accent/10 group-hover:to-accent/5 transition-all"></div>
+              
+              {/* Decorative Corner */}
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-accent/20 to-transparent rounded-bl-full"></div>
+              
+              <CardContent className="pt-8 relative z-10">
+                <div className="w-16 h-16 bg-gradient-to-br from-accent to-accent/60 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform">
+                  <Award className="w-8 h-8 text-white" />
+                </div>
+                <div className="mb-3">
+                  <span className="px-3 py-1 bg-accent/10 text-accent text-xs font-bold rounded-full">COMMUNITY</span>
                 </div>
                 <p className="text-foreground/90 leading-relaxed">
-                  Volunteered at Vizag Navy Marathon, contributing to event coordination and demonstrating 
+                  <span className="font-bold text-accent">Volunteered at Vizag Navy Marathon</span>, contributing to event coordination and demonstrating 
                   communication, teamwork, and quick problem-solving.
                 </p>
               </CardContent>
@@ -538,126 +794,204 @@ const Index = () => {
       </section>
 
       {/* Resume Section */}
-      <section id="resume" className="py-20 px-4 bg-gradient-to-br from-primary/10 via-background to-secondary/5">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            My <span className="text-gradient">Resume</span>
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            Download my resume to learn more about my qualifications and experience
-          </p>
-          <Button 
-            size="lg" 
-            className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-lg hover:shadow-xl transition-all px-8"
-            asChild
-          >
-            <a href="/mnt/data/CHAI_RESUME.pdf" download>
-              <Download className="w-5 h-5 mr-2" />
-              Download Resume
-            </a>
-          </Button>
+      <section id="resume" className="relative py-20 px-4 bg-gradient-to-br from-primary/10 via-background to-secondary/5 overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full blur-3xl animate-glow"></div>
+        </div>
+
+        <div className="container mx-auto max-w-4xl text-center relative z-10">
+          <div className="animate-fade-in">
+            <div className="inline-block mb-6">
+              <div className="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-2xl animate-float">
+                <Download className="w-10 h-10 text-white" />
+              </div>
+            </div>
+            
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              My <span className="text-gradient">Resume</span>
+            </h2>
+            
+            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Download my resume to learn more about my qualifications, experience, and technical expertise
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground font-semibold shadow-xl hover:shadow-2xl transition-all px-8 group"
+                asChild
+              >
+                <a href="/mnt/data/CHAI_RESUME.pdf" download>
+                  <Download className="w-5 h-5 mr-2 group-hover:animate-bounce" />
+                  Download Resume
+                </a>
+              </Button>
+              
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span>Updated Recently</span>
+              </div>
+            </div>
+
+            {/* Info Cards */}
+            <div className="grid sm:grid-cols-3 gap-4 mt-12 max-w-2xl mx-auto">
+              <div className="p-4 bg-card border border-border rounded-xl shadow-lg">
+                <div className="text-2xl font-bold text-primary mb-1">PDF</div>
+                <div className="text-xs text-muted-foreground">Format</div>
+              </div>
+              <div className="p-4 bg-card border border-border rounded-xl shadow-lg">
+                <div className="text-2xl font-bold text-secondary mb-1">1</div>
+                <div className="text-xs text-muted-foreground">Page</div>
+              </div>
+              <div className="p-4 bg-card border border-border rounded-xl shadow-lg">
+                <div className="text-2xl font-bold text-accent mb-1">2025</div>
+                <div className="text-xs text-muted-foreground">Version</div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4">
-        <div className="container mx-auto max-w-4xl">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6">
-            Contact <span className="text-gradient">Me</span>
-          </h2>
-          <p className="text-center text-lg text-muted-foreground mb-12">
-            Feel free to reach out for internships, collaboration, or project opportunities.
-          </p>
+      <section id="contact" className="relative py-20 px-4 overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-20 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-20 left-1/4 w-80 h-80 bg-secondary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
+        </div>
+
+        <div className="container mx-auto max-w-5xl relative z-10">
+          <div className="text-center mb-16 animate-fade-in">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Contact <span className="text-gradient">Me</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Feel free to reach out for internships, collaboration, or project opportunities. Let's build something amazing together!
+            </p>
+            <div className="h-1 w-24 bg-gradient-to-r from-primary via-secondary to-accent rounded-full mx-auto mt-4"></div>
+          </div>
           
           <div className="grid md:grid-cols-2 gap-8">
             {/* Contact Info */}
-            <div className="space-y-6">
-              <Card className="shadow-lg">
-                <CardContent className="p-6">
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                        <Mail className="w-5 h-5 text-primary" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-muted-foreground">Email</p>
-                        <a 
-                          href="mailto:chaitanyababu0017@gmail.com" 
-                          className="text-foreground hover:text-primary transition-colors"
-                        >
-                          chaitanyababu0017@gmail.com
-                        </a>
-                      </div>
+            <div className="space-y-6 animate-slide-up">
+              <Card className="shadow-xl border-2 border-primary/20 hover:border-primary/40 transition-all">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                      <Mail className="w-5 h-5 text-primary" />
                     </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center">
-                        <Phone className="w-5 h-5 text-secondary" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-muted-foreground">Phone</p>
-                        <a 
-                          href="tel:+919948087894" 
-                          className="text-foreground hover:text-secondary transition-colors"
-                        >
-                          +91 9948087894
-                        </a>
-                      </div>
+                    Get In Touch
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="flex items-start gap-4 p-4 bg-muted/50 rounded-xl hover:bg-muted transition-all group">
+                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                      <Mail className="w-6 h-6 text-primary" />
                     </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center">
-                        <MapPin className="w-5 h-5 text-accent" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-muted-foreground">Location</p>
-                        <p className="text-foreground">Andhra Pradesh, India</p>
-                      </div>
+                    <div className="flex-1">
+                      <p className="text-sm font-semibold text-muted-foreground mb-1">Email</p>
+                      <a 
+                        href="mailto:chaitanyababu0017@gmail.com" 
+                        className="text-foreground hover:text-primary transition-colors font-medium break-all"
+                      >
+                        chaitanyababu0017@gmail.com
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-4 p-4 bg-muted/50 rounded-xl hover:bg-muted transition-all group">
+                    <div className="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                      <Phone className="w-6 h-6 text-secondary" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm font-semibold text-muted-foreground mb-1">Phone</p>
+                      <a 
+                        href="tel:+919948087894" 
+                        className="text-foreground hover:text-secondary transition-colors font-medium"
+                      >
+                        +91 9948087894
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-4 p-4 bg-muted/50 rounded-xl">
+                    <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <MapPin className="w-6 h-6 text-accent" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm font-semibold text-muted-foreground mb-1">Location</p>
+                      <p className="text-foreground font-medium">Andhra Pradesh, India</p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
+
+              {/* Quick Response Badge */}
+              <div className="p-6 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl border-2 border-primary/20">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                  <span className="font-bold text-lg">Usually responds within 24 hours</span>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  I'm actively looking for opportunities and excited to discuss how I can contribute to your team!
+                </p>
+              </div>
             </div>
 
             {/* Contact Form */}
-            <Card className="shadow-lg">
+            <Card className="shadow-xl border-2 border-secondary/20 hover:border-secondary/40 transition-all animate-slide-up" style={{ animationDelay: '0.1s' }}>
               <CardHeader>
-                <CardTitle>Send a Message</CardTitle>
+                <CardTitle className="flex items-center gap-2">
+                  <div className="w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center">
+                    <Send className="w-5 h-5 text-secondary" />
+                  </div>
+                  Send a Message
+                </CardTitle>
+                <CardDescription>Fill out the form below and I'll get back to you soon</CardDescription>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
-                    <Label htmlFor="name">Name</Label>
+                    <Label htmlFor="name" className="text-sm font-semibold">Your Name</Label>
                     <Input
                       id="name"
+                      placeholder="Enter your name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       required
-                      className="mt-1"
+                      className="mt-2 border-2 focus:border-primary transition-colors"
                     />
                   </div>
                   <div>
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email" className="text-sm font-semibold">Your Email</Label>
                     <Input
                       id="email"
                       type="email"
+                      placeholder="your.email@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       required
-                      className="mt-1"
+                      className="mt-2 border-2 focus:border-primary transition-colors"
                     />
                   </div>
                   <div>
-                    <Label htmlFor="message">Message</Label>
+                    <Label htmlFor="message" className="text-sm font-semibold">Your Message</Label>
                     <Textarea
                       id="message"
+                      placeholder="Tell me about your project or opportunity..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       required
-                      className="mt-1"
-                      rows={4}
+                      className="mt-2 border-2 focus:border-primary transition-colors resize-none"
+                      rows={5}
                     />
                   </div>
-                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
-                    <Send className="w-4 h-4 mr-2" />
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-gradient-to-r from-secondary to-secondary/80 hover:from-secondary/90 hover:to-secondary/70 text-secondary-foreground font-semibold shadow-lg hover:shadow-xl transition-all group"
+                  >
+                    <Send className="w-4 h-4 mr-2 group-hover:translate-x-1 transition-transform" />
                     Send Message
                   </Button>
                 </form>
