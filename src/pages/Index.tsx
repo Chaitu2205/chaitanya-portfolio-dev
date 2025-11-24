@@ -68,8 +68,8 @@ const Index = () => {
     try {
       // Send email using EmailJS
       const result = await emailjs.send(
-        'service_uzphdkm',  // Your service ID
-        'default',           // Your template ID
+        'service_uzphdkm',      // Your service ID
+        'template_o8wj5d',      // Your template ID
         {
           from_name: formData.name,
           from_email: formData.email,
