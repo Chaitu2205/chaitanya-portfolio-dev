@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from '@emailjs/browser';
 import {
   Mail,
   Phone,
@@ -22,18 +23,81 @@ import {
   X,
 } from "lucide-react";
 
+// Initialize EmailJS with your public key
+emailjs.init('fmqSq1Fhb8otDC7b2');
+
 const Index = () => {
   const { toast } = useToast();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon!",
-    });
-    setFormData({ name: "", email: "", message: "" });
+    
+    // Validate inputs
+    if (formData.name.trim().length < 2) {
+      toast({
+        title: "Invalid Name",
+        description: "Please enter a valid name (at least 2 characters)",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!formData.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+      toast({
+        title: "Invalid Email",
+        description: "Please enter a valid email address",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (formData.message.trim().length < 10) {
+      toast({
+        title: "Message Too Short",
+        description: "Please write a message with at least 10 characters",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Send email using EmailJS
+      const result = await emailjs.send(
+        'service_uzphdkm',  // Your service ID
+        'default',           // Your template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_email: 'chaitanyababu0017@gmail.com',
+        }
+      );
+
+      console.log('Email sent successfully:', result);
+      
+      toast({
+        title: "Message Sent Successfully! ✓",
+        description: "Thank you for reaching out. I'll get back to you within 24 hours!",
+      });
+      
+      // Clear form
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error('Email sending failed:', error);
+      
+      toast({
+        title: "Failed to Send Message",
+        description: "Something went wrong. Please try emailing me directly at chaitanyababu0017@gmail.com",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const scrollToSection = (id: string) => {
@@ -989,10 +1053,20 @@ const Index = () => {
                   </div>
                   <Button 
                     type="submit" 
-                    className="w-full bg-gradient-to-r from-secondary to-secondary/80 hover:from-secondary/90 hover:to-secondary/70 text-secondary-foreground font-semibold shadow-lg hover:shadow-xl transition-all group"
+                    disabled={isSubmitting}
+                    className="w-full bg-gradient-to-r from-secondary to-secondary/80 hover:from-secondary/90 hover:to-secondary/70 text-secondary-foreground font-semibold shadow-lg hover:shadow-xl transition-all group disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <Send className="w-4 h-4 mr-2 group-hover:translate-x-1 transition-transform" />
-                    Send Message
+                    {isSubmitting ? (
+                      <>
+                        <span className="mr-2 animate-spin">⏳</span>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4 mr-2 group-hover:translate-x-1 transition-transform" />
+                        Send Message
+                      </>
+                    )}
                   </Button>
                 </form>
               </CardContent>
