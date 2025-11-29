@@ -131,12 +131,80 @@ All colors MUST be HSL.
     background-clip: text;
   }
   
+  .text-gradient-shine {
+    background: linear-gradient(
+      90deg,
+      hsl(38 92% 58%) 0%,
+      hsl(35 95% 70%) 25%,
+      hsl(38 92% 58%) 50%,
+      hsl(35 95% 70%) 75%,
+      hsl(38 92% 58%) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shine 3s linear infinite;
+  }
+  
+  .glass {
+    background: hsla(var(--card) / 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsla(var(--border) / 0.5);
+  }
+  
+  .glass-strong {
+    background: hsla(var(--card) / 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsla(var(--border) / 0.3);
+  }
+  
   .animate-fade-in {
     animation: fadeIn 0.6s ease-out forwards;
   }
   
   .animate-slide-up {
     animation: slideUp 0.6s ease-out forwards;
+  }
+  
+  .animate-slide-in-left {
+    animation: slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  
+  .animate-slide-in-right {
+    animation: slideInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  
+  .animate-bounce-subtle {
+    animation: bounceSoft 2s ease-in-out infinite;
+  }
+  
+  .hero-grid {
+    background-image: 
+      linear-gradient(hsla(var(--primary) / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, hsla(var(--primary) / 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  
+  .gradient-border {
+    position: relative;
+  }
+  
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, hsl(38 92% 58%), hsl(186 70% 48%), hsl(186 60% 38%));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
   }
   
   @keyframes fadeIn {
@@ -151,11 +219,74 @@ All colors MUST be HSL.
   @keyframes slideUp {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(30px);
     }
     to {
       opacity: 1;
       transform: translateY(0);
     }
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes bounceSoft {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+  
+  @keyframes shine {
+    to {
+      background-position: 200% center;
+    }
+  }
+  
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  }
+  
+  .pulse-ring {
+    animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 }
