@@ -177,154 +177,190 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="relative pt-32 pb-20 px-4 overflow-hidden bg-gradient-to-br from-primary/5 via-background to-secondary/5">
-        {/* Animated Background Elements */}
+      <section id="home" className="relative min-h-screen pt-24 pb-20 px-4 overflow-hidden">
+        {/* Modern Grid Background */}
+        <div className="absolute inset-0 hero-grid"></div>
+        
+        {/* Gradient Orbs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-float" style={{
-          animationDelay: '1s'
-        }}></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl animate-float" style={{
-          animationDelay: '2s'
-        }}></div>
-          
-          {/* Geometric Shapes */}
-          <div className="absolute top-40 right-20 w-20 h-20 border-2 border-primary/20 rotate-45 animate-float"></div>
-          <div className="absolute bottom-40 left-32 w-16 h-16 border-2 border-secondary/20 rounded-full animate-float" style={{
-          animationDelay: '1.5s'
-        }}></div>
-          <div className="absolute top-1/3 left-1/4 w-12 h-12 border-2 border-accent/20 rotate-12 animate-float" style={{
-          animationDelay: '0.5s'
-        }}></div>
+          <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px] animate-glow-pulse"></div>
+          <div className="absolute -bottom-40 -right-40 w-[600px] h-[600px] bg-secondary/15 rounded-full blur-[120px] animate-glow-pulse" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[150px] animate-morph"></div>
         </div>
 
-        <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+        {/* Floating Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-32 right-[15%] w-3 h-3 bg-primary rounded-full animate-float" style={{ animationDelay: '0s' }}></div>
+          <div className="absolute top-48 left-[20%] w-2 h-2 bg-secondary rounded-full animate-float" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute bottom-32 right-[25%] w-4 h-4 bg-accent/50 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-[60%] left-[10%] w-2 h-2 bg-primary/60 rounded-full animate-float" style={{ animationDelay: '1.5s' }}></div>
+          
+          {/* Geometric Shapes */}
+          <div className="absolute top-40 right-[10%] w-16 h-16 border border-primary/20 rotate-45 animate-float-delayed hidden md:block"></div>
+          <div className="absolute bottom-[30%] left-[5%] w-20 h-20 border border-secondary/15 rounded-full animate-spin-slow hidden md:block"></div>
+          <div className="absolute top-[25%] right-[30%] w-8 h-8 border border-accent/20 rotate-12 animate-float hidden lg:block" style={{ animationDelay: '0.5s' }}></div>
+        </div>
+
+        <div className="container mx-auto max-w-7xl relative z-10 flex items-center min-h-[calc(100vh-6rem)]">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 w-full">
             {/* Left Content */}
-            <div className="flex-1 text-center lg:text-left space-y-6">
-              <div className="space-y-2 animate-slide-up">
-                <div className="inline-block px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-4">
-                  <p className="text-sm font-semibold text-primary flex items-center gap-2 justify-center lg:justify-start">
-                    <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
-                    Available for Opportunities
+            <div className="flex-1 text-center lg:text-left space-y-8">
+              {/* Status Badge */}
+              <div className="animate-slide-in-left" style={{ animationDelay: '0.1s' }}>
+                <div className="inline-flex items-center gap-3 px-5 py-2.5 glass rounded-full">
+                  <span className="relative flex h-3 w-3">
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 pulse-ring"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                  </span>
+                  <span className="text-sm font-medium text-foreground/90">Available for Opportunities</span>
+                </div>
+              </div>
+
+              {/* Main Heading */}
+              <div className="space-y-4 animate-slide-in-left" style={{ animationDelay: '0.2s' }}>
+                <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.1] tracking-tight">
+                  <span className="text-foreground">Hey, I'm</span>
+                  <br />
+                  <span className="text-gradient-shine">Chaitanya</span>
+                </h1>
+                <div className="flex items-center gap-4 justify-center lg:justify-start">
+                  <div className="h-1 w-16 bg-gradient-to-r from-primary to-primary/50 rounded-full"></div>
+                  <p className="text-lg md:text-xl text-muted-foreground font-medium">
+                    Data Science Enthusiast
                   </p>
                 </div>
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
-                  Hey, I'm{" "}
-                  <span className="text-gradient block mt-2">
-                    Chaitanya
-                  </span>
-                </h1>
-                <div className="h-1 w-32 bg-gradient-to-r from-primary via-secondary to-accent rounded-full animate-glow mx-auto lg:mx-0"></div>
               </div>
               
-              <p className="text-xl md:text-2xl text-muted-foreground font-medium animate-slide-up" style={{
-              animationDelay: '0.1s'
-            }}>
-                Final-Year B.Tech CSE (Data Science) Student
-              </p>
-              
-              <p className="text-base md:text-lg text-foreground/80 leading-relaxed animate-slide-up max-w-2xl mx-auto lg:mx-0" style={{
-              animationDelay: '0.2s'
-            }}>
-                Building practical solutions with <span className="text-primary font-semibold">Python</span>, <span className="text-secondary font-semibold">Machine Learning</span>, and <span className="text-accent font-semibold">Data Science</span>. 
-                Passionate about turning complex data into actionable insights.
+              {/* Description */}
+              <p className="text-base md:text-lg text-foreground/70 leading-relaxed max-w-xl mx-auto lg:mx-0 animate-slide-in-left" style={{ animationDelay: '0.3s' }}>
+                Final-year B.Tech CSE student specializing in <span className="text-primary font-semibold">Python</span>, <span className="text-secondary font-semibold">Machine Learning</span>, and <span className="text-accent font-semibold">Data Analytics</span>. 
+                Turning complex data into actionable insights.
               </p>
 
-              {/* Quick Stats */}
-              <div className="flex flex-wrap gap-4 justify-center lg:justify-start animate-slide-up" style={{
-              animationDelay: '0.3s'
-            }}>
-                <div className="px-6 py-3 bg-card border border-border rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105">
-                  <div className="text-2xl font-bold text-primary">4+</div>
-                  <div className="text-xs text-muted-foreground">Projects</div>
+              {/* Stats Row */}
+              <div className="flex flex-wrap gap-6 justify-center lg:justify-start animate-slide-in-left" style={{ animationDelay: '0.4s' }}>
+                <div className="text-center">
+                  <div className="text-3xl md:text-4xl font-bold text-primary">4+</div>
+                  <div className="text-xs text-muted-foreground uppercase tracking-wider mt-1">Projects</div>
                 </div>
-                <div className="px-6 py-3 bg-card border border-border rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105">
-                  <div className="text-2xl font-bold text-secondary">200+</div>
-                  <div className="text-xs text-muted-foreground">Problems Solved</div>
+                <div className="w-px h-12 bg-border hidden sm:block"></div>
+                <div className="text-center">
+                  <div className="text-3xl md:text-4xl font-bold text-secondary">200+</div>
+                  <div className="text-xs text-muted-foreground uppercase tracking-wider mt-1">Problems Solved</div>
                 </div>
-                <div className="px-6 py-3 bg-card border border-border rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105">
-                  <div className="text-2xl font-bold text-accent">7.5</div>
-                  <div className="text-xs text-muted-foreground">CGPA</div>
+                <div className="w-px h-12 bg-border hidden sm:block"></div>
+                <div className="text-center">
+                  <div className="text-3xl md:text-4xl font-bold text-accent">7.5</div>
+                  <div className="text-xs text-muted-foreground uppercase tracking-wider mt-1">CGPA</div>
                 </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4 animate-slide-up" style={{
-              animationDelay: '0.4s'
-            }}>
-                <Button size="lg" className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground font-semibold shadow-xl hover:shadow-2xl transition-all group" onClick={() => scrollToSection("projects")}>
-                  View My Work
-                  <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-slide-in-left" style={{ animationDelay: '0.5s' }}>
+                <Button 
+                  size="lg" 
+                  className="relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-6 text-base shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 group"
+                  onClick={() => scrollToSection("projects")}
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    View My Work
+                    <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
                 </Button>
-                <Button size="lg" variant="outline" className="border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground font-semibold shadow-lg hover:shadow-xl transition-all" onClick={() => scrollToSection("contact")}>
-                  <Mail className="w-4 h-4 mr-2" />
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="glass border-2 border-foreground/10 hover:border-secondary hover:bg-secondary/10 font-semibold px-8 py-6 text-base transition-all duration-300 group"
+                  onClick={() => scrollToSection("contact")}
+                >
+                  <Mail className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
                   Get In Touch
                 </Button>
               </div>
 
-              {/* Contact Quick Links */}
-              <div className="flex flex-wrap gap-4 justify-center lg:justify-start pt-6 text-sm animate-slide-up" style={{
-              animationDelay: '0.5s'
-            }}>
-                <a href="mailto:chaitanyababu0017@gmail.com" className="flex items-center gap-2 px-4 py-2 bg-muted hover:bg-muted/80 rounded-lg transition-all hover:scale-105 group">
-                  <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <Mail className="w-4 h-4 text-primary" />
-                  </div>
-                  <span className="text-foreground/70 group-hover:text-primary transition-colors">Email</span>
+              {/* Quick Contact */}
+              <div className="flex flex-wrap gap-3 justify-center lg:justify-start animate-slide-in-left" style={{ animationDelay: '0.6s' }}>
+                <a 
+                  href="mailto:chaitanyababu0017@gmail.com" 
+                  className="flex items-center gap-2 px-4 py-2 glass rounded-full hover:bg-primary/10 transition-all duration-300 group"
+                >
+                  <Mail className="w-4 h-4 text-primary" />
+                  <span className="text-sm text-foreground/70 group-hover:text-foreground transition-colors">Email</span>
                 </a>
-                <a href="tel:+919948087894" className="flex items-center gap-2 px-4 py-2 bg-muted hover:bg-muted/80 rounded-lg transition-all hover:scale-105 group">
-                  <div className="w-8 h-8 bg-secondary/10 rounded-full flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
-                    <Phone className="w-4 h-4 text-secondary" />
-                  </div>
-                  <span className="text-foreground/70 group-hover:text-secondary transition-colors">Call</span>
+                <a 
+                  href="tel:+919948087894" 
+                  className="flex items-center gap-2 px-4 py-2 glass rounded-full hover:bg-secondary/10 transition-all duration-300 group"
+                >
+                  <Phone className="w-4 h-4 text-secondary" />
+                  <span className="text-sm text-foreground/70 group-hover:text-foreground transition-colors">Call</span>
                 </a>
-                <div className="flex items-center gap-2 px-4 py-2 bg-muted rounded-lg">
-                  <div className="w-8 h-8 bg-accent/10 rounded-full flex items-center justify-center">
-                    <MapPin className="w-4 h-4 text-accent" />
-                  </div>
-                  <span className="text-foreground/70">Andhra Pradesh, India</span>
+                <div className="flex items-center gap-2 px-4 py-2 glass rounded-full">
+                  <MapPin className="w-4 h-4 text-accent" />
+                  <span className="text-sm text-foreground/70">Andhra Pradesh, India</span>
                 </div>
               </div>
             </div>
 
-            {/* Right Content - Profile Card */}
-            <div className="flex-shrink-0 animate-slide-up" style={{
-            animationDelay: '0.2s'
-          }}>
+            {/* Right Content - Modern Profile Card */}
+            <div className="flex-shrink-0 animate-slide-in-right" style={{ animationDelay: '0.3s' }}>
               <div className="relative">
-                {/* Glow Effect */}
-                <div className="absolute -inset-4 bg-gradient-to-r from-primary via-secondary to-accent rounded-full blur-2xl opacity-30 animate-glow"></div>
+                {/* Animated Glow Ring */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-primary via-secondary to-accent rounded-[2rem] blur-xl opacity-40 animate-glow"></div>
                 
-                {/* Profile Card */}
-                <div className="relative w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 rounded-3xl shadow-2xl overflow-hidden border-2 border-primary/30">
-                  {/* Decorative Elements */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full blur-3xl"></div>
-                  <div className="absolute bottom-0 left-0 w-40 h-40 bg-secondary/20 rounded-full blur-3xl"></div>
+                {/* Main Card */}
+                <div className="relative w-72 h-[420px] md:w-80 md:h-[460px] glass-strong rounded-[2rem] overflow-hidden gradient-border">
+                  {/* Top Gradient Bar */}
+                  <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-primary/20 to-transparent"></div>
                   
                   {/* Content */}
                   <div className="relative h-full flex flex-col items-center justify-center p-8 text-center">
-                    <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden mb-4 shadow-xl border-4 border-primary/30">
-                      <img src={profileImage} alt="Chaitanya" className="w-full h-full object-cover" />
+                    {/* Profile Image with Ring */}
+                    <div className="relative mb-6">
+                      <div className="absolute -inset-2 bg-gradient-to-r from-primary via-secondary to-accent rounded-full animate-spin-slow opacity-60"></div>
+                      <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-background shadow-2xl">
+                        <img src={profileImage} alt="Chaitanya" className="w-full h-full object-cover" />
+                      </div>
                     </div>
-                    <h3 className="text-xl md:text-2xl font-bold mb-2">Data Scientist</h3>
-                    <p className="text-sm text-muted-foreground mb-4">Turning Data into Insights</p>
-                    <div className="flex gap-2">
-                      <div className="px-3 py-1 bg-primary/20 backdrop-blur-sm rounded-full text-xs font-medium">Python</div>
-                      <div className="px-3 py-1 bg-secondary/20 backdrop-blur-sm rounded-full text-xs font-medium">ML</div>
-                      <div className="px-3 py-1 bg-accent/20 backdrop-blur-sm rounded-full text-xs font-medium">AI</div>
+                    
+                    {/* Name & Title */}
+                    <h3 className="text-2xl md:text-3xl font-bold mb-2">Chaitanya</h3>
+                    <p className="text-base text-primary font-medium mb-1">Data Scientist</p>
+                    <p className="text-sm text-muted-foreground mb-6">B.Tech CSE (Data Science)</p>
+                    
+                    {/* Skills Tags */}
+                    <div className="flex flex-wrap gap-2 justify-center">
+                      <span className="px-4 py-1.5 bg-primary/15 text-primary rounded-full text-xs font-semibold border border-primary/20">Python</span>
+                      <span className="px-4 py-1.5 bg-secondary/15 text-secondary rounded-full text-xs font-semibold border border-secondary/20">ML</span>
+                      <span className="px-4 py-1.5 bg-accent/15 text-accent rounded-full text-xs font-semibold border border-accent/20">AI</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Floating Badge */}
-                <div className="absolute -bottom-4 -right-4 px-4 py-2 bg-card border-2 border-primary rounded-xl shadow-xl animate-float">
+                <div className="absolute -bottom-3 -right-3 px-4 py-2.5 bg-card border-2 border-green-500/30 rounded-xl shadow-xl animate-bounce-subtle">
                   <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-sm font-semibold">Open to Work</span>
+                    <span className="relative flex h-2.5 w-2.5">
+                      <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping"></span>
+                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                    </span>
+                    <span className="text-sm font-semibold text-foreground">Open to Work</span>
                   </div>
                 </div>
+
+                {/* Decorative Elements */}
+                <div className="absolute -top-6 -left-6 w-12 h-12 border-2 border-primary/30 rounded-xl rotate-12 animate-float hidden md:block"></div>
+                <div className="absolute -bottom-8 -left-4 w-8 h-8 bg-secondary/20 rounded-full animate-float hidden md:block" style={{ animationDelay: '1s' }}></div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce-subtle">
+          <div className="flex flex-col items-center gap-2 text-muted-foreground">
+            <span className="text-xs uppercase tracking-widest">Scroll</span>
+            <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center pt-2">
+              <div className="w-1.5 h-3 bg-muted-foreground/50 rounded-full animate-bounce"></div>
             </div>
           </div>
         </div>
