@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import emailjs from '@emailjs/browser';
 import { Mail, Phone, MapPin, Download, Code, Database, Brain, Award, GraduationCap, Briefcase, ExternalLink, Send, Menu, X } from "lucide-react";
+import profileImage from "@/assets/chaitu.jpg";
 
 // Initialize EmailJS with your public key
 emailjs.init('fmqSq1Fhb8otDC7b2');
@@ -303,8 +304,8 @@ const Index = () => {
                   
                   {/* Content */}
                   <div className="relative h-full flex flex-col items-center justify-center p-8 text-center">
-                    <div className="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center mb-4 shadow-xl">
-                      <span className="text-4xl md:text-5xl font-bold text-white">SC</span>
+                    <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden mb-4 shadow-xl border-4 border-primary/30">
+                      <img src={profileImage} alt="Chaitanya" className="w-full h-full object-cover" />
                     </div>
                     <h3 className="text-xl md:text-2xl font-bold mb-2">Data Scientist</h3>
                     <p className="text-sm text-muted-foreground mb-4">Turning Data into Insights</p>
