@@ -78,57 +78,13 @@ export default {
         },
         "float": {
           "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-12px)" },
-        },
-        "float-delayed": {
-          "0%, 100%": { transform: "translateY(0px) rotate(0deg)" },
-          "50%": { transform: "translateY(-15px) rotate(5deg)" },
-        },
-        "glow": {
-          "0%, 100%": { boxShadow: "0 0 20px hsla(38, 92%, 58%, 0.3)" },
-          "50%": { boxShadow: "0 0 40px hsla(38, 92%, 58%, 0.6)" },
-        },
-        "glow-pulse": {
-          "0%, 100%": { opacity: "0.4", transform: "scale(1)" },
-          "50%": { opacity: "0.8", transform: "scale(1.05)" },
-        },
-        "spin-slow": {
-          from: { transform: "rotate(0deg)" },
-          to: { transform: "rotate(360deg)" },
-        },
-        "morph": {
-          "0%, 100%": { borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%" },
-          "50%": { borderRadius: "30% 60% 70% 40% / 50% 60% 30% 60%" },
-        },
-        "shimmer": {
-          "0%": { backgroundPosition: "-200% 0" },
-          "100%": { backgroundPosition: "200% 0" },
-        },
-        "pulse-glow": {
-          "0%, 100%": { 
-            boxShadow: "0 0 20px hsla(38, 92%, 58%, 0.4), 0 0 40px hsla(38, 92%, 58%, 0.2)" 
-          },
-          "50%": { 
-            boxShadow: "0 0 40px hsla(38, 92%, 58%, 0.6), 0 0 80px hsla(38, 92%, 58%, 0.3)" 
-          },
-        },
-        "gradient-shift": {
-          "0%, 100%": { backgroundPosition: "0% 50%" },
-          "50%": { backgroundPosition: "100% 50%" },
+          "50%": { transform: "translateY(-8px)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "float": "float 4s ease-in-out infinite",
-        "float-delayed": "float-delayed 5s ease-in-out infinite",
-        "glow": "glow 3s ease-in-out infinite",
-        "glow-pulse": "glow-pulse 4s ease-in-out infinite",
-        "spin-slow": "spin-slow 20s linear infinite",
-        "morph": "morph 8s ease-in-out infinite",
-        "shimmer": "shimmer 3s ease-in-out infinite",
-        "pulse-glow": "pulse-glow 3s ease-in-out infinite",
-        "gradient-shift": "gradient-shift 4s ease infinite",
+        "float": "float 3s ease-in-out infinite",
       },
     },
   },
