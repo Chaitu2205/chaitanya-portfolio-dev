@@ -177,192 +177,271 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="relative min-h-screen pt-24 pb-20 px-4 overflow-hidden">
-        {/* Modern Grid Background */}
-        <div className="absolute inset-0 hero-grid"></div>
+      <section id="home" className="relative min-h-screen pt-24 pb-20 px-4 overflow-hidden noise-overlay">
+        {/* Enhanced Grid Background */}
+        <div className="absolute inset-0 hero-grid-enhanced"></div>
         
-        {/* Gradient Orbs */}
+        {/* Animated Gradient Mesh */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px] animate-glow-pulse"></div>
-          <div className="absolute -bottom-40 -right-40 w-[600px] h-[600px] bg-secondary/15 rounded-full blur-[120px] animate-glow-pulse" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[150px] animate-morph"></div>
+          {/* Primary Orb */}
+          <div className="absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full blur-[120px] animate-glow-pulse"
+            style={{ background: 'radial-gradient(circle, hsla(38, 92%, 58%, 0.25) 0%, transparent 70%)' }}></div>
+          
+          {/* Secondary Orb */}
+          <div className="absolute -bottom-32 -right-32 w-[700px] h-[700px] rounded-full blur-[140px] animate-glow-pulse"
+            style={{ background: 'radial-gradient(circle, hsla(186, 70%, 48%, 0.2) 0%, transparent 70%)', animationDelay: '2s' }}></div>
+          
+          {/* Center Morphing Blob */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] animate-morph opacity-30"
+            style={{ background: 'radial-gradient(ellipse, hsla(38, 92%, 58%, 0.1) 0%, transparent 60%)' }}></div>
+          
+          {/* Accent Glow */}
+          <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] rounded-full blur-[100px] animate-glow-pulse"
+            style={{ background: 'radial-gradient(circle, hsla(186, 60%, 38%, 0.15) 0%, transparent 70%)', animationDelay: '1s' }}></div>
         </div>
 
-        {/* Floating Elements */}
+        {/* Floating Particles */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-32 right-[15%] w-3 h-3 bg-primary rounded-full animate-float" style={{ animationDelay: '0s' }}></div>
-          <div className="absolute top-48 left-[20%] w-2 h-2 bg-secondary rounded-full animate-float" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute bottom-32 right-[25%] w-4 h-4 bg-accent/50 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute top-[60%] left-[10%] w-2 h-2 bg-primary/60 rounded-full animate-float" style={{ animationDelay: '1.5s' }}></div>
+          {[...Array(12)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute rounded-full animate-particle"
+              style={{
+                width: `${4 + (i % 3) * 2}px`,
+                height: `${4 + (i % 3) * 2}px`,
+                left: `${10 + (i * 8)}%`,
+                top: `${20 + (i * 5) % 60}%`,
+                background: i % 2 === 0 
+                  ? 'hsl(38, 92%, 58%)' 
+                  : 'hsl(186, 70%, 48%)',
+                opacity: 0.4 + (i % 4) * 0.15,
+                animationDelay: `${i * 0.5}s`,
+                animationDuration: `${5 + (i % 3)}s`,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Geometric Decorations */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* Large Ring */}
+          <div className="absolute top-20 right-[5%] w-32 h-32 border-2 border-primary/10 rounded-full animate-spin-slow hidden lg:block"></div>
           
-          {/* Geometric Shapes */}
-          <div className="absolute top-40 right-[10%] w-16 h-16 border border-primary/20 rotate-45 animate-float-delayed hidden md:block"></div>
-          <div className="absolute bottom-[30%] left-[5%] w-20 h-20 border border-secondary/15 rounded-full animate-spin-slow hidden md:block"></div>
-          <div className="absolute top-[25%] right-[30%] w-8 h-8 border border-accent/20 rotate-12 animate-float hidden lg:block" style={{ animationDelay: '0.5s' }}></div>
+          {/* Orbiting Elements */}
+          <div className="absolute top-1/3 left-[8%] hidden md:block">
+            <div className="relative w-24 h-24">
+              <div className="absolute inset-0 border border-dashed border-primary/20 rounded-full"></div>
+              <div className="absolute w-3 h-3 bg-primary rounded-full animate-orbit" style={{ '--orbit-radius': '48px' } as React.CSSProperties}></div>
+            </div>
+          </div>
+          
+          {/* Floating Squares */}
+          <div className="absolute top-[15%] right-[15%] w-16 h-16 border border-secondary/20 rotate-45 animate-float hidden lg:block"></div>
+          <div className="absolute bottom-[25%] left-[3%] w-10 h-10 border border-accent/15 rotate-12 animate-float-delayed hidden md:block"></div>
+          
+          {/* Gradient Lines */}
+          <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/10 to-transparent"></div>
+          <div className="absolute top-0 left-1/2 h-full w-px bg-gradient-to-b from-transparent via-secondary/10 to-transparent"></div>
         </div>
 
         <div className="container mx-auto max-w-7xl relative z-10 flex items-center min-h-[calc(100vh-6rem)]">
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 w-full">
+          <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24 w-full">
             {/* Left Content */}
             <div className="flex-1 text-center lg:text-left space-y-8">
               {/* Status Badge */}
-              <div className="animate-slide-in-left" style={{ animationDelay: '0.1s' }}>
-                <div className="inline-flex items-center gap-3 px-5 py-2.5 glass rounded-full">
+              <div className="opacity-0 animate-reveal-up stagger-1">
+                <div className="inline-flex items-center gap-3 px-6 py-3 glass-premium rounded-full shadow-lg">
                   <span className="relative flex h-3 w-3">
-                    <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 pulse-ring"></span>
-                    <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 pulse-ring"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
                   </span>
-                  <span className="text-sm font-medium text-foreground/90">Available for Opportunities</span>
+                  <span className="text-sm font-semibold text-foreground/90 tracking-wide">Open to Opportunities</span>
+                  <span className="w-px h-4 bg-border"></span>
+                  <span className="text-xs text-primary font-medium">2026 Grad</span>
                 </div>
               </div>
 
               {/* Main Heading */}
-              <div className="space-y-4 animate-slide-in-left" style={{ animationDelay: '0.2s' }}>
-                <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.1] tracking-tight">
-                  <span className="text-foreground">Hey, I'm</span>
-                  <br />
-                  <span className="text-gradient-shine">Chaitanya</span>
+              <div className="space-y-6 opacity-0 animate-reveal-up stagger-2">
+                <p className="text-lg md:text-xl font-medium text-muted-foreground tracking-wide">
+                  👋 Hello, I'm
+                </p>
+                <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-[0.95] tracking-tight">
+                  <span className="text-gradient-aurora text-shadow-glow">Chaitanya</span>
                 </h1>
                 <div className="flex items-center gap-4 justify-center lg:justify-start">
-                  <div className="h-1 w-16 bg-gradient-to-r from-primary to-primary/50 rounded-full"></div>
-                  <p className="text-lg md:text-xl text-muted-foreground font-medium">
+                  <div className="h-1.5 w-20 bg-gradient-to-r from-primary via-secondary to-accent rounded-full animate-shimmer"
+                    style={{ backgroundSize: '200% 100%' }}></div>
+                  <p className="text-xl md:text-2xl font-semibold text-foreground/80">
                     Data Science Enthusiast
                   </p>
                 </div>
               </div>
               
-              {/* Description */}
-              <p className="text-base md:text-lg text-foreground/70 leading-relaxed max-w-xl mx-auto lg:mx-0 animate-slide-in-left" style={{ animationDelay: '0.3s' }}>
-                Final-year B.Tech CSE student specializing in <span className="text-primary font-semibold">Python</span>, <span className="text-secondary font-semibold">Machine Learning</span>, and <span className="text-accent font-semibold">Data Analytics</span>. 
-                Turning complex data into actionable insights.
-              </p>
+              {/* Description with Typing Effect */}
+              <div className="opacity-0 animate-reveal-up stagger-3">
+                <p className="text-base md:text-lg text-foreground/70 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                  Final-year B.Tech CSE student specializing in{' '}
+                  <span className="text-primary font-bold">Python</span>,{' '}
+                  <span className="text-secondary font-bold">Machine Learning</span>, and{' '}
+                  <span className="text-accent font-bold">Data Analytics</span>.
+                  <br />
+                  <span className="text-foreground/50">Turning complex data into actionable insights.</span>
+                </p>
+              </div>
 
-              {/* Stats Row */}
-              <div className="flex flex-wrap gap-6 justify-center lg:justify-start animate-slide-in-left" style={{ animationDelay: '0.4s' }}>
-                <div className="text-center">
-                  <div className="text-3xl md:text-4xl font-bold text-primary">4+</div>
-                  <div className="text-xs text-muted-foreground uppercase tracking-wider mt-1">Projects</div>
-                </div>
-                <div className="w-px h-12 bg-border hidden sm:block"></div>
-                <div className="text-center">
-                  <div className="text-3xl md:text-4xl font-bold text-secondary">200+</div>
-                  <div className="text-xs text-muted-foreground uppercase tracking-wider mt-1">Problems Solved</div>
-                </div>
-                <div className="w-px h-12 bg-border hidden sm:block"></div>
-                <div className="text-center">
-                  <div className="text-3xl md:text-4xl font-bold text-accent">7.5</div>
-                  <div className="text-xs text-muted-foreground uppercase tracking-wider mt-1">CGPA</div>
-                </div>
+              {/* Enhanced Stats Row */}
+              <div className="flex flex-wrap gap-8 justify-center lg:justify-start opacity-0 animate-reveal-up stagger-4">
+                {[
+                  { value: '4+', label: 'Projects', color: 'primary' },
+                  { value: '200+', label: 'Problems Solved', color: 'secondary' },
+                  { value: '7.5', label: 'CGPA', color: 'accent' },
+                ].map((stat, i) => (
+                  <div key={stat.label} className="group relative">
+                    <div className={`absolute inset-0 bg-${stat.color}/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                    <div className="relative glass rounded-2xl px-6 py-4 hover:scale-105 transition-transform duration-300">
+                      <div className={`text-3xl md:text-4xl font-bold text-${stat.color}`}>{stat.value}</div>
+                      <div className="text-xs text-muted-foreground uppercase tracking-widest mt-1">{stat.label}</div>
+                    </div>
+                  </div>
+                ))}
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-slide-in-left" style={{ animationDelay: '0.5s' }}>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start opacity-0 animate-reveal-up stagger-5">
                 <Button 
                   size="lg" 
-                  className="relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-6 text-base shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 group"
+                  className="relative overflow-hidden group bg-gradient-to-r from-primary to-primary/80 hover:from-primary hover:to-secondary text-primary-foreground font-bold px-10 py-7 text-base shadow-xl shadow-primary/30 hover:shadow-2xl hover:shadow-primary/40 transition-all duration-500 rounded-2xl"
                   onClick={() => scrollToSection("projects")}
                 >
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700"></span>
                   <span className="relative z-10 flex items-center gap-2">
-                    View My Work
-                    <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    Explore My Work
+                    <ExternalLink className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </span>
                 </Button>
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="glass border-2 border-foreground/10 hover:border-secondary hover:bg-secondary/10 font-semibold px-8 py-6 text-base transition-all duration-300 group"
+                  className="glass-premium border-2 border-foreground/10 hover:border-secondary/50 font-bold px-10 py-7 text-base transition-all duration-500 group rounded-2xl hover:bg-secondary/10"
                   onClick={() => scrollToSection("contact")}
                 >
-                  <Mail className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
-                  Get In Touch
+                  <Mail className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
+                  Let's Connect
                 </Button>
               </div>
 
-              {/* Quick Contact */}
-              <div className="flex flex-wrap gap-3 justify-center lg:justify-start animate-slide-in-left" style={{ animationDelay: '0.6s' }}>
-                <a 
-                  href="mailto:chaitanyababu0017@gmail.com" 
-                  className="flex items-center gap-2 px-4 py-2 glass rounded-full hover:bg-primary/10 transition-all duration-300 group"
-                >
-                  <Mail className="w-4 h-4 text-primary" />
-                  <span className="text-sm text-foreground/70 group-hover:text-foreground transition-colors">Email</span>
-                </a>
-                <a 
-                  href="tel:+919948087894" 
-                  className="flex items-center gap-2 px-4 py-2 glass rounded-full hover:bg-secondary/10 transition-all duration-300 group"
-                >
-                  <Phone className="w-4 h-4 text-secondary" />
-                  <span className="text-sm text-foreground/70 group-hover:text-foreground transition-colors">Call</span>
-                </a>
-                <div className="flex items-center gap-2 px-4 py-2 glass rounded-full">
+              {/* Social/Quick Links */}
+              <div className="flex flex-wrap gap-3 justify-center lg:justify-start opacity-0 animate-reveal-up stagger-6">
+                {[
+                  { href: 'mailto:chaitanyababu0017@gmail.com', icon: Mail, label: 'Email', color: 'primary' },
+                  { href: 'tel:+919948087894', icon: Phone, label: 'Call', color: 'secondary' },
+                ].map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    className={`flex items-center gap-2 px-5 py-2.5 glass rounded-full hover:bg-${link.color}/10 transition-all duration-300 group hover:scale-105`}
+                  >
+                    <link.icon className={`w-4 h-4 text-${link.color}`} />
+                    <span className="text-sm text-foreground/70 group-hover:text-foreground font-medium transition-colors">{link.label}</span>
+                  </a>
+                ))}
+                <div className="flex items-center gap-2 px-5 py-2.5 glass rounded-full">
                   <MapPin className="w-4 h-4 text-accent" />
-                  <span className="text-sm text-foreground/70">Andhra Pradesh, India</span>
+                  <span className="text-sm text-foreground/70 font-medium">Andhra Pradesh, India</span>
                 </div>
               </div>
             </div>
 
-            {/* Right Content - Modern Profile Card */}
-            <div className="flex-shrink-0 animate-slide-in-right" style={{ animationDelay: '0.3s' }}>
-              <div className="relative">
-                {/* Animated Glow Ring */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-primary via-secondary to-accent rounded-[2rem] blur-xl opacity-40 animate-glow"></div>
+            {/* Right Content - Premium Profile Card */}
+            <div className="flex-shrink-0 opacity-0 animate-reveal-up stagger-3">
+              <div className="relative card-3d">
+                {/* Multi-layer Glow */}
+                <div className="absolute -inset-4 bg-gradient-to-r from-primary via-secondary to-accent rounded-[2.5rem] blur-2xl opacity-30 animate-pulse-glow"></div>
+                <div className="absolute -inset-2 bg-gradient-to-r from-primary to-secondary rounded-[2.5rem] blur-xl opacity-20 animate-glow"></div>
                 
                 {/* Main Card */}
-                <div className="relative w-72 h-[420px] md:w-80 md:h-[460px] glass-strong rounded-[2rem] overflow-hidden gradient-border">
-                  {/* Top Gradient Bar */}
-                  <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-primary/20 to-transparent"></div>
+                <div className="relative w-80 h-[480px] md:w-96 md:h-[520px] glass-premium rounded-[2.5rem] overflow-hidden gradient-border gradient-border-animated shadow-2xl">
+                  {/* Animated Top Gradient */}
+                  <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-primary/25 via-secondary/10 to-transparent"></div>
+                  
+                  {/* Decorative Pattern */}
+                  <div className="absolute inset-0 opacity-5">
+                    <div className="absolute top-4 left-4 w-20 h-20 border border-foreground rounded-full"></div>
+                    <div className="absolute bottom-4 right-4 w-16 h-16 border border-foreground rotate-45"></div>
+                  </div>
                   
                   {/* Content */}
-                  <div className="relative h-full flex flex-col items-center justify-center p-8 text-center">
-                    {/* Profile Image with Ring */}
-                    <div className="relative mb-6">
-                      <div className="absolute -inset-2 bg-gradient-to-r from-primary via-secondary to-accent rounded-full animate-spin-slow opacity-60"></div>
-                      <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-background shadow-2xl">
+                  <div className="relative h-full flex flex-col items-center justify-center p-10 text-center">
+                    {/* Profile Image with Premium Ring */}
+                    <div className="relative mb-8 group">
+                      {/* Outer Gradient Ring */}
+                      <div className="absolute -inset-3 bg-gradient-to-r from-primary via-secondary to-accent rounded-full animate-spin-slow opacity-70 blur-sm"></div>
+                      <div className="absolute -inset-2 bg-gradient-to-r from-primary via-secondary to-accent rounded-full animate-spin-slow" style={{ animationDirection: 'reverse', animationDuration: '15s' }}></div>
+                      
+                      {/* Image Container */}
+                      <div className="relative w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-background shadow-2xl group-hover:scale-105 transition-transform duration-500">
                         <img src={profileImage} alt="Chaitanya" className="w-full h-full object-cover" />
+                        {/* Hover Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       </div>
                     </div>
                     
                     {/* Name & Title */}
-                    <h3 className="text-2xl md:text-3xl font-bold mb-2">Chaitanya</h3>
-                    <p className="text-base text-primary font-medium mb-1">Data Scientist</p>
-                    <p className="text-sm text-muted-foreground mb-6">B.Tech CSE (Data Science)</p>
+                    <h3 className="text-3xl md:text-4xl font-bold mb-2 text-gradient-shine">Chaitanya</h3>
+                    <p className="text-lg text-primary font-semibold mb-1">Data Scientist</p>
+                    <p className="text-sm text-muted-foreground mb-8">B.Tech CSE (Data Science)</p>
                     
                     {/* Skills Tags */}
                     <div className="flex flex-wrap gap-2 justify-center">
-                      <span className="px-4 py-1.5 bg-primary/15 text-primary rounded-full text-xs font-semibold border border-primary/20">Python</span>
-                      <span className="px-4 py-1.5 bg-secondary/15 text-secondary rounded-full text-xs font-semibold border border-secondary/20">ML</span>
-                      <span className="px-4 py-1.5 bg-accent/15 text-accent rounded-full text-xs font-semibold border border-accent/20">AI</span>
+                      {[
+                        { name: 'Python', color: 'primary' },
+                        { name: 'ML', color: 'secondary' },
+                        { name: 'AI', color: 'accent' },
+                        { name: 'SQL', color: 'primary' },
+                      ].map((skill) => (
+                        <span 
+                          key={skill.name}
+                          className={`px-5 py-2 bg-${skill.color}/15 text-${skill.color} rounded-full text-sm font-bold border border-${skill.color}/25 hover:scale-110 transition-transform duration-300 cursor-default`}
+                        >
+                          {skill.name}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>
 
-                {/* Floating Badge */}
-                <div className="absolute -bottom-3 -right-3 px-4 py-2.5 bg-card border-2 border-green-500/30 rounded-xl shadow-xl animate-bounce-subtle">
-                  <div className="flex items-center gap-2">
-                    <span className="relative flex h-2.5 w-2.5">
-                      <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping"></span>
-                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                {/* Enhanced Floating Badge */}
+                <div className="absolute -bottom-4 -right-4 px-5 py-3 glass-premium border-2 border-emerald-500/40 rounded-2xl shadow-2xl animate-bounce-subtle">
+                  <div className="flex items-center gap-3">
+                    <span className="relative flex h-3 w-3">
+                      <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping"></span>
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
                     </span>
-                    <span className="text-sm font-semibold text-foreground">Open to Work</span>
+                    <span className="text-sm font-bold text-foreground">Open to Work</span>
                   </div>
                 </div>
 
-                {/* Decorative Elements */}
-                <div className="absolute -top-6 -left-6 w-12 h-12 border-2 border-primary/30 rounded-xl rotate-12 animate-float hidden md:block"></div>
-                <div className="absolute -bottom-8 -left-4 w-8 h-8 bg-secondary/20 rounded-full animate-float hidden md:block" style={{ animationDelay: '1s' }}></div>
+                {/* Decorative Floating Elements */}
+                <div className="absolute -top-8 -left-8 w-16 h-16 border-2 border-primary/25 rounded-2xl rotate-12 animate-float hidden md:block"></div>
+                <div className="absolute -bottom-10 -left-6 w-10 h-10 bg-gradient-to-r from-secondary/30 to-accent/30 rounded-full animate-float hidden md:block" style={{ animationDelay: '1s' }}></div>
+                <div className="absolute top-1/2 -right-10 w-8 h-8 border border-accent/20 rotate-45 animate-float-delayed hidden lg:block"></div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce-subtle">
-          <div className="flex flex-col items-center gap-2 text-muted-foreground">
-            <span className="text-xs uppercase tracking-widest">Scroll</span>
-            <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center pt-2">
-              <div className="w-1.5 h-3 bg-muted-foreground/50 rounded-full animate-bounce"></div>
+        {/* Enhanced Scroll Indicator */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce-subtle">
+          <button 
+            onClick={() => scrollToSection("about")}
+            className="flex flex-col items-center gap-3 text-muted-foreground hover:text-primary transition-colors group"
+          >
+            <span className="text-xs uppercase tracking-[0.2em] font-medium group-hover:tracking-[0.3em] transition-all">Scroll Down</span>
+            <div className="w-7 h-12 border-2 border-muted-foreground/30 group-hover:border-primary/50 rounded-full flex justify-center pt-3 transition-colors">
+              <div className="w-1.5 h-3 bg-muted-foreground/50 group-hover:bg-primary rounded-full animate-bounce"></div>
             </div>
-          </div>
+          </button>
         </div>
       </section>
 
