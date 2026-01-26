@@ -980,7 +980,7 @@ const Index = () => {
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-primary via-secondary to-accent rounded-xl blur opacity-50 group-hover:opacity-100 transition-opacity"></div>
               <Button size="lg" className="relative bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-semibold shadow-xl px-10 py-6 text-base" asChild>
-                <a href="/mnt/data/CHAI_RESUME.pdf" download>
+                <a href="/Res_Chaitu.pdf" download="Srigakolapu_Chaitanya_Resume.pdf">
                   <Download className="w-5 h-5 mr-2 group-hover:animate-bounce" />
                   Download Resume
                 </a>
@@ -1001,7 +1001,7 @@ const Index = () => {
             {[
               { value: "PDF", label: "Format", color: "primary" },
               { value: "1", label: "Page", color: "secondary" },
-              { value: "2025", label: "Version", color: "accent" }
+              { value: "2026", label: "Version", color: "accent" }
             ].map((item) => (
               <div key={item.label} className="group">
                 <div className="p-6 glass rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1">
