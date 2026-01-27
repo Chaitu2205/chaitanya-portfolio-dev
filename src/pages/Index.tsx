@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import emailjs from '@emailjs/browser';
 import { Mail, Phone, MapPin, Download, Code, Database, Brain, Award, GraduationCap, Briefcase, ExternalLink, Send, Menu, X, ChevronDown, Github, Linkedin } from "lucide-react";
-import profileImage from "@/assets/chaitu.jpg";
+import profileImage from "@/assets/linkedin_profile_pic.jpeg";
 
 // Initialize EmailJS with your public key
 emailjs.init('fmqSq1Fhb8otDC7b2');
@@ -173,78 +173,145 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="relative min-h-screen flex items-center diagonal-line">
-        {/* Background Image Overlay */}
+      <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Animated Background Elements */}
         <div className="absolute inset-0">
-          <div className="absolute right-0 top-0 w-1/2 h-full opacity-30 hidden lg:block">
-            <img 
-              src={profileImage} 
-              alt="Profile" 
-              className="w-full h-full object-cover object-center"
-              style={{ filter: 'grayscale(100%) contrast(1.1)' }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
+          {/* Gradient Mesh */}
+          <div className="absolute top-0 left-0 w-full h-full">
+            <div className="absolute top-1/4 -left-20 w-96 h-96 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-3xl animate-pulse-soft" />
+            <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-gradient-to-tl from-muted/20 to-transparent rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: '1s' }} />
           </div>
+          
+          {/* Grid Pattern */}
+          <div className="absolute inset-0 opacity-[0.02]" style={{
+            backgroundImage: 'linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)',
+            backgroundSize: '60px 60px'
+          }} />
         </div>
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10 pt-20">
-          <div className="max-w-3xl">
-            {/* Greeting */}
-            <div className="flex items-center gap-4 mb-8 opacity-0 animate-fade-in stagger-1">
-              <span className="w-16 h-px bg-foreground/30" />
-              <span className="text-sm tracking-widest text-muted-foreground">Hey there!</span>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left Content */}
+            <div className="order-2 lg:order-1">
+              {/* Greeting Badge */}
+              <div className="inline-flex items-center gap-3 mb-8 opacity-0 animate-fade-in stagger-1">
+                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                <span className="text-sm tracking-widest text-muted-foreground uppercase">Available for opportunities</span>
+              </div>
+
+              {/* Main Heading */}
+              <div className="mb-6 opacity-0 animate-slide-up stagger-2">
+                <span className="text-lg md:text-xl tracking-widest text-muted-foreground block mb-2">Hello, I'm</span>
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight">
+                  <span className="text-gradient">CHAITANYA</span>
+                </h1>
+              </div>
+
+              {/* Role with Animated Border */}
+              <div className="inline-flex items-center gap-4 px-6 py-3 mb-8 glass-ultra rounded-full opacity-0 animate-fade-in stagger-3">
+                <span className="text-sm md:text-base tracking-[0.2em] text-muted-foreground">
+                  DATA SCIENTIST
+                </span>
+                <span className="w-1.5 h-1.5 rounded-full bg-foreground/30" />
+                <span className="text-sm md:text-base tracking-[0.2em] text-muted-foreground">
+                  ML ENGINEER
+                </span>
+              </div>
+
+              {/* Description */}
+              <p className="text-lg text-muted-foreground mb-10 max-w-md leading-relaxed opacity-0 animate-fade-in stagger-3">
+                Crafting intelligent solutions through data science and machine learning to solve real-world problems.
+              </p>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-wrap items-center gap-4 opacity-0 animate-fade-in stagger-4">
+                <Button 
+                  onClick={() => scrollToSection("contact")}
+                  className="bg-foreground text-background hover:bg-foreground/90 px-8 py-6 text-sm tracking-widest transition-all duration-300 group"
+                >
+                  GET IN TOUCH
+                  <Send className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+                <Button 
+                  onClick={() => scrollToSection("projects")}
+                  variant="outline"
+                  className="border-foreground/20 hover:bg-foreground/5 px-8 py-6 text-sm tracking-widest"
+                >
+                  VIEW WORK
+                </Button>
+              </div>
+
+              {/* Social Links */}
+              <div className="flex items-center gap-4 mt-10 opacity-0 animate-fade-in stagger-5">
+                <a 
+                  href="https://github.com/chaitu426" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="p-3 border border-foreground/10 rounded-full hover:bg-foreground hover:text-background transition-all duration-300"
+                >
+                  <Github className="w-5 h-5" />
+                </a>
+                <a 
+                  href="https://www.linkedin.com/in/srigakolapuchaitanya" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="p-3 border border-foreground/10 rounded-full hover:bg-foreground hover:text-background transition-all duration-300"
+                >
+                  <Linkedin className="w-5 h-5" />
+                </a>
+                <a 
+                  href="mailto:chaitanyababu0017@gmail.com"
+                  className="p-3 border border-foreground/10 rounded-full hover:bg-foreground hover:text-background transition-all duration-300"
+                >
+                  <Mail className="w-5 h-5" />
+                </a>
+              </div>
             </div>
 
-            {/* Main Heading */}
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold mb-6 opacity-0 animate-slide-up stagger-2">
-              I'M <span className="text-gradient">CHAITANYA</span>
-            </h1>
+            {/* Right Content - Profile Image */}
+            <div className="order-1 lg:order-2 flex justify-center opacity-0 animate-fade-in stagger-2">
+              <div className="relative">
+                {/* Outer Glow Ring */}
+                <div className="absolute -inset-4 rounded-full bg-gradient-to-br from-foreground/20 via-transparent to-foreground/10 blur-xl animate-pulse-soft" />
+                
+                {/* Rotating Border */}
+                <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-foreground/30 via-transparent to-foreground/30 animate-spin" style={{ animationDuration: '8s' }} />
+                
+                {/* Image Container */}
+                <div className="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-2 border-foreground/10">
+                  <img 
+                    src={profileImage} 
+                    alt="Chaitanya Srigakolapu" 
+                    className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700"
+                  />
+                  {/* Overlay Gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent" />
+                </div>
 
-            {/* Roles */}
-            <div className="flex items-center gap-4 mb-10 opacity-0 animate-fade-in stagger-3">
-              <span className="text-sm md:text-base tracking-[0.3em] text-muted-foreground">
-                DATA SCIENTIST
-              </span>
-              <span className="text-muted-foreground">|</span>
-              <span className="text-sm md:text-base tracking-[0.3em] text-muted-foreground">
-                ML ENGINEER
-              </span>
-              <span className="text-muted-foreground">|</span>
-              <span className="text-sm md:text-base tracking-[0.3em] text-muted-foreground">
-                DEVELOPER
-              </span>
-            </div>
-
-            {/* CTA Button */}
-            <div className="opacity-0 animate-fade-in stagger-4">
-              <Button 
-                onClick={() => scrollToSection("contact")}
-                className="border border-foreground/20 bg-transparent hover:bg-foreground hover:text-background text-foreground px-8 py-6 text-sm tracking-widest transition-all duration-300"
-              >
-                CONTACT ME
-              </Button>
+                {/* Floating Stats */}
+                <div className="absolute -right-4 top-1/4 glass-ultra px-4 py-3 rounded-lg animate-float opacity-0 animate-fade-in stagger-4">
+                  <div className="text-2xl font-bold">4+</div>
+                  <div className="text-xs text-muted-foreground tracking-wider">PROJECTS</div>
+                </div>
+                
+                <div className="absolute -left-4 bottom-1/4 glass-ultra px-4 py-3 rounded-lg animate-float opacity-0 animate-fade-in stagger-5" style={{ animationDelay: '0.3s' }}>
+                  <div className="text-2xl font-bold">7.5</div>
+                  <div className="text-xs text-muted-foreground tracking-wider">CGPA</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Social Links - Left Side */}
-        <div className="absolute left-6 bottom-12 hidden lg:flex flex-col items-center gap-4 opacity-0 animate-fade-in stagger-5">
-          <a href="mailto:chaitanyababu0017@gmail.com" className="p-2 text-muted-foreground hover:text-foreground transition-colors">
-            <Mail className="w-5 h-5" />
-          </a>
-          <a href="tel:+919948087894" className="p-2 text-muted-foreground hover:text-foreground transition-colors">
-            <Phone className="w-5 h-5" />
-          </a>
-          <div className="w-px h-20 bg-foreground/20 mt-2" />
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-0 animate-fade-in stagger-6">
+          <span className="text-xs tracking-widest text-muted-foreground">SCROLL</span>
+          <div className="w-6 h-10 border border-foreground/20 rounded-full flex items-start justify-center p-2">
+            <div className="w-1 h-2 bg-foreground rounded-full animate-bounce" />
+          </div>
         </div>
 
-        {/* Scroll Indicator - Center */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-0 animate-fade-in stagger-6">
-          <span className="vertical-text text-xs tracking-widest text-muted-foreground">SCROLL DOWN</span>
-          <ChevronDown className="w-4 h-4 text-muted-foreground animate-float" />
-        </div>
-
-        {/* Section Number - Right */}
+        {/* Section Number */}
         <div className="absolute right-8 bottom-8 hidden lg:block">
           <span className="text-8xl font-bold text-foreground/5">01</span>
           <span className="text-muted-foreground text-sm">/08</span>
