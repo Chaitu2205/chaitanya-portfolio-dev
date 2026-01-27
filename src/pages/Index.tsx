@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import emailjs from '@emailjs/browser';
-import { Mail, Phone, MapPin, Download, Code, Database, Brain, Award, GraduationCap, Briefcase, ExternalLink, Send, Menu, X, ChevronDown, Github, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Download, Code, Database, Brain, Award, GraduationCap, Briefcase, ExternalLink, Send, Menu, X, ChevronDown, Sparkles, Target, TrendingUp, Zap } from "lucide-react";
 import profileImage from "@/assets/linkedin_profile_pic.jpeg";
 
 // Initialize EmailJS with your public key
@@ -241,31 +241,7 @@ const Index = () => {
                 </Button>
               </div>
 
-              {/* Social Links */}
-              <div className="flex items-center gap-4 mt-10 opacity-0 animate-fade-in stagger-5">
-                <a 
-                  href="https://github.com/chaitu426" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="p-3 border border-foreground/10 rounded-full hover:bg-foreground hover:text-background transition-all duration-300"
-                >
-                  <Github className="w-5 h-5" />
-                </a>
-                <a 
-                  href="https://www.linkedin.com/in/srigakolapuchaitanya" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="p-3 border border-foreground/10 rounded-full hover:bg-foreground hover:text-background transition-all duration-300"
-                >
-                  <Linkedin className="w-5 h-5" />
-                </a>
-                <a 
-                  href="mailto:chaitanyababu0017@gmail.com"
-                  className="p-3 border border-foreground/10 rounded-full hover:bg-foreground hover:text-background transition-all duration-300"
-                >
-                  <Mail className="w-5 h-5" />
-                </a>
-              </div>
+              {/* Social Links - Removed per user preference */}
             </div>
 
             {/* Right Content - Profile Image */}
@@ -386,70 +362,95 @@ const Index = () => {
       </section>
 
       {/* Education Section */}
-      <section id="education" className="relative py-32 px-6 lg:px-12 bg-card diagonal-line">
-        <div className="container mx-auto max-w-6xl">
+      <section id="education" className="relative py-32 px-6 lg:px-12 bg-card overflow-hidden">
+        {/* Background Decoration */}
+        <div className="absolute top-0 right-0 w-1/2 h-full opacity-[0.02]">
+          <GraduationCap className="w-full h-full" />
+        </div>
+        
+        <div className="container mx-auto max-w-6xl relative z-10">
           {/* Section Header */}
-          <div className="flex items-center gap-6 mb-16">
-            <span className="text-sm tracking-widest text-muted-foreground">03</span>
-            <span className="w-12 h-px bg-foreground/30" />
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">EDUCATION</h2>
+          <div className="flex items-center justify-between mb-16">
+            <div className="flex items-center gap-6">
+              <span className="text-sm tracking-widest text-muted-foreground">03</span>
+              <span className="w-12 h-px bg-foreground/30" />
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">EDUCATION</h2>
+            </div>
+            <div className="hidden md:flex items-center gap-2 text-muted-foreground">
+              <GraduationCap className="w-5 h-5" />
+              <span className="text-sm tracking-widest">ACADEMIC JOURNEY</span>
+            </div>
           </div>
 
-          <div className="space-y-8">
-            {[
-              {
-                period: "2022 – 2026",
-                degree: "Bachelor of Technology in CSE (Data Science)",
-                institution: "Dadi Institute of Engineering and Technology (DIET)",
-                location: "Anakapalle, Andhra Pradesh",
-                grade: "Current CGPA: 7.45",
-                status: "In Progress"
-              },
-              {
-                period: "2020 – 2022",
-                degree: "Intermediate (Board of Intermediate Education, A.P.)",
-                institution: "Sri Chaitanya Junior College",
-                location: "Gajuwaka, Visakhapatnam",
-                grade: "Percentage: 81%",
-                status: "Completed"
-              },
-              {
-                period: "2020",
-                degree: "Secondary School Certificate (SSC)",
-                institution: "Kendriya Vidyalaya Nausenabaugh",
-                location: "Visakhapatnam, Andhra Pradesh",
-                grade: "Percentage: 85%",
-                status: "Completed"
-              }
-            ].map((edu, idx) => (
-              <div 
-                key={idx}
-                className="group p-8 border-gradient rounded-lg hover-lift opacity-0 animate-slide-up"
-                style={{ animationDelay: `${idx * 0.1}s` }}
-              >
-                <div className="flex flex-col lg:flex-row lg:items-start gap-6">
-                  <div className="lg:w-40 flex-shrink-0">
-                    <span className="text-sm tracking-widest text-muted-foreground">{edu.period}</span>
+          {/* Timeline */}
+          <div className="relative">
+            {/* Timeline Line */}
+            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-foreground/20 via-foreground/10 to-transparent transform md:-translate-x-1/2" />
+            
+            <div className="space-y-12">
+              {[
+                {
+                  period: "2022 – 2026",
+                  degree: "Bachelor of Technology in CSE (Data Science)",
+                  institution: "Dadi Institute of Engineering and Technology (DIET)",
+                  location: "Anakapalle, Andhra Pradesh",
+                  grade: "Current CGPA: 7.45",
+                  status: "In Progress",
+                  highlight: true
+                },
+                {
+                  period: "2020 – 2022",
+                  degree: "Intermediate (Board of Intermediate Education, A.P.)",
+                  institution: "Sri Chaitanya Junior College",
+                  location: "Gajuwaka, Visakhapatnam",
+                  grade: "Percentage: 81%",
+                  status: "Completed",
+                  highlight: false
+                },
+                {
+                  period: "2020",
+                  degree: "Secondary School Certificate (SSC)",
+                  institution: "Kendriya Vidyalaya Nausenabaugh",
+                  location: "Visakhapatnam, Andhra Pradesh",
+                  grade: "Percentage: 85%",
+                  status: "Completed",
+                  highlight: false
+                }
+              ].map((edu, idx) => (
+                <div 
+                  key={idx}
+                  className={`relative flex flex-col md:flex-row items-start gap-8 ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+                >
+                  {/* Timeline Dot */}
+                  <div className="absolute left-0 md:left-1/2 w-4 h-4 rounded-full border-2 border-foreground/30 bg-background transform -translate-x-1/2 mt-2">
+                    {edu.highlight && <div className="absolute inset-1 rounded-full bg-foreground animate-pulse" />}
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl md:text-2xl font-semibold mb-2">{edu.degree}</h3>
-                    <p className="text-muted-foreground mb-1">{edu.institution}</p>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
-                      <MapPin className="w-4 h-4" />
-                      {edu.location}
-                    </div>
-                    <div className="flex flex-wrap gap-3">
-                      <span className="px-4 py-1.5 bg-foreground/5 border border-foreground/10 rounded text-sm">
-                        {edu.grade}
+                  
+                  {/* Content Card */}
+                  <div className={`ml-8 md:ml-0 md:w-[calc(50%-2rem)] ${idx % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8'}`}>
+                    <div className={`group p-8 glass-ultra rounded-xl hover-lift border border-foreground/5 ${edu.highlight ? 'ring-1 ring-foreground/10' : ''}`}>
+                      <span className="inline-block px-3 py-1 mb-4 text-xs tracking-widest bg-foreground/5 rounded-full">
+                        {edu.period}
                       </span>
-                      <span className="px-4 py-1.5 bg-foreground/5 border border-foreground/10 rounded text-sm">
-                        {edu.status}
-                      </span>
+                      <h3 className="text-xl md:text-2xl font-semibold mb-2">{edu.degree}</h3>
+                      <p className="text-muted-foreground mb-2">{edu.institution}</p>
+                      <div className={`flex items-center gap-2 text-sm text-muted-foreground mb-4 ${idx % 2 === 0 ? 'md:justify-end' : ''}`}>
+                        <MapPin className="w-4 h-4" />
+                        {edu.location}
+                      </div>
+                      <div className={`flex flex-wrap gap-3 ${idx % 2 === 0 ? 'md:justify-end' : ''}`}>
+                        <span className="px-4 py-1.5 bg-foreground/5 border border-foreground/10 rounded-full text-sm font-medium">
+                          {edu.grade}
+                        </span>
+                        <span className={`px-4 py-1.5 rounded-full text-sm font-medium ${edu.highlight ? 'bg-foreground text-background' : 'bg-foreground/5 border border-foreground/10'}`}>
+                          {edu.status}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
@@ -457,13 +458,25 @@ const Index = () => {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="relative py-32 px-6 lg:px-12 diagonal-line">
-        <div className="container mx-auto max-w-6xl">
+      <section id="experience" className="relative py-32 px-6 lg:px-12 overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 opacity-[0.02]" style={{
+          backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)',
+          backgroundSize: '40px 40px'
+        }} />
+        
+        <div className="container mx-auto max-w-6xl relative z-10">
           {/* Section Header */}
-          <div className="flex items-center gap-6 mb-16">
-            <span className="text-sm tracking-widest text-muted-foreground">04</span>
-            <span className="w-12 h-px bg-foreground/30" />
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">EXPERIENCE</h2>
+          <div className="flex items-center justify-between mb-16">
+            <div className="flex items-center gap-6">
+              <span className="text-sm tracking-widest text-muted-foreground">04</span>
+              <span className="w-12 h-px bg-foreground/30" />
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">EXPERIENCE</h2>
+            </div>
+            <div className="hidden md:flex items-center gap-2 text-muted-foreground">
+              <Briefcase className="w-5 h-5" />
+              <span className="text-sm tracking-widest">WORK HISTORY</span>
+            </div>
           </div>
 
           <div className="space-y-8">
@@ -473,35 +486,53 @@ const Index = () => {
                 role: "Data Science Intern",
                 company: "Internship Project",
                 description: "Worked on real-world data analysis projects, implementing machine learning models and data visualization techniques.",
-                skills: ["Python", "Data Analysis", "ML Models", "Visualization"]
+                skills: ["Python", "Data Analysis", "ML Models", "Visualization"],
+                icon: Database
               },
               {
                 period: "2023",
                 role: "Team Lead - Samsung Hackathon",
                 company: "Samsung Innovation Campus",
                 description: "Led the development of 'Medi Predict' — an AI model for lung disease detection, achieving around 90% accuracy.",
-                skills: ["Leadership", "AI/ML", "Healthcare Tech", "Team Management"]
+                skills: ["Leadership", "AI/ML", "Healthcare Tech", "Team Management"],
+                icon: Award
               }
             ].map((exp, idx) => (
               <div 
                 key={idx}
-                className="group p-8 border-gradient rounded-lg hover-lift opacity-0 animate-slide-up"
-                style={{ animationDelay: `${idx * 0.1}s` }}
+                className="group relative"
               >
-                <div className="flex flex-col lg:flex-row lg:items-start gap-6">
-                  <div className="lg:w-40 flex-shrink-0">
-                    <span className="text-sm tracking-widest text-muted-foreground">{exp.period}</span>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl md:text-2xl font-semibold mb-1">{exp.role}</h3>
-                    <p className="text-muted-foreground mb-4">{exp.company}</p>
-                    <p className="text-muted-foreground mb-6">{exp.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {exp.skills.map((skill) => (
-                        <span key={skill} className="px-3 py-1 border border-foreground/20 rounded text-xs tracking-wider">
-                          {skill}
+                {/* Connecting Line */}
+                {idx < 1 && (
+                  <div className="absolute left-8 top-20 bottom-0 w-px bg-gradient-to-b from-foreground/20 to-transparent hidden md:block" />
+                )}
+                
+                <div className="relative p-8 glass-ultra rounded-xl hover-lift border border-foreground/5">
+                  <div className="flex flex-col lg:flex-row lg:items-start gap-6">
+                    {/* Icon */}
+                    <div className="w-16 h-16 flex-shrink-0 rounded-xl bg-foreground/5 border border-foreground/10 flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all duration-500">
+                      <exp.icon className="w-7 h-7" />
+                    </div>
+                    
+                    <div className="flex-1">
+                      <div className="flex flex-wrap items-center gap-4 mb-2">
+                        <h3 className="text-xl md:text-2xl font-semibold">{exp.role}</h3>
+                        <span className="px-3 py-1 text-xs tracking-widest bg-foreground/5 rounded-full">
+                          {exp.period}
                         </span>
-                      ))}
+                      </div>
+                      <p className="text-muted-foreground mb-4 flex items-center gap-2">
+                        <Briefcase className="w-4 h-4" />
+                        {exp.company}
+                      </p>
+                      <p className="text-muted-foreground mb-6 leading-relaxed">{exp.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {exp.skills.map((skill) => (
+                          <span key={skill} className="px-4 py-1.5 border border-foreground/20 rounded-full text-xs tracking-wider hover:bg-foreground hover:text-background transition-all duration-300">
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -514,30 +545,48 @@ const Index = () => {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="relative py-32 px-6 lg:px-12 bg-card diagonal-line">
-        <div className="container mx-auto max-w-6xl">
+      <section id="skills" className="relative py-32 px-6 lg:px-12 bg-card overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-[0.015]">
+          <div className="absolute top-20 left-20 w-72 h-72 border border-foreground rounded-full" />
+          <div className="absolute bottom-20 right-20 w-96 h-96 border border-foreground rounded-full" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-foreground rounded-full" />
+        </div>
+        
+        <div className="container mx-auto max-w-6xl relative z-10">
           {/* Section Header */}
-          <div className="flex items-center gap-6 mb-16">
-            <span className="text-sm tracking-widest text-muted-foreground">05</span>
-            <span className="w-12 h-px bg-foreground/30" />
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">SKILLS</h2>
+          <div className="flex items-center justify-between mb-16">
+            <div className="flex items-center gap-6">
+              <span className="text-sm tracking-widest text-muted-foreground">05</span>
+              <span className="w-12 h-px bg-foreground/30" />
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">SKILLS</h2>
+            </div>
+            <div className="hidden md:flex items-center gap-2 text-muted-foreground">
+              <Zap className="w-5 h-5" />
+              <span className="text-sm tracking-widest">EXPERTISE</span>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {Object.entries(skills).map(([category, items], idx) => (
               <div 
                 key={category}
-                className="group p-6 border-gradient rounded-lg hover-lift opacity-0 animate-slide-up"
-                style={{ animationDelay: `${idx * 0.1}s` }}
+                className="group relative p-6 glass-ultra rounded-xl hover-lift border border-foreground/5"
               >
-                <h3 className="text-lg font-semibold mb-4 pb-4 border-b border-border/30">
+                {/* Category Icon */}
+                <div className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center text-lg font-bold">
+                  {idx + 1}
+                </div>
+                
+                <h3 className="text-lg font-semibold mb-6 pb-4 border-b border-border/30 flex items-center gap-3">
+                  <span className="w-2 h-2 rounded-full bg-foreground" />
                   {category}
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {items.map((skill) => (
                     <span 
                       key={skill} 
-                      className="px-3 py-1.5 bg-foreground/5 border border-foreground/10 rounded text-sm text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-colors"
+                      className="px-3 py-1.5 bg-foreground/5 border border-foreground/10 rounded-full text-sm text-muted-foreground hover:text-foreground hover:bg-foreground/10 hover:border-foreground/30 transition-all duration-300 cursor-default"
                     >
                       {skill}
                     </span>
@@ -552,45 +601,68 @@ const Index = () => {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="relative py-32 px-6 lg:px-12 diagonal-line">
-        <div className="container mx-auto max-w-6xl">
+      <section id="projects" className="relative py-32 px-6 lg:px-12 overflow-hidden">
+        {/* Background Decoration */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-[0.02]">
+          <div className="w-full h-full border border-foreground rounded-full animate-spin" style={{ animationDuration: '60s' }} />
+        </div>
+        
+        <div className="container mx-auto max-w-6xl relative z-10">
           {/* Section Header */}
-          <div className="flex items-center gap-6 mb-16">
-            <span className="text-sm tracking-widest text-muted-foreground">06</span>
-            <span className="w-12 h-px bg-foreground/30" />
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">PROJECTS</h2>
+          <div className="flex items-center justify-between mb-16">
+            <div className="flex items-center gap-6">
+              <span className="text-sm tracking-widest text-muted-foreground">06</span>
+              <span className="w-12 h-px bg-foreground/30" />
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">PROJECTS</h2>
+            </div>
+            <div className="hidden md:flex items-center gap-2 text-muted-foreground">
+              <Target className="w-5 h-5" />
+              <span className="text-sm tracking-widest">FEATURED WORK</span>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
             {projects.map((project, idx) => (
               <div 
                 key={idx}
-                className="group relative p-8 border-gradient rounded-lg hover-lift opacity-0 animate-slide-up"
-                style={{ animationDelay: `${idx * 0.1}s` }}
+                className="group relative"
               >
-                {/* Project Number */}
-                <div className="absolute top-6 right-6 text-6xl font-bold text-foreground/5">
-                  0{idx + 1}
-                </div>
-
-                <h3 className="text-xl md:text-2xl font-semibold mb-4 pr-16">{project.title}</h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">{project.description}</p>
+                {/* Hover Glow Effect */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-foreground/0 via-foreground/5 to-foreground/0 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
                 
-                {project.note && (
-                  <div className="flex items-start gap-3 p-4 bg-foreground/5 rounded mb-6">
-                    <ExternalLink className="w-4 h-4 mt-0.5 text-muted-foreground flex-shrink-0" />
-                    <p className="text-sm text-muted-foreground">{project.note}</p>
+                <div className="relative p-8 glass-ultra rounded-xl hover-lift border border-foreground/5 h-full">
+                  {/* Project Number */}
+                  <div className="absolute top-6 right-6 w-12 h-12 rounded-full border border-foreground/10 flex items-center justify-center text-lg font-bold text-foreground/20 group-hover:text-foreground/40 transition-colors">
+                    0{idx + 1}
                   </div>
-                )}
 
-                <div className="pt-4 border-t border-border/30">
-                  <p className="text-xs tracking-widest text-muted-foreground mb-3">TECH STACK</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech) => (
-                      <span key={tech} className="px-3 py-1 border border-foreground/20 rounded text-xs tracking-wider">
-                        {tech}
-                      </span>
-                    ))}
+                  <div className="flex items-center gap-3 mb-4">
+                    <Sparkles className="w-5 h-5 text-muted-foreground" />
+                    <span className="text-xs tracking-widest text-muted-foreground uppercase">Featured Project</span>
+                  </div>
+                  
+                  <h3 className="text-xl md:text-2xl font-semibold mb-4 pr-16">{project.title}</h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">{project.description}</p>
+                  
+                  {project.note && (
+                    <div className="flex items-start gap-3 p-4 bg-foreground/5 rounded-lg mb-6 border border-foreground/5">
+                      <ExternalLink className="w-4 h-4 mt-0.5 text-muted-foreground flex-shrink-0" />
+                      <p className="text-sm text-muted-foreground">{project.note}</p>
+                    </div>
+                  )}
+
+                  <div className="pt-4 border-t border-border/30">
+                    <p className="text-xs tracking-widest text-muted-foreground mb-3 flex items-center gap-2">
+                      <Code className="w-3 h-3" />
+                      TECH STACK
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tech.map((tech) => (
+                        <span key={tech} className="px-3 py-1.5 border border-foreground/20 rounded-full text-xs tracking-wider hover:bg-foreground hover:text-background transition-all duration-300">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -602,13 +674,22 @@ const Index = () => {
       </section>
 
       {/* Achievements Section */}
-      <section id="achievements" className="relative py-32 px-6 lg:px-12 bg-card diagonal-line">
-        <div className="container mx-auto max-w-6xl">
+      <section id="achievements" className="relative py-32 px-6 lg:px-12 bg-card overflow-hidden">
+        {/* Background Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-foreground/5 via-transparent to-foreground/5 rounded-full blur-3xl" />
+        
+        <div className="container mx-auto max-w-6xl relative z-10">
           {/* Section Header */}
-          <div className="flex items-center gap-6 mb-16">
-            <span className="text-sm tracking-widest text-muted-foreground">07</span>
-            <span className="w-12 h-px bg-foreground/30" />
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">ACHIEVEMENTS</h2>
+          <div className="flex items-center justify-between mb-16">
+            <div className="flex items-center gap-6">
+              <span className="text-sm tracking-widest text-muted-foreground">07</span>
+              <span className="w-12 h-px bg-foreground/30" />
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">ACHIEVEMENTS</h2>
+            </div>
+            <div className="hidden md:flex items-center gap-2 text-muted-foreground">
+              <TrendingUp className="w-5 h-5" />
+              <span className="text-sm tracking-widest">MILESTONES</span>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -617,32 +698,41 @@ const Index = () => {
                 icon: Award, 
                 label: "LEADERSHIP", 
                 title: "Team Lead at Samsung Hackathon", 
-                desc: "Developed 'Medi Predict' — an AI model for lung disease detection with around 90% accuracy." 
+                desc: "Developed 'Medi Predict' — an AI model for lung disease detection with around 90% accuracy.",
+                highlight: true
               },
               { 
                 icon: Code, 
                 label: "PROBLEM SOLVING", 
                 title: "200+ Problems Solved", 
-                desc: "On competitive coding platforms like CodeChef, with notable performance on LeetCode and HackerRank." 
+                desc: "On competitive coding platforms like CodeChef, with notable performance on LeetCode and HackerRank.",
+                highlight: false
               },
               { 
                 icon: Award, 
                 label: "COMMUNITY", 
                 title: "Vizag Navy Marathon Volunteer", 
-                desc: "Contributed to event coordination and demonstrated communication, teamwork, and quick problem-solving." 
+                desc: "Contributed to event coordination and demonstrated communication, teamwork, and quick problem-solving.",
+                highlight: false
               }
             ].map((achievement, idx) => (
               <div 
                 key={idx}
-                className="group p-8 border-gradient rounded-lg hover-lift opacity-0 animate-slide-up text-center"
-                style={{ animationDelay: `${idx * 0.1}s` }}
+                className={`group relative p-8 glass-ultra rounded-xl hover-lift border text-center ${achievement.highlight ? 'border-foreground/20 ring-1 ring-foreground/10' : 'border-foreground/5'}`}
               >
-                <div className="w-16 h-16 mx-auto mb-6 border border-foreground/20 rounded-full flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all duration-300">
-                  <achievement.icon className="w-6 h-6" />
+                {/* Highlight Badge */}
+                {achievement.highlight && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-foreground text-background text-xs tracking-widest rounded-full">
+                    FEATURED
+                  </div>
+                )}
+                
+                <div className={`w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center transition-all duration-500 ${achievement.highlight ? 'bg-foreground text-background' : 'border border-foreground/20 group-hover:bg-foreground group-hover:text-background'}`}>
+                  <achievement.icon className="w-8 h-8" />
                 </div>
-                <span className="text-xs tracking-widest text-muted-foreground">{achievement.label}</span>
-                <h3 className="text-lg font-semibold mt-2 mb-3">{achievement.title}</h3>
-                <p className="text-sm text-muted-foreground">{achievement.desc}</p>
+                <span className="inline-block px-3 py-1 mb-3 text-xs tracking-widest bg-foreground/5 rounded-full">{achievement.label}</span>
+                <h3 className="text-lg font-semibold mb-3">{achievement.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{achievement.desc}</p>
               </div>
             ))}
           </div>
@@ -652,34 +742,50 @@ const Index = () => {
       </section>
 
       {/* Resume Section */}
-      <section className="relative py-32 px-6 lg:px-12 diagonal-line">
-        <div className="container mx-auto max-w-4xl text-center">
-          <div className="w-20 h-20 mx-auto mb-8 border border-foreground/20 rounded-full flex items-center justify-center">
-            <Download className="w-8 h-8" />
+      <section className="relative py-32 px-6 lg:px-12 overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-[0.02]" style={{
+          backgroundImage: 'linear-gradient(45deg, hsl(var(--foreground)) 25%, transparent 25%), linear-gradient(-45deg, hsl(var(--foreground)) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, hsl(var(--foreground)) 75%), linear-gradient(-45deg, transparent 75%, hsl(var(--foreground)) 75%)',
+          backgroundSize: '20px 20px',
+          backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px'
+        }} />
+        
+        <div className="container mx-auto max-w-4xl text-center relative z-10">
+          {/* Icon with Glow */}
+          <div className="relative w-24 h-24 mx-auto mb-8">
+            <div className="absolute inset-0 bg-foreground/10 rounded-2xl blur-xl" />
+            <div className="relative w-full h-full bg-foreground/5 border border-foreground/20 rounded-2xl flex items-center justify-center">
+              <Download className="w-10 h-10" />
+            </div>
           </div>
           
+          <span className="inline-block px-4 py-2 mb-6 text-xs tracking-widest bg-foreground/5 border border-foreground/10 rounded-full">
+            CURRICULUM VITAE
+          </span>
+          
           <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">DOWNLOAD RESUME</h2>
-          <p className="text-muted-foreground mb-10 max-w-xl mx-auto">
+          <p className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto leading-relaxed">
             Get a comprehensive overview of my qualifications, experience, and technical expertise.
           </p>
           
           <Button 
             asChild
-            className="border border-foreground/20 bg-transparent hover:bg-foreground hover:text-background text-foreground px-10 py-6 text-sm tracking-widest transition-all duration-300"
+            className="bg-foreground text-background hover:bg-foreground/90 px-10 py-6 text-sm tracking-widest transition-all duration-300 group"
           >
-            <a href="/Res_Chaitu.pdf" download="Srigakolapu_Chaitanya_Resume.pdf">
+            <a href="/Res_Chaitu.pdf" download="Srigakolapu_Chaitanya_Resume.pdf" className="flex items-center gap-3">
+              <Download className="w-4 h-4 group-hover:animate-bounce" />
               DOWNLOAD PDF
             </a>
           </Button>
 
-          <div className="flex justify-center gap-8 mt-12">
+          <div className="flex justify-center gap-12 mt-12">
             {[
               { value: "PDF", label: "FORMAT" },
               { value: "1 PAGE", label: "LENGTH" },
               { value: "2026", label: "UPDATED" }
             ].map((item) => (
               <div key={item.label} className="text-center">
-                <div className="text-2xl font-bold mb-1">{item.value}</div>
+                <div className="text-3xl font-bold mb-1">{item.value}</div>
                 <div className="text-xs tracking-widest text-muted-foreground">{item.label}</div>
               </div>
             ))}
