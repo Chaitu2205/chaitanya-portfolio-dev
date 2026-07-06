@@ -725,6 +725,87 @@ const Index = () => {
         <span className="section-number hidden lg:block">06</span>
       </section>
 
+      {/* Certifications Section */}
+      <section id="certifications" className="relative py-32 px-6 lg:px-12 overflow-hidden">
+        {/* Background Decoration */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] opacity-[0.02]">
+          <div className="w-full h-full border border-foreground rounded-full animate-spin" style={{ animationDuration: '50s' }} />
+        </div>
+        
+        <div className="container mx-auto max-w-6xl relative z-10">
+          {/* Section Header */}
+          <div className="flex items-center justify-between mb-16">
+            <div className="flex items-center gap-6">
+              <span className="text-sm tracking-widest text-muted-foreground">07</span>
+              <span className="w-12 h-px bg-foreground/30" />
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">CERTIFICATIONS</h2>
+            </div>
+            <div className="hidden md:flex items-center gap-2 text-muted-foreground">
+              <FileBadge className="w-5 h-5" />
+              <span className="text-sm tracking-widest">CREDENTIALS</span>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { 
+                icon: FileBadge, 
+                title: "Programming in C", 
+                issuer: "Data pro",
+                category: "PROGRAMMING"
+              },
+              { 
+                icon: FileBadge, 
+                title: "MS Office", 
+                issuer: "Data pro",
+                category: "PRODUCTIVITY"
+              },
+              { 
+                icon: FileBadge, 
+                title: "Python for Beginners", 
+                issuer: "Simplilearn",
+                category: "PROGRAMMING"
+              },
+              { 
+                icon: FileBadge, 
+                title: "MySQL", 
+                issuer: "Infosys Springboard",
+                category: "DATABASE"
+              },
+              { 
+                icon: FileBadge, 
+                title: "Python for Data Science", 
+                issuer: "NPTEL",
+                category: "DATA SCIENCE"
+              }
+            ].map((cert, idx) => (
+              <div 
+                key={idx}
+                className="group p-6 glass-ultra rounded-xl hover-lift border border-foreground/5"
+              >
+                <div className="flex items-start gap-5">
+                  <div className="w-14 h-14 flex-shrink-0 rounded-xl bg-foreground/5 border border-foreground/10 flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all duration-500">
+                    <cert.icon className="w-6 h-6" />
+                  </div>
+                  <div className="flex-1">
+                    <span className="inline-block px-3 py-1 mb-2 text-xs tracking-widest bg-foreground/5 rounded-full">
+                      {cert.category}
+                    </span>
+                    <h3 className="text-lg font-semibold mb-1">{cert.title}</h3>
+                    <p className="text-sm text-muted-foreground flex items-center gap-2">
+                      <Award className="w-3 h-3" />
+                      {cert.issuer}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <span className="section-number hidden lg:block">07</span>
+      </section>
+
       {/* Achievements Section */}
       <section id="achievements" className="relative py-32 px-6 lg:px-12 bg-card overflow-hidden">
         {/* Background Glow */}
