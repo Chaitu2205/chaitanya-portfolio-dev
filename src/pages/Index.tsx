@@ -302,7 +302,7 @@ const Index = () => {
                 </div>
                 
                 <div className="absolute -left-4 bottom-1/4 glass-ultra px-4 py-3 rounded-lg animate-float opacity-0 animate-fade-in stagger-5" style={{ animationDelay: '0.3s' }}>
-                  <div className="text-2xl font-bold">7.5</div>
+                  <div className="text-2xl font-bold">7.62</div>
                   <div className="text-xs text-muted-foreground tracking-wider">CGPA</div>
                 </div>
               </div>
