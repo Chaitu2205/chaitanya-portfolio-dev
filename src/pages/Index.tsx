@@ -425,7 +425,7 @@ const Index = () => {
                   degree: "Bachelor of Technology in CSE (Data Science)",
                   institution: "Dadi Institute of Engineering and Technology (DIET)",
                   location: "Anakapalle, Andhra Pradesh",
-                  grade: "Current CGPA: 7.45",
+                  grade: "Current CGPA: 7.62",
                   status: "In Progress",
                   highlight: true
                 },
