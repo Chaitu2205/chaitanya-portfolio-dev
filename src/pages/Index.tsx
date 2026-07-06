@@ -322,7 +322,7 @@ const Index = () => {
         {/* Section Number */}
         <div className="absolute right-8 bottom-8 hidden lg:block">
           <span className="text-8xl font-bold text-foreground/5">01</span>
-          <span className="text-muted-foreground text-sm">/08</span>
+          <span className="text-muted-foreground text-sm">/09</span>
         </div>
       </section>
 
