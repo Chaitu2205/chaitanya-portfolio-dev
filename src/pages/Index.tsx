@@ -513,11 +513,11 @@ const Index = () => {
           <div className="space-y-8">
             {[
               {
-                period: "2024",
-                role: "Data Science Intern",
-                company: "Internship Project",
-                description: "Worked on real-world data analysis projects, implementing machine learning models and data visualization techniques.",
-                skills: ["Python", "Data Analysis", "ML Models", "Visualization"],
+                period: "May – June 2024",
+                role: "Data Science, Machine Learning & AI Intern",
+                company: "DATAVALLEY",
+                description: "Gained hands-on experience in data science, covering Python, data wrangling, EDA, statistics, basics of machine learning, deep learning, NLP, big data, and model deployment. Worked on hands-on projects, real-world applications, and cloud computing concepts.",
+                skills: ["Python", "Data Wrangling", "EDA", "Machine Learning", "Deep Learning", "NLP", "Big Data", "Model Deployment"],
                 icon: Database
               },
               {
