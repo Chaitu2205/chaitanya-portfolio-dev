@@ -102,7 +102,17 @@ const Index = () => {
     "Soft Skills": ["Communication", "Teamwork", "Self-learning", "Problem-solving", "Project execution", "Team Lead experience"]
   };
 
-  const projects = [
+  interface Project {
+    title: string;
+    description: string;
+    tech: string[];
+    note?: string;
+    category?: string;
+    features?: string[];
+    status?: string;
+  }
+
+  const projects: Project[] = [
     {
       title: "Pulmonary Cancer Prediction System",
       description: "Developed a machine-learning model to predict lung cancer risk using patient health and lifestyle factors. Implemented data preprocessing, feature selection, and classification algorithms with a focus on improving recall to reduce false negatives.",
@@ -123,6 +133,21 @@ const Index = () => {
       title: "MD Chinese Restaurant – Billing System",
       description: "Developed a mini-project that automates restaurant menu management, order processing, and bill generation. Integrated Python with MySQL to store orders and handle transaction records.",
       tech: ["Python", "MySQL", "mysql-connector", "SQL Queries"]
+    },
+    {
+      title: "Student Performance Management System",
+      category: "Full-Stack Web Application",
+      description: "Developed and deployed a full-stack Student Performance Management System that streamlines student record management, automates result processing, and provides interactive performance analytics through a modern web interface. Designed with a responsive UI and cloud-hosted database for reliable access and efficient data management.",
+      tech: ["HTML", "CSS", "Python (Flask)", "MySQL", "TiDB Cloud", "Chart.js", "Render"],
+      features: [
+        "Student record management with CRUD operations",
+        "Automated grade and percentage calculation",
+        "Roll number-based student search",
+        "Interactive performance dashboards using Chart.js",
+        "Cloud database integration with TiDB Cloud",
+        "Deployed on Render with a responsive interface"
+      ],
+      status: "Completed"
     }
   ];
 
@@ -638,16 +663,36 @@ const Index = () => {
 
                   <div className="flex items-center gap-3 mb-4">
                     <Sparkles className="w-5 h-5 text-muted-foreground" />
-                    <span className="text-xs tracking-widest text-muted-foreground uppercase">Featured Project</span>
+                    <span className="text-xs tracking-widest text-muted-foreground uppercase">
+                      {project.category || "Featured Project"}
+                    </span>
                   </div>
                   
                   <h3 className="text-xl md:text-2xl font-semibold mb-4 pr-16">{project.title}</h3>
                   <p className="text-muted-foreground mb-6 leading-relaxed">{project.description}</p>
                   
+                  {project.features && project.features.length > 0 && (
+                    <div className="mb-6 space-y-2">
+                      {project.features.map((feature, fIdx) => (
+                        <div key={fIdx} className="flex items-start gap-3">
+                          <span className="w-1 h-1 rounded-full bg-foreground/40 mt-2 flex-shrink-0" />
+                          <p className="text-sm text-muted-foreground leading-relaxed">{feature}</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  
                   {project.note && (
                     <div className="flex items-start gap-3 p-4 bg-foreground/5 rounded-lg mb-6 border border-foreground/5">
                       <ExternalLink className="w-4 h-4 mt-0.5 text-muted-foreground flex-shrink-0" />
                       <p className="text-sm text-muted-foreground">{project.note}</p>
+                    </div>
+                  )}
+                  
+                  {project.status && (
+                    <div className="mb-6 flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-foreground animate-pulse" />
+                      <span className="text-xs tracking-widest text-muted-foreground">{project.status}</span>
                     </div>
                   )}
 
