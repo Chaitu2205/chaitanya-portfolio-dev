@@ -89,6 +89,7 @@ const Index = () => {
     { id: "experience", label: "EXPERIENCE" },
     { id: "skills", label: "SKILLS" },
     { id: "projects", label: "PROJECTS" },
+    { id: "certifications", label: "CERTIFICATIONS" },
     { id: "achievements", label: "ACHIEVEMENTS" },
     { id: "contact", label: "CONTACT" }
   ];
