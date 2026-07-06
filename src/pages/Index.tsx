@@ -123,6 +123,21 @@ const Index = () => {
       title: "MD Chinese Restaurant – Billing System",
       description: "Developed a mini-project that automates restaurant menu management, order processing, and bill generation. Integrated Python with MySQL to store orders and handle transaction records.",
       tech: ["Python", "MySQL", "mysql-connector", "SQL Queries"]
+    },
+    {
+      title: "Student Performance Management System",
+      category: "Full-Stack Web Application",
+      description: "Developed and deployed a full-stack Student Performance Management System that streamlines student record management, automates result processing, and provides interactive performance analytics through a modern web interface. Designed with a responsive UI and cloud-hosted database for reliable access and efficient data management.",
+      tech: ["HTML", "CSS", "Python (Flask)", "MySQL", "TiDB Cloud", "Chart.js", "Render"],
+      features: [
+        "Student record management with CRUD operations",
+        "Automated grade and percentage calculation",
+        "Roll number-based student search",
+        "Interactive performance dashboards using Chart.js",
+        "Cloud database integration with TiDB Cloud",
+        "Deployed on Render with a responsive interface"
+      ],
+      status: "Completed"
     }
   ];
 
