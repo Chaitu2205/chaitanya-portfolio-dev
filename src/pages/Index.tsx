@@ -114,36 +114,42 @@ const Index = () => {
 
   const projects: Project[] = [
     {
-      title: "Pulmonary Cancer Prediction System",
-      description: "Developed a machine-learning model to predict lung cancer risk using patient health and lifestyle factors. Implemented data preprocessing, feature selection, and classification algorithms with a focus on improving recall to reduce false negatives.",
-      tech: ["Python", "Pandas", "NumPy", "Scikit-learn"],
-      note: "Designed for early risk screening support"
+      title: "Pulmonary Cancer Prediction",
+      category: "Machine Learning",
+      description: "Built a lung cancer risk prediction system using patient symptom survey data and tested multiple models, including Logistic Regression, Random Forest, and a simple Neural Network. Optimized for high Recall to reduce false negatives and used LIME for clear model explainability.",
+      tech: ["Python", "Pandas", "Scikit-learn", "TensorFlow/Keras", "Gradio", "LIME"],
+      features: [
+        "Multi-model comparison: Logistic Regression, Random Forest, Neural Network",
+        "Optimized for high Recall to reduce false negatives",
+        "LIME-based model explainability for transparent predictions",
+        "Interactive Gradio web app for quick risk assessment"
+      ],
+      note: "Published a research paper on pulmonary cancer prediction using ML and deep learning techniques",
+      status: "Completed"
     },
     {
-      title: "Time-Series Forecasting Model (Prophet)",
-      description: "Built a time-series forecasting model to predict future values from historical data. Cleaned and prepared datasets, tuned Prophet parameters, and evaluated results using metrics like RMSE and MAE.",
-      tech: ["Python", "Facebook Prophet", "Pandas", "Matplotlib"]
-    },
-    {
-      title: "Skin Cancer Detection Using CNN",
-      description: "Built a deep learning model using Convolutional Neural Networks (CNN) to classify skin lesions as benign or malignant. Used data augmentation and an optimized CNN architecture.",
-      tech: ["Python", "TensorFlow/Keras", "OpenCV"]
-    },
-    {
-      title: "MD Chinese Restaurant – Billing System",
-      description: "Developed a mini-project that automates restaurant menu management, order processing, and bill generation. Integrated Python with MySQL to store orders and handle transaction records.",
-      tech: ["Python", "MySQL", "mysql-connector", "SQL Queries"]
+      title: "Retail Sales Forecasting",
+      category: "Time-Series Forecasting",
+      description: "Built a retail sales forecasting model using Facebook Prophet to generate actionable business insights. Cleaned and prepared data with Pandas and evaluated model accuracy using RMSE and MAE.",
+      tech: ["Python", "Pandas", "Matplotlib", "Scikit-learn", "Prophet", "Seaborn"],
+      features: [
+        "Sales forecasting with Facebook Prophet",
+        "Data cleaning and preparation with Pandas",
+        "Model evaluation using RMSE and MAE",
+        "Visualized forecasts, trends, and seasonality with Matplotlib"
+      ],
+      status: "Completed"
     },
     {
       title: "Student Performance Management System",
       category: "Full-Stack Web Application",
-      description: "Developed and deployed a full-stack Student Performance Management System that streamlines student record management, automates result processing, and provides interactive performance analytics through a modern web interface. Designed with a responsive UI and cloud-hosted database for reliable access and efficient data management.",
+      description: "Developed and deployed a full-stack Student Performance Management System using Python (Flask), MySQL/TiDB Cloud, HTML, CSS, and Render to manage student records, automate result processing, and enable efficient data retrieval.",
       tech: ["HTML", "CSS", "Python (Flask)", "MySQL", "TiDB Cloud", "Chart.js", "Render"],
       features: [
         "Student record management with CRUD operations",
-        "Automated grade and percentage calculation",
+        "Automated grade calculation and percentage computation",
         "Roll number-based student search",
-        "Interactive performance dashboards using Chart.js",
+        "Interactive performance visualization using Chart.js",
         "Cloud database integration with TiDB Cloud",
         "Deployed on Render with a responsive interface"
       ],
