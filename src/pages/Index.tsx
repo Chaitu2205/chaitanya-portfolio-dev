@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import emailjs from '@emailjs/browser';
-import { Mail, Phone, MapPin, Download, Code, Database, Brain, Award, GraduationCap, Briefcase, ExternalLink, Send, Menu, X, ChevronDown, Sparkles, Target, TrendingUp, Zap } from "lucide-react";
+import { Mail, Phone, MapPin, Download, Code, Database, Brain, Award, GraduationCap, Briefcase, ExternalLink, Send, Menu, X, ChevronDown, Sparkles, Target, TrendingUp, Zap, FileBadge } from "lucide-react";
 import profileImage from "@/assets/linkedin_profile_pic.jpeg";
 
 // Initialize EmailJS with your public key
@@ -89,16 +89,17 @@ const Index = () => {
     { id: "experience", label: "EXPERIENCE" },
     { id: "skills", label: "SKILLS" },
     { id: "projects", label: "PROJECTS" },
+    { id: "certifications", label: "CERTIFICATIONS" },
     { id: "achievements", label: "ACHIEVEMENTS" },
     { id: "contact", label: "CONTACT" }
   ];
 
   const skills = {
-    "Programming": ["Python", "C", "SQL", "HTML", "CSS"],
-    "Data Science & Analytics": ["Data cleaning", "Exploratory data analysis (EDA)", "Data visualization", "Statistical analysis"],
-    "Machine Learning & AI": ["Classification models", "CNN-based deep learning", "Time-series forecasting"],
-    "Tools & Libraries": ["Pandas", "NumPy", "Matplotlib", "Scikit-learn", "TensorFlow / Keras", "Prophet", "Jupyter Notebook", "Git / GitHub", "Visual Studio Code"],
-    "Databases": ["MySQL (queries, joins, stored procedures)"],
+    "Languages": ["Python", "Java"],
+    "Database": ["SQL", "MySQL"],
+    "Web Technologies": ["HTML", "CSS"],
+    "Developer Tools": ["Microsoft Excel", "Git / GitHub", "Visual Studio Code", "Jupyter Notebook"],
+    "Data Science & ML": ["Data cleaning", "EDA", "Statistical analysis", "Machine learning", "Deep learning", "NLP", "Model deployment"],
     "Soft Skills": ["Communication", "Teamwork", "Self-learning", "Problem-solving", "Project execution", "Team Lead experience"]
   };
 
@@ -114,36 +115,42 @@ const Index = () => {
 
   const projects: Project[] = [
     {
-      title: "Pulmonary Cancer Prediction System",
-      description: "Developed a machine-learning model to predict lung cancer risk using patient health and lifestyle factors. Implemented data preprocessing, feature selection, and classification algorithms with a focus on improving recall to reduce false negatives.",
-      tech: ["Python", "Pandas", "NumPy", "Scikit-learn"],
-      note: "Designed for early risk screening support"
+      title: "Pulmonary Cancer Prediction",
+      category: "Machine Learning",
+      description: "Built a lung cancer risk prediction system using patient symptom survey data and tested multiple models, including Logistic Regression, Random Forest, and a simple Neural Network. Optimized for high Recall to reduce false negatives and used LIME for clear model explainability.",
+      tech: ["Python", "Pandas", "Scikit-learn", "TensorFlow/Keras", "Gradio", "LIME"],
+      features: [
+        "Multi-model comparison: Logistic Regression, Random Forest, Neural Network",
+        "Optimized for high Recall to reduce false negatives",
+        "LIME-based model explainability for transparent predictions",
+        "Interactive Gradio web app for quick risk assessment"
+      ],
+      note: "Published a research paper on pulmonary cancer prediction using ML and deep learning techniques",
+      status: "Completed"
     },
     {
-      title: "Time-Series Forecasting Model (Prophet)",
-      description: "Built a time-series forecasting model to predict future values from historical data. Cleaned and prepared datasets, tuned Prophet parameters, and evaluated results using metrics like RMSE and MAE.",
-      tech: ["Python", "Facebook Prophet", "Pandas", "Matplotlib"]
-    },
-    {
-      title: "Skin Cancer Detection Using CNN",
-      description: "Built a deep learning model using Convolutional Neural Networks (CNN) to classify skin lesions as benign or malignant. Used data augmentation and an optimized CNN architecture.",
-      tech: ["Python", "TensorFlow/Keras", "OpenCV"]
-    },
-    {
-      title: "MD Chinese Restaurant – Billing System",
-      description: "Developed a mini-project that automates restaurant menu management, order processing, and bill generation. Integrated Python with MySQL to store orders and handle transaction records.",
-      tech: ["Python", "MySQL", "mysql-connector", "SQL Queries"]
+      title: "Retail Sales Forecasting",
+      category: "Time-Series Forecasting",
+      description: "Built a retail sales forecasting model using Facebook Prophet to generate actionable business insights. Cleaned and prepared data with Pandas and evaluated model accuracy using RMSE and MAE.",
+      tech: ["Python", "Pandas", "Matplotlib", "Scikit-learn", "Prophet", "Seaborn"],
+      features: [
+        "Sales forecasting with Facebook Prophet",
+        "Data cleaning and preparation with Pandas",
+        "Model evaluation using RMSE and MAE",
+        "Visualized forecasts, trends, and seasonality with Matplotlib"
+      ],
+      status: "Completed"
     },
     {
       title: "Student Performance Management System",
       category: "Full-Stack Web Application",
-      description: "Developed and deployed a full-stack Student Performance Management System that streamlines student record management, automates result processing, and provides interactive performance analytics through a modern web interface. Designed with a responsive UI and cloud-hosted database for reliable access and efficient data management.",
+      description: "Developed and deployed a full-stack Student Performance Management System using Python (Flask), MySQL/TiDB Cloud, HTML, CSS, and Render to manage student records, automate result processing, and enable efficient data retrieval.",
       tech: ["HTML", "CSS", "Python (Flask)", "MySQL", "TiDB Cloud", "Chart.js", "Render"],
       features: [
         "Student record management with CRUD operations",
-        "Automated grade and percentage calculation",
+        "Automated grade calculation and percentage computation",
         "Roll number-based student search",
-        "Interactive performance dashboards using Chart.js",
+        "Interactive performance visualization using Chart.js",
         "Cloud database integration with TiDB Cloud",
         "Deployed on Render with a responsive interface"
       ],
@@ -296,7 +303,7 @@ const Index = () => {
                 </div>
                 
                 <div className="absolute -left-4 bottom-1/4 glass-ultra px-4 py-3 rounded-lg animate-float opacity-0 animate-fade-in stagger-5" style={{ animationDelay: '0.3s' }}>
-                  <div className="text-2xl font-bold">7.5</div>
+                  <div className="text-2xl font-bold">7.62</div>
                   <div className="text-xs text-muted-foreground tracking-wider">CGPA</div>
                 </div>
               </div>
@@ -315,7 +322,7 @@ const Index = () => {
         {/* Section Number */}
         <div className="absolute right-8 bottom-8 hidden lg:block">
           <span className="text-8xl font-bold text-foreground/5">01</span>
-          <span className="text-muted-foreground text-sm">/08</span>
+          <span className="text-muted-foreground text-sm">/09</span>
         </div>
       </section>
 
@@ -344,9 +351,9 @@ const Index = () => {
               {/* Stats */}
               <div className="grid grid-cols-3 gap-8 pt-8 border-t border-border/30">
                 {[
-                  { value: "4+", label: "PROJECTS" },
-                  { value: "200+", label: "PROBLEMS SOLVED" },
-                  { value: "7.5", label: "CGPA" }
+                  { value: "3+", label: "PROJECTS" },
+                  { value: "250+", label: "PROBLEMS SOLVED" },
+                  { value: "7.62", label: "CGPA" }
                 ].map((stat) => (
                   <div key={stat.label} className="text-center">
                     <div className="text-4xl md:text-5xl font-bold mb-2">{stat.value}</div>
@@ -419,7 +426,7 @@ const Index = () => {
                   degree: "Bachelor of Technology in CSE (Data Science)",
                   institution: "Dadi Institute of Engineering and Technology (DIET)",
                   location: "Anakapalle, Andhra Pradesh",
-                  grade: "Current CGPA: 7.45",
+                  grade: "Current CGPA: 7.62",
                   status: "In Progress",
                   highlight: true
                 },
@@ -507,11 +514,11 @@ const Index = () => {
           <div className="space-y-8">
             {[
               {
-                period: "2024",
-                role: "Data Science Intern",
-                company: "Internship Project",
-                description: "Worked on real-world data analysis projects, implementing machine learning models and data visualization techniques.",
-                skills: ["Python", "Data Analysis", "ML Models", "Visualization"],
+                period: "May – June 2024",
+                role: "Data Science, Machine Learning & AI Intern",
+                company: "DATAVALLEY",
+                description: "Gained hands-on experience in data science, covering Python, data wrangling, EDA, statistics, basics of machine learning, deep learning, NLP, big data, and model deployment. Worked on hands-on projects, real-world applications, and cloud computing concepts.",
+                skills: ["Python", "Data Wrangling", "EDA", "Machine Learning", "Deep Learning", "NLP", "Big Data", "Model Deployment"],
                 icon: Database
               },
               {
@@ -718,6 +725,87 @@ const Index = () => {
         <span className="section-number hidden lg:block">06</span>
       </section>
 
+      {/* Certifications Section */}
+      <section id="certifications" className="relative py-32 px-6 lg:px-12 overflow-hidden">
+        {/* Background Decoration */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] opacity-[0.02]">
+          <div className="w-full h-full border border-foreground rounded-full animate-spin" style={{ animationDuration: '50s' }} />
+        </div>
+        
+        <div className="container mx-auto max-w-6xl relative z-10">
+          {/* Section Header */}
+          <div className="flex items-center justify-between mb-16">
+            <div className="flex items-center gap-6">
+              <span className="text-sm tracking-widest text-muted-foreground">07</span>
+              <span className="w-12 h-px bg-foreground/30" />
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">CERTIFICATIONS</h2>
+            </div>
+            <div className="hidden md:flex items-center gap-2 text-muted-foreground">
+              <FileBadge className="w-5 h-5" />
+              <span className="text-sm tracking-widest">CREDENTIALS</span>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { 
+                icon: FileBadge, 
+                title: "Programming in C", 
+                issuer: "Data pro",
+                category: "PROGRAMMING"
+              },
+              { 
+                icon: FileBadge, 
+                title: "MS Office", 
+                issuer: "Data pro",
+                category: "PRODUCTIVITY"
+              },
+              { 
+                icon: FileBadge, 
+                title: "Python for Beginners", 
+                issuer: "Simplilearn",
+                category: "PROGRAMMING"
+              },
+              { 
+                icon: FileBadge, 
+                title: "MySQL", 
+                issuer: "Infosys Springboard",
+                category: "DATABASE"
+              },
+              { 
+                icon: FileBadge, 
+                title: "Python for Data Science", 
+                issuer: "NPTEL",
+                category: "DATA SCIENCE"
+              }
+            ].map((cert, idx) => (
+              <div 
+                key={idx}
+                className="group p-6 glass-ultra rounded-xl hover-lift border border-foreground/5"
+              >
+                <div className="flex items-start gap-5">
+                  <div className="w-14 h-14 flex-shrink-0 rounded-xl bg-foreground/5 border border-foreground/10 flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all duration-500">
+                    <cert.icon className="w-6 h-6" />
+                  </div>
+                  <div className="flex-1">
+                    <span className="inline-block px-3 py-1 mb-2 text-xs tracking-widest bg-foreground/5 rounded-full">
+                      {cert.category}
+                    </span>
+                    <h3 className="text-lg font-semibold mb-1">{cert.title}</h3>
+                    <p className="text-sm text-muted-foreground flex items-center gap-2">
+                      <Award className="w-3 h-3" />
+                      {cert.issuer}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <span className="section-number hidden lg:block">07</span>
+      </section>
+
       {/* Achievements Section */}
       <section id="achievements" className="relative py-32 px-6 lg:px-12 bg-card overflow-hidden">
         {/* Background Glow */}
@@ -727,7 +815,7 @@ const Index = () => {
           {/* Section Header */}
           <div className="flex items-center justify-between mb-16">
             <div className="flex items-center gap-6">
-              <span className="text-sm tracking-widest text-muted-foreground">07</span>
+              <span className="text-sm tracking-widest text-muted-foreground">08</span>
               <span className="w-12 h-px bg-foreground/30" />
               <h2 className="text-4xl md:text-5xl font-bold tracking-tight">ACHIEVEMENTS</h2>
             </div>
@@ -737,27 +825,41 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
+              { 
+                icon: Award, 
+                label: "RESEARCH", 
+                title: "Published Research Paper", 
+                desc: "Published a research paper on pulmonary cancer prediction using machine learning and deep learning techniques.",
+                highlight: true
+              },
               { 
                 icon: Award, 
                 label: "LEADERSHIP", 
                 title: "Team Lead at Samsung Hackathon", 
-                desc: "Developed 'Medi Predict' — an AI model for lung disease detection with around 90% accuracy.",
-                highlight: true
+                desc: "Developed 'Medi Predict' — an AI-based lung disease prediction system achieving 90% accuracy.",
+                highlight: false
+              },
+              { 
+                icon: Brain, 
+                label: "HACKATHON", 
+                title: "Generative AI Hackathon", 
+                desc: "Participated in a two-day Generative AI Hackathon conducted by JNTU-GV, focusing on real-world AI applications.",
+                highlight: false
               },
               { 
                 icon: Code, 
                 label: "PROBLEM SOLVING", 
-                title: "200+ Problems Solved", 
-                desc: "On competitive coding platforms like CodeChef, with notable performance on LeetCode and HackerRank.",
+                title: "250+ Problems Solved", 
+                desc: "Solved 250+ coding problems on CodeChef, strengthening Data Structures and problem-solving skills.",
                 highlight: false
               },
               { 
                 icon: Award, 
                 label: "COMMUNITY", 
                 title: "Vizag Navy Marathon Volunteer", 
-                desc: "Contributed to event coordination and demonstrated communication, teamwork, and quick problem-solving.",
+                desc: "Volunteered at the Vizag Navy Marathon, demonstrating teamwork, communication, and event coordination skills.",
                 highlight: false
               }
             ].map((achievement, idx) => (
@@ -783,7 +885,7 @@ const Index = () => {
           </div>
         </div>
 
-        <span className="section-number hidden lg:block">07</span>
+        <span className="section-number hidden lg:block">08</span>
       </section>
 
       {/* Resume Section */}
@@ -843,7 +945,7 @@ const Index = () => {
         <div className="container mx-auto max-w-6xl">
           {/* Section Header */}
           <div className="flex items-center gap-6 mb-16">
-            <span className="text-sm tracking-widest text-muted-foreground">08</span>
+            <span className="text-sm tracking-widest text-muted-foreground">09</span>
             <span className="w-12 h-px bg-foreground/30" />
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight">CONTACT</h2>
           </div>
@@ -941,7 +1043,7 @@ const Index = () => {
           </div>
         </div>
 
-        <span className="section-number hidden lg:block">08</span>
+        <span className="section-number hidden lg:block">09</span>
       </section>
 
       {/* Footer */}
@@ -968,7 +1070,7 @@ const Index = () => {
           
           <div className="mt-12 pt-8 border-t border-border/30 text-center">
             <p className="text-sm text-muted-foreground">
-              © 2025 Srigakolapu Chaitanya. Built with passion and code.
+              © 2026 Srigakolapu Chaitanya. Built with passion and code.
             </p>
           </div>
         </div>
