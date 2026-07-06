@@ -734,7 +734,7 @@ const Index = () => {
           {/* Section Header */}
           <div className="flex items-center justify-between mb-16">
             <div className="flex items-center gap-6">
-              <span className="text-sm tracking-widest text-muted-foreground">07</span>
+              <span className="text-sm tracking-widest text-muted-foreground">08</span>
               <span className="w-12 h-px bg-foreground/30" />
               <h2 className="text-4xl md:text-5xl font-bold tracking-tight">ACHIEVEMENTS</h2>
             </div>
@@ -804,7 +804,7 @@ const Index = () => {
           </div>
         </div>
 
-        <span className="section-number hidden lg:block">07</span>
+        <span className="section-number hidden lg:block">08</span>
       </section>
 
       {/* Resume Section */}
@@ -864,7 +864,7 @@ const Index = () => {
         <div className="container mx-auto max-w-6xl">
           {/* Section Header */}
           <div className="flex items-center gap-6 mb-16">
-            <span className="text-sm tracking-widest text-muted-foreground">08</span>
+            <span className="text-sm tracking-widest text-muted-foreground">09</span>
             <span className="w-12 h-px bg-foreground/30" />
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight">CONTACT</h2>
           </div>
@@ -962,7 +962,7 @@ const Index = () => {
           </div>
         </div>
 
-        <span className="section-number hidden lg:block">08</span>
+        <span className="section-number hidden lg:block">09</span>
       </section>
 
       {/* Footer */}
