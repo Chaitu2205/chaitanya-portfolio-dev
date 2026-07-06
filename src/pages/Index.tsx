@@ -102,7 +102,17 @@ const Index = () => {
     "Soft Skills": ["Communication", "Teamwork", "Self-learning", "Problem-solving", "Project execution", "Team Lead experience"]
   };
 
-  const projects = [
+  interface Project {
+    title: string;
+    description: string;
+    tech: string[];
+    note?: string;
+    category?: string;
+    features?: string[];
+    status?: string;
+  }
+
+  const projects: Project[] = [
     {
       title: "Pulmonary Cancer Prediction System",
       description: "Developed a machine-learning model to predict lung cancer risk using patient health and lifestyle factors. Implemented data preprocessing, feature selection, and classification algorithms with a focus on improving recall to reduce false negatives.",
