@@ -1070,7 +1070,7 @@ const Index = () => {
           
           <div className="mt-12 pt-8 border-t border-border/30 text-center">
             <p className="text-sm text-muted-foreground">
-              © 2025 Srigakolapu Chaitanya. Built with passion and code.
+              © 2026 Srigakolapu Chaitanya. Built with passion and code.
             </p>
           </div>
         </div>
