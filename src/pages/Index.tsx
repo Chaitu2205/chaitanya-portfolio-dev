@@ -743,27 +743,41 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
+              { 
+                icon: Award, 
+                label: "RESEARCH", 
+                title: "Published Research Paper", 
+                desc: "Published a research paper on pulmonary cancer prediction using machine learning and deep learning techniques.",
+                highlight: true
+              },
               { 
                 icon: Award, 
                 label: "LEADERSHIP", 
                 title: "Team Lead at Samsung Hackathon", 
-                desc: "Developed 'Medi Predict' — an AI model for lung disease detection with around 90% accuracy.",
-                highlight: true
+                desc: "Developed 'Medi Predict' — an AI-based lung disease prediction system achieving 90% accuracy.",
+                highlight: false
+              },
+              { 
+                icon: Brain, 
+                label: "HACKATHON", 
+                title: "Generative AI Hackathon", 
+                desc: "Participated in a two-day Generative AI Hackathon conducted by JNTU-GV, focusing on real-world AI applications.",
+                highlight: false
               },
               { 
                 icon: Code, 
                 label: "PROBLEM SOLVING", 
-                title: "200+ Problems Solved", 
-                desc: "On competitive coding platforms like CodeChef, with notable performance on LeetCode and HackerRank.",
+                title: "250+ Problems Solved", 
+                desc: "Solved 250+ coding problems on CodeChef, strengthening Data Structures and problem-solving skills.",
                 highlight: false
               },
               { 
                 icon: Award, 
                 label: "COMMUNITY", 
                 title: "Vizag Navy Marathon Volunteer", 
-                desc: "Contributed to event coordination and demonstrated communication, teamwork, and quick problem-solving.",
+                desc: "Volunteered at the Vizag Navy Marathon, demonstrating teamwork, communication, and event coordination skills.",
                 highlight: false
               }
             ].map((achievement, idx) => (
