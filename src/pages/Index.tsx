@@ -94,11 +94,11 @@ const Index = () => {
   ];
 
   const skills = {
-    "Programming": ["Python", "C", "SQL", "HTML", "CSS"],
-    "Data Science & Analytics": ["Data cleaning", "Exploratory data analysis (EDA)", "Data visualization", "Statistical analysis"],
-    "Machine Learning & AI": ["Classification models", "CNN-based deep learning", "Time-series forecasting"],
-    "Tools & Libraries": ["Pandas", "NumPy", "Matplotlib", "Scikit-learn", "TensorFlow / Keras", "Prophet", "Jupyter Notebook", "Git / GitHub", "Visual Studio Code"],
-    "Databases": ["MySQL (queries, joins, stored procedures)"],
+    "Languages": ["Python", "Java"],
+    "Database": ["SQL", "MySQL"],
+    "Web Technologies": ["HTML", "CSS"],
+    "Developer Tools": ["Microsoft Excel", "Git / GitHub", "Visual Studio Code", "Jupyter Notebook"],
+    "Data Science & ML": ["Data cleaning", "EDA", "Statistical analysis", "Machine learning", "Deep learning", "NLP", "Model deployment"],
     "Soft Skills": ["Communication", "Teamwork", "Self-learning", "Problem-solving", "Project execution", "Team Lead experience"]
   };
 
