@@ -350,9 +350,9 @@ const Index = () => {
               {/* Stats */}
               <div className="grid grid-cols-3 gap-8 pt-8 border-t border-border/30">
                 {[
-                  { value: "4+", label: "PROJECTS" },
-                  { value: "200+", label: "PROBLEMS SOLVED" },
-                  { value: "7.5", label: "CGPA" }
+                  { value: "3+", label: "PROJECTS" },
+                  { value: "250+", label: "PROBLEMS SOLVED" },
+                  { value: "7.62", label: "CGPA" }
                 ].map((stat) => (
                   <div key={stat.label} className="text-center">
                     <div className="text-4xl md:text-5xl font-bold mb-2">{stat.value}</div>
