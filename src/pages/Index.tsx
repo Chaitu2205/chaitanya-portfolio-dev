@@ -1,1081 +1,173 @@
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
+import { ArrowDown, ArrowUpRight, Award, BriefcaseBusiness, Check, Download, Mail, MapPin, Menu, Phone, Send, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import emailjs from '@emailjs/browser';
-import { Mail, Phone, MapPin, Download, Code, Database, Brain, Award, GraduationCap, Briefcase, ExternalLink, Send, Menu, X, ChevronDown, Sparkles, Target, TrendingUp, Zap, FileBadge } from "lucide-react";
 import profileImage from "@/assets/linkedin_profile_pic.jpeg";
+import resumeAsset from "@/assets/chaitanya-resume.pdf.asset.json";
 
-// Initialize EmailJS with your public key
-emailjs.init('fmqSq1Fhb8otDC7b2');
+emailjs.init("fmqSq1Fhb8otDC7b2");
+
+const navItems = ["about", "education", "experience", "skills", "projects", "certifications", "achievements", "contact"];
+
+const skills = {
+  Languages: ["Python"],
+  Databases: ["SQL", "MySQL", "TiDB Cloud"],
+  "Developer tools": ["Git / GitHub", "Jira", "Visual Studio Code", "Jupyter Notebook"],
+  Libraries: ["Pandas", "NumPy", "Scikit-learn", "TensorFlow / Keras", "Matplotlib", "Chart.js", "Prophet", "Gradio", "LIME"],
+  "Core concepts": ["Data Structures", "Object-Oriented Programming", "DBMS", "Operating Systems"],
+};
+
+const projects = [
+  {
+    title: "Pulmonary Cancer Prediction",
+    type: "Machine Learning / March 2026",
+    description: "Built a lung cancer risk prediction system from patient symptom survey data, testing Logistic Regression, Random Forest, and a Neural Network while optimizing recall to reduce false negatives.",
+    tech: ["Python", "Pandas", "Scikit-learn", "TensorFlow / Keras", "Gradio", "LIME"],
+    details: ["LIME-powered model explainability", "Interactive Gradio prediction interface", "Published as a research paper"],
+  },
+  {
+    title: "AI-Powered Placement Management System",
+    type: "Full-Stack AI / September 2026",
+    description: "Developed a role-based placement platform with resume parsing, AI-assisted analysis, job matching, interview question generation, and evaluation workflows.",
+    tech: ["Python", "FastAPI", "React", "MySQL", "REST APIs"],
+    details: ["Student, recruiter, and admin dashboards", "Application and placement analytics", "Job management and matching"],
+  },
+  {
+    title: "Student Performance Management System",
+    type: "Full-Stack Web Application / January–June 2026",
+    description: "Developed and deployed a responsive system for student records, automated results, roll-number search, and interactive performance analytics backed by cloud data.",
+    tech: ["Python", "Flask", "MySQL", "TiDB Cloud", "HTML", "CSS", "Chart.js", "Render"],
+    details: ["CRUD record management", "Automated grades and percentages", "Interactive Chart.js dashboards"],
+  },
+];
+
+const certifications = [
+  ["Programming in C", "Data Pro"],
+  ["MS Office", "Data Pro"],
+  ["Python for Beginners", "Simplilearn"],
+  ["MySQL", "Infosys Springboard"],
+  ["Python for Data Science · 72%", "NPTEL"],
+  ["TCS iON NQT – IT · 61.22%", "TCS iON"],
+];
+
+const achievements = [
+  ["01", "Published Research", "Published a paper on pulmonary cancer prediction using machine learning, explainability, and a real-time interface."],
+  ["02", "Samsung Hackathon Lead", "Led the Medi Predict team to develop an AI lung-disease detection model reported at 90% accuracy."],
+  ["03", "GenAI Hackathon", "Participated in a two-day JNTU-GV hackathon focused on generative AI concepts and applications."],
+  ["04", "250+ Coding Problems", "Built problem-solving fluency across CodeChef, LeetCode, and HackerRank."],
+  ["05", "Vizag Navy Marathon", "Volunteered in event coordination, demonstrating teamwork, communication, and quick problem-solving."],
+];
+
+function SectionHeading({ number, title, note }: { number: string; title: string; note: string }) {
+  return (
+    <div className="grid gap-5 border-t border-border pt-6 md:grid-cols-12 md:items-end">
+      <div className="md:col-span-3"><span className="eyebrow">{number} / {note}</span></div>
+      <h2 className="section-title md:col-span-9">{title}</h2>
+    </div>
+  );
+}
 
 const Index = () => {
   const { toast } = useToast();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (formData.name.trim().length < 2) {
-      toast({
-        title: "Invalid Name",
-        description: "Please enter a valid name (at least 2 characters)",
-        variant: "destructive"
-      });
-      return;
-    }
-    if (!formData.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-      toast({
-        title: "Invalid Email",
-        description: "Please enter a valid email address",
-        variant: "destructive"
-      });
-      return;
-    }
-    if (formData.message.trim().length < 10) {
-      toast({
-        title: "Message Too Short",
-        description: "Please write a message with at least 10 characters",
-        variant: "destructive"
-      });
-      return;
-    }
-    
-    setIsSubmitting(true);
-    try {
-      const result = await emailjs.send('service_uzphdkm', 'template_bqgpqss', {
-        from_name: formData.name,
-        from_email: formData.email,
-        message: formData.message,
-        to_email: 'chaitanyababu0017@gmail.com'
-      });
-      console.log('Email sent successfully:', result);
-      toast({
-        title: "Message Sent Successfully! ✓",
-        description: "Thank you for reaching out. I'll get back to you within 24 hours!"
-      });
-      setFormData({ name: "", email: "", message: "" });
-    } catch (error) {
-      console.error('Email sending failed:', error);
-      toast({
-        title: "Failed to Send Message",
-        description: "Something went wrong. Please try emailing me directly at chaitanyababu0017@gmail.com",
-        variant: "destructive"
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    element?.scrollIntoView({ behavior: "smooth" });
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setIsMenuOpen(false);
   };
 
-  const navItems = [
-    { id: "home", label: "HOME" },
-    { id: "about", label: "ABOUT" },
-    { id: "education", label: "EDUCATION" },
-    { id: "experience", label: "EXPERIENCE" },
-    { id: "skills", label: "SKILLS" },
-    { id: "projects", label: "PROJECTS" },
-    { id: "certifications", label: "CERTIFICATIONS" },
-    { id: "achievements", label: "ACHIEVEMENTS" },
-    { id: "contact", label: "CONTACT" }
-  ];
-
-  const skills = {
-    "Languages": ["Python", "Java"],
-    "Database": ["SQL", "MySQL"],
-    "Web Technologies": ["HTML", "CSS"],
-    "Developer Tools": ["Microsoft Excel", "Git / GitHub", "Visual Studio Code", "Jupyter Notebook"],
-    "Data Science & ML": ["Data cleaning", "EDA", "Statistical analysis", "Machine learning", "Deep learning", "NLP", "Model deployment"],
-    "Soft Skills": ["Communication", "Teamwork", "Self-learning", "Problem-solving", "Project execution", "Team Lead experience"]
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    if (formData.name.trim().length < 2 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) || formData.message.trim().length < 10) {
+      toast({ title: "Check your details", description: "Enter a valid name, email, and a message of at least 10 characters.", variant: "destructive" });
+      return;
+    }
+    setIsSubmitting(true);
+    try {
+      await emailjs.send("service_uzphdkm", "template_bqgpqss", { ...formData, from_name: formData.name, from_email: formData.email, to_email: "chaitanyababu0017@gmail.com" });
+      toast({ title: "Message sent", description: "Thanks for reaching out. I’ll respond soon." });
+      setFormData({ name: "", email: "", message: "" });
+    } catch {
+      toast({ title: "Message not sent", description: "Please email me directly at chaitanyababu0017@gmail.com.", variant: "destructive" });
+    } finally { setIsSubmitting(false); }
   };
 
-  interface Project {
-    title: string;
-    description: string;
-    tech: string[];
-    note?: string;
-    category?: string;
-    features?: string[];
-    status?: string;
-  }
-
-  const projects: Project[] = [
-    {
-      title: "Pulmonary Cancer Prediction",
-      category: "Machine Learning",
-      description: "Built a lung cancer risk prediction system using patient symptom survey data and tested multiple models, including Logistic Regression, Random Forest, and a simple Neural Network. Optimized for high Recall to reduce false negatives and used LIME for clear model explainability.",
-      tech: ["Python", "Pandas", "Scikit-learn", "TensorFlow/Keras", "Gradio", "LIME"],
-      features: [
-        "Multi-model comparison: Logistic Regression, Random Forest, Neural Network",
-        "Optimized for high Recall to reduce false negatives",
-        "LIME-based model explainability for transparent predictions",
-        "Interactive Gradio web app for quick risk assessment"
-      ],
-      note: "Published a research paper on pulmonary cancer prediction using ML and deep learning techniques",
-      status: "Completed"
-    },
-    {
-      title: "Retail Sales Forecasting",
-      category: "Time-Series Forecasting",
-      description: "Built a retail sales forecasting model using Facebook Prophet to generate actionable business insights. Cleaned and prepared data with Pandas and evaluated model accuracy using RMSE and MAE.",
-      tech: ["Python", "Pandas", "Matplotlib", "Scikit-learn", "Prophet", "Seaborn"],
-      features: [
-        "Sales forecasting with Facebook Prophet",
-        "Data cleaning and preparation with Pandas",
-        "Model evaluation using RMSE and MAE",
-        "Visualized forecasts, trends, and seasonality with Matplotlib"
-      ],
-      status: "Completed"
-    },
-    {
-      title: "Student Performance Management System",
-      category: "Full-Stack Web Application",
-      description: "Developed and deployed a full-stack Student Performance Management System using Python (Flask), MySQL/TiDB Cloud, HTML, CSS, and Render to manage student records, automate result processing, and enable efficient data retrieval.",
-      tech: ["HTML", "CSS", "Python (Flask)", "MySQL", "TiDB Cloud", "Chart.js", "Render"],
-      features: [
-        "Student record management with CRUD operations",
-        "Automated grade calculation and percentage computation",
-        "Roll number-based student search",
-        "Interactive performance visualization using Chart.js",
-        "Cloud database integration with TiDB Cloud",
-        "Deployed on Render with a responsive interface"
-      ],
-      status: "Completed"
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full glass-dark z-50">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="flex items-center justify-between h-20">
-            <button onClick={() => scrollToSection("home")} className="text-2xl font-bold tracking-widest">
-              SC<span className="text-muted-foreground">.</span>
-            </button>
-            
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-10">
-              {navItems.map(item => (
-                <button 
-                  key={item.id} 
-                  onClick={() => scrollToSection(item.id)} 
-                  className="text-xs tracking-widest text-muted-foreground hover:text-foreground transition-colors duration-300"
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden p-2">
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+    <main className="min-h-screen overflow-hidden bg-background text-foreground">
+      <nav className="fixed inset-x-0 top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur-xl">
+        <div className="editorial-shell flex h-16 items-center justify-between">
+          <Button variant="ghost" className="h-auto px-0 font-mono text-xs text-primary hover:bg-transparent" onClick={() => scrollTo("home")}>SC / 26</Button>
+          <div className="hidden items-center gap-1 lg:flex">
+            {navItems.map((item, index) => <Button key={item} variant="ghost" size="sm" onClick={() => scrollTo(item)} className="font-mono text-[10px] uppercase text-muted-foreground hover:bg-secondary hover:text-primary">{String(index + 1).padStart(2, "0")} {item}</Button>)}
           </div>
-
-          {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <div className="lg:hidden py-6 border-t border-border/30 space-y-4 animate-fade-in">
-              {navItems.map(item => (
-                <button 
-                  key={item.id} 
-                  onClick={() => scrollToSection(item.id)} 
-                  className="block w-full text-left py-3 text-sm tracking-widest text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          )}
+          <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Toggle navigation" onClick={() => setIsMenuOpen(!isMenuOpen)}>{isMenuOpen ? <X /> : <Menu />}</Button>
         </div>
+        {isMenuOpen && <div className="editorial-shell grid border-t border-border bg-background py-4 lg:hidden">{navItems.map((item, index) => <Button key={item} variant="ghost" onClick={() => scrollTo(item)} className="justify-start font-mono text-xs uppercase text-muted-foreground">{String(index + 1).padStart(2, "0")} / {item}</Button>)}</div>}
       </nav>
 
-      {/* Hero Section */}
-      <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0">
-          {/* Gradient Mesh */}
-          <div className="absolute top-0 left-0 w-full h-full">
-            <div className="absolute top-1/4 -left-20 w-96 h-96 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-3xl animate-pulse-soft" />
-            <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-gradient-to-tl from-muted/20 to-transparent rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: '1s' }} />
-          </div>
-          
-          {/* Grid Pattern */}
-          <div className="absolute inset-0 opacity-[0.02]" style={{
-            backgroundImage: 'linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)',
-            backgroundSize: '60px 60px'
-          }} />
-        </div>
-
-        <div className="container mx-auto px-6 lg:px-12 relative z-10 pt-20">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left Content */}
-            <div className="order-2 lg:order-1">
-              {/* Greeting Badge */}
-              <div className="inline-flex items-center gap-3 mb-8 opacity-0 animate-fade-in stagger-1">
-                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                <span className="text-sm tracking-widest text-muted-foreground uppercase">Available for opportunities</span>
-              </div>
-
-              {/* Main Heading */}
-              <div className="mb-6 opacity-0 animate-slide-up stagger-2">
-                <span className="text-lg md:text-xl tracking-widest text-muted-foreground block mb-2">Hello, I'm</span>
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight">
-                  <span className="text-gradient">CHAITANYA</span>
-                </h1>
-              </div>
-
-              {/* Role with Animated Border */}
-              <div className="inline-flex items-center gap-4 px-6 py-3 mb-8 glass-ultra rounded-full opacity-0 animate-fade-in stagger-3">
-                <span className="text-sm md:text-base tracking-[0.2em] text-muted-foreground">
-                  DATA SCIENTIST
-                </span>
-                <span className="w-1.5 h-1.5 rounded-full bg-foreground/30" />
-                <span className="text-sm md:text-base tracking-[0.2em] text-muted-foreground">
-                  ML ENGINEER
-                </span>
-              </div>
-
-              {/* Description */}
-              <p className="text-lg text-muted-foreground mb-10 max-w-md leading-relaxed opacity-0 animate-fade-in stagger-3">
-                Crafting intelligent solutions through data science and machine learning to solve real-world problems.
-              </p>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-wrap items-center gap-4 opacity-0 animate-fade-in stagger-4">
-                <Button 
-                  onClick={() => scrollToSection("contact")}
-                  className="bg-foreground text-background hover:bg-foreground/90 px-8 py-6 text-sm tracking-widest transition-all duration-300 group"
-                >
-                  GET IN TOUCH
-                  <Send className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-                <Button 
-                  onClick={() => scrollToSection("projects")}
-                  variant="outline"
-                  className="border-foreground/20 hover:bg-foreground/5 px-8 py-6 text-sm tracking-widest"
-                >
-                  VIEW WORK
-                </Button>
-              </div>
-
-              {/* Social Links - Removed per user preference */}
+      <section id="home" className="relative min-h-[760px] pt-28 md:min-h-screen md:pt-32">
+        <div className="scan-grid absolute inset-0 opacity-50" />
+        <div className="editorial-shell relative grid gap-12 border-t border-border py-10 lg:grid-cols-12 lg:gap-10">
+          <div className="reveal flex flex-col justify-between lg:col-span-5 lg:min-h-[650px]">
+            <div>
+              <p className="eyebrow mb-10">Portfolio / Data Science / 2026</p>
+              <h1 className="max-w-[9ch] text-6xl font-semibold leading-[0.88] md:text-8xl lg:text-[6.4rem]">Srigakolapu<br/><span className="text-primary">Chaitanya.</span></h1>
+              <p className="mt-8 max-w-md text-lg leading-relaxed text-muted-foreground">Final-year Computer Science & Data Science student building practical machine learning and full-stack systems.</p>
             </div>
-
-            {/* Right Content - Profile Image */}
-            <div className="order-1 lg:order-2 flex justify-center opacity-0 animate-fade-in stagger-2">
-              <div className="relative">
-                {/* Outer Glow Ring */}
-                <div className="absolute -inset-4 rounded-full bg-gradient-to-br from-foreground/20 via-transparent to-foreground/10 blur-xl animate-pulse-soft" />
-                
-                {/* Rotating Border */}
-                <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-foreground/30 via-transparent to-foreground/30 animate-spin" style={{ animationDuration: '8s' }} />
-                
-                {/* Image Container */}
-                <div className="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-2 border-foreground/10">
-                  <img 
-                    src={profileImage} 
-                    alt="Chaitanya Srigakolapu" 
-                    className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700"
-                  />
-                  {/* Overlay Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent" />
-                </div>
-
-                {/* Floating Stats */}
-                <div className="absolute -right-4 top-1/4 glass-ultra px-4 py-3 rounded-lg animate-float opacity-0 animate-fade-in stagger-4">
-                  <div className="text-2xl font-bold">4+</div>
-                  <div className="text-xs text-muted-foreground tracking-wider">PROJECTS</div>
-                </div>
-                
-                <div className="absolute -left-4 bottom-1/4 glass-ultra px-4 py-3 rounded-lg animate-float opacity-0 animate-fade-in stagger-5" style={{ animationDelay: '0.3s' }}>
-                  <div className="text-2xl font-bold">7.62</div>
-                  <div className="text-xs text-muted-foreground tracking-wider">CGPA</div>
-                </div>
+            <div className="mt-12 grid gap-3 border-t border-border pt-6 sm:grid-cols-2 lg:mt-0">
+              <Button onClick={() => scrollTo("projects")} className="justify-between rounded-sm">View selected work <ArrowDown className="size-4" /></Button>
+              <Button variant="outline" asChild className="justify-between rounded-sm"><a href={resumeAsset.url} download="Srigakolapu_Chaitanya_Resume.pdf">Download résumé <Download className="size-4" /></a></Button>
+            </div>
+          </div>
+          <div className="reveal-delay lg:col-span-7">
+            <div className="group relative overflow-hidden border border-border bg-card">
+              <img src={profileImage} alt="Srigakolapu Chaitanya" className="aspect-[4/4.6] w-full object-cover object-top grayscale transition duration-700 group-hover:grayscale-0 md:aspect-[16/12] lg:aspect-[4/4.6]" />
+              <div className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-background via-background/50 to-transparent p-6 pt-24">
+                <div><p className="eyebrow">Current focus</p><p className="mt-2 font-medium">ML systems & practical software</p></div>
+                <span className="font-mono text-xs text-primary">AP / INDIA</span>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-0 animate-fade-in stagger-6">
-          <span className="text-xs tracking-widest text-muted-foreground">SCROLL</span>
-          <div className="w-6 h-10 border border-foreground/20 rounded-full flex items-start justify-center p-2">
-            <div className="w-1 h-2 bg-foreground rounded-full animate-bounce" />
-          </div>
-        </div>
-
-        {/* Section Number */}
-        <div className="absolute right-8 bottom-8 hidden lg:block">
-          <span className="text-8xl font-bold text-foreground/5">01</span>
-          <span className="text-muted-foreground text-sm">/09</span>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="relative py-32 px-6 lg:px-12 diagonal-line">
-        <div className="container mx-auto max-w-6xl">
-          {/* Section Header */}
-          <div className="flex items-center gap-6 mb-16">
-            <span className="text-sm tracking-widest text-muted-foreground">02</span>
-            <span className="w-12 h-px bg-foreground/30" />
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">ABOUT ME</h2>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            {/* Left Content */}
-            <div className="space-y-8 opacity-0 animate-slide-in-left">
-              <p className="text-lg md:text-xl leading-relaxed text-muted-foreground">
-                I am a final-year <span className="text-foreground font-medium">B.Tech CSE (Data Science)</span> student 
-                passionate about building practical solutions using Python, SQL, and Machine Learning.
-              </p>
-              <p className="text-base leading-relaxed text-muted-foreground">
-                I enjoy working on real-world projects that challenge my problem-solving skills. 
-                I'm actively seeking opportunities to apply my knowledge and contribute to impactful technology-driven work.
-              </p>
-              
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-8 pt-8 border-t border-border/30">
-                {[
-                  { value: "3+", label: "PROJECTS" },
-                  { value: "250+", label: "PROBLEMS SOLVED" },
-                  { value: "7.62", label: "CGPA" }
-                ].map((stat) => (
-                  <div key={stat.label} className="text-center">
-                    <div className="text-4xl md:text-5xl font-bold mb-2">{stat.value}</div>
-                    <div className="text-xs tracking-widest text-muted-foreground">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right Content - Cards */}
-            <div className="space-y-6 opacity-0 animate-slide-in-right">
-              {[
-                { icon: Code, title: "Problem Solver", desc: "Tackling complex challenges with creative technical solutions" },
-                { icon: Brain, title: "Continuous Learner", desc: "Always exploring new technologies and methodologies" },
-                { icon: Award, title: "Team Player", desc: "Collaborating effectively to achieve common goals" }
-              ].map((item, idx) => (
-                <div 
-                  key={item.title}
-                  className="group p-6 border-gradient rounded-lg hover-lift"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 border border-foreground/20 rounded-lg flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all duration-300">
-                      <item.icon className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg mb-1">{item.title}</h3>
-                      <p className="text-sm text-muted-foreground">{item.desc}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Section Number */}
-        <span className="section-number hidden lg:block">02</span>
-      </section>
-
-      {/* Education Section */}
-      <section id="education" className="relative py-32 px-6 lg:px-12 bg-card overflow-hidden">
-        {/* Background Decoration */}
-        <div className="absolute top-0 right-0 w-1/2 h-full opacity-[0.02]">
-          <GraduationCap className="w-full h-full" />
-        </div>
-        
-        <div className="container mx-auto max-w-6xl relative z-10">
-          {/* Section Header */}
-          <div className="flex items-center justify-between mb-16">
-            <div className="flex items-center gap-6">
-              <span className="text-sm tracking-widest text-muted-foreground">03</span>
-              <span className="w-12 h-px bg-foreground/30" />
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">EDUCATION</h2>
-            </div>
-            <div className="hidden md:flex items-center gap-2 text-muted-foreground">
-              <GraduationCap className="w-5 h-5" />
-              <span className="text-sm tracking-widest">ACADEMIC JOURNEY</span>
-            </div>
-          </div>
-
-          {/* Timeline */}
-          <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-foreground/20 via-foreground/10 to-transparent transform md:-translate-x-1/2" />
-            
-            <div className="space-y-12">
-              {[
-                {
-                  period: "2022 – 2026",
-                  degree: "Bachelor of Technology in CSE (Data Science)",
-                  institution: "Dadi Institute of Engineering and Technology (DIET)",
-                  location: "Anakapalle, Andhra Pradesh",
-                  grade: "Current CGPA: 7.62",
-                  status: "In Progress",
-                  highlight: true
-                },
-                {
-                  period: "2020 – 2022",
-                  degree: "Intermediate (Board of Intermediate Education, A.P.)",
-                  institution: "Sri Chaitanya Junior College",
-                  location: "Gajuwaka, Visakhapatnam",
-                  grade: "Percentage: 81%",
-                  status: "Completed",
-                  highlight: false
-                },
-                {
-                  period: "2020",
-                  degree: "Secondary School Certificate (SSC)",
-                  institution: "Kendriya Vidyalaya Nausenabaugh",
-                  location: "Visakhapatnam, Andhra Pradesh",
-                  grade: "Percentage: 85%",
-                  status: "Completed",
-                  highlight: false
-                }
-              ].map((edu, idx) => (
-                <div 
-                  key={idx}
-                  className={`relative flex flex-col md:flex-row items-start gap-8 ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
-                >
-                  {/* Timeline Dot */}
-                  <div className="absolute left-0 md:left-1/2 w-4 h-4 rounded-full border-2 border-foreground/30 bg-background transform -translate-x-1/2 mt-2">
-                    {edu.highlight && <div className="absolute inset-1 rounded-full bg-foreground animate-pulse" />}
-                  </div>
-                  
-                  {/* Content Card */}
-                  <div className={`ml-8 md:ml-0 md:w-[calc(50%-2rem)] ${idx % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8'}`}>
-                    <div className={`group p-8 glass-ultra rounded-xl hover-lift border border-foreground/5 ${edu.highlight ? 'ring-1 ring-foreground/10' : ''}`}>
-                      <span className="inline-block px-3 py-1 mb-4 text-xs tracking-widest bg-foreground/5 rounded-full">
-                        {edu.period}
-                      </span>
-                      <h3 className="text-xl md:text-2xl font-semibold mb-2">{edu.degree}</h3>
-                      <p className="text-muted-foreground mb-2">{edu.institution}</p>
-                      <div className={`flex items-center gap-2 text-sm text-muted-foreground mb-4 ${idx % 2 === 0 ? 'md:justify-end' : ''}`}>
-                        <MapPin className="w-4 h-4" />
-                        {edu.location}
-                      </div>
-                      <div className={`flex flex-wrap gap-3 ${idx % 2 === 0 ? 'md:justify-end' : ''}`}>
-                        <span className="px-4 py-1.5 bg-foreground/5 border border-foreground/10 rounded-full text-sm font-medium">
-                          {edu.grade}
-                        </span>
-                        <span className={`px-4 py-1.5 rounded-full text-sm font-medium ${edu.highlight ? 'bg-foreground text-background' : 'bg-foreground/5 border border-foreground/10'}`}>
-                          {edu.status}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <span className="section-number hidden lg:block">03</span>
-      </section>
-
-      {/* Experience Section */}
-      <section id="experience" className="relative py-32 px-6 lg:px-12 overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0 opacity-[0.02]" style={{
-          backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)',
-          backgroundSize: '40px 40px'
-        }} />
-        
-        <div className="container mx-auto max-w-6xl relative z-10">
-          {/* Section Header */}
-          <div className="flex items-center justify-between mb-16">
-            <div className="flex items-center gap-6">
-              <span className="text-sm tracking-widest text-muted-foreground">04</span>
-              <span className="w-12 h-px bg-foreground/30" />
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">EXPERIENCE</h2>
-            </div>
-            <div className="hidden md:flex items-center gap-2 text-muted-foreground">
-              <Briefcase className="w-5 h-5" />
-              <span className="text-sm tracking-widest">WORK HISTORY</span>
-            </div>
-          </div>
-
-          <div className="space-y-8">
-            {[
-              {
-                period: "May – June 2024",
-                role: "Data Science, Machine Learning & AI Intern",
-                company: "DATAVALLEY",
-                description: "Gained hands-on experience in data science, covering Python, data wrangling, EDA, statistics, basics of machine learning, deep learning, NLP, big data, and model deployment. Worked on hands-on projects, real-world applications, and cloud computing concepts.",
-                skills: ["Python", "Data Wrangling", "EDA", "Machine Learning", "Deep Learning", "NLP", "Big Data", "Model Deployment"],
-                icon: Database
-              },
-              {
-                period: "2023",
-                role: "Team Lead - Samsung Hackathon",
-                company: "Samsung Innovation Campus",
-                description: "Led the development of 'Medi Predict' — an AI model for lung disease detection, achieving around 90% accuracy.",
-                skills: ["Leadership", "AI/ML", "Healthcare Tech", "Team Management"],
-                icon: Award
-              }
-            ].map((exp, idx) => (
-              <div 
-                key={idx}
-                className="group relative"
-              >
-                {/* Connecting Line */}
-                {idx < 1 && (
-                  <div className="absolute left-8 top-20 bottom-0 w-px bg-gradient-to-b from-foreground/20 to-transparent hidden md:block" />
-                )}
-                
-                <div className="relative p-8 glass-ultra rounded-xl hover-lift border border-foreground/5">
-                  <div className="flex flex-col lg:flex-row lg:items-start gap-6">
-                    {/* Icon */}
-                    <div className="w-16 h-16 flex-shrink-0 rounded-xl bg-foreground/5 border border-foreground/10 flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all duration-500">
-                      <exp.icon className="w-7 h-7" />
-                    </div>
-                    
-                    <div className="flex-1">
-                      <div className="flex flex-wrap items-center gap-4 mb-2">
-                        <h3 className="text-xl md:text-2xl font-semibold">{exp.role}</h3>
-                        <span className="px-3 py-1 text-xs tracking-widest bg-foreground/5 rounded-full">
-                          {exp.period}
-                        </span>
-                      </div>
-                      <p className="text-muted-foreground mb-4 flex items-center gap-2">
-                        <Briefcase className="w-4 h-4" />
-                        {exp.company}
-                      </p>
-                      <p className="text-muted-foreground mb-6 leading-relaxed">{exp.description}</p>
-                      <div className="flex flex-wrap gap-2">
-                        {exp.skills.map((skill) => (
-                          <span key={skill} className="px-4 py-1.5 border border-foreground/20 rounded-full text-xs tracking-wider hover:bg-foreground hover:text-background transition-all duration-300">
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <span className="section-number hidden lg:block">04</span>
-      </section>
-
-      {/* Skills Section */}
-      <section id="skills" className="relative py-32 px-6 lg:px-12 bg-card overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-[0.015]">
-          <div className="absolute top-20 left-20 w-72 h-72 border border-foreground rounded-full" />
-          <div className="absolute bottom-20 right-20 w-96 h-96 border border-foreground rounded-full" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-foreground rounded-full" />
-        </div>
-        
-        <div className="container mx-auto max-w-6xl relative z-10">
-          {/* Section Header */}
-          <div className="flex items-center justify-between mb-16">
-            <div className="flex items-center gap-6">
-              <span className="text-sm tracking-widest text-muted-foreground">05</span>
-              <span className="w-12 h-px bg-foreground/30" />
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">SKILLS</h2>
-            </div>
-            <div className="hidden md:flex items-center gap-2 text-muted-foreground">
-              <Zap className="w-5 h-5" />
-              <span className="text-sm tracking-widest">EXPERTISE</span>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {Object.entries(skills).map(([category, items], idx) => (
-              <div 
-                key={category}
-                className="group relative p-6 glass-ultra rounded-xl hover-lift border border-foreground/5"
-              >
-                {/* Category Icon */}
-                <div className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center text-lg font-bold">
-                  {idx + 1}
-                </div>
-                
-                <h3 className="text-lg font-semibold mb-6 pb-4 border-b border-border/30 flex items-center gap-3">
-                  <span className="w-2 h-2 rounded-full bg-foreground" />
-                  {category}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {items.map((skill) => (
-                    <span 
-                      key={skill} 
-                      className="px-3 py-1.5 bg-foreground/5 border border-foreground/10 rounded-full text-sm text-muted-foreground hover:text-foreground hover:bg-foreground/10 hover:border-foreground/30 transition-all duration-300 cursor-default"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <span className="section-number hidden lg:block">05</span>
-      </section>
-
-      {/* Projects Section */}
-      <section id="projects" className="relative py-32 px-6 lg:px-12 overflow-hidden">
-        {/* Background Decoration */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-[0.02]">
-          <div className="w-full h-full border border-foreground rounded-full animate-spin" style={{ animationDuration: '60s' }} />
-        </div>
-        
-        <div className="container mx-auto max-w-6xl relative z-10">
-          {/* Section Header */}
-          <div className="flex items-center justify-between mb-16">
-            <div className="flex items-center gap-6">
-              <span className="text-sm tracking-widest text-muted-foreground">06</span>
-              <span className="w-12 h-px bg-foreground/30" />
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">PROJECTS</h2>
-            </div>
-            <div className="hidden md:flex items-center gap-2 text-muted-foreground">
-              <Target className="w-5 h-5" />
-              <span className="text-sm tracking-widest">FEATURED WORK</span>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {projects.map((project, idx) => (
-              <div 
-                key={idx}
-                className="group relative"
-              >
-                {/* Hover Glow Effect */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-foreground/0 via-foreground/5 to-foreground/0 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
-                
-                <div className="relative p-8 glass-ultra rounded-xl hover-lift border border-foreground/5 h-full">
-                  {/* Project Number */}
-                  <div className="absolute top-6 right-6 w-12 h-12 rounded-full border border-foreground/10 flex items-center justify-center text-lg font-bold text-foreground/20 group-hover:text-foreground/40 transition-colors">
-                    0{idx + 1}
-                  </div>
-
-                  <div className="flex items-center gap-3 mb-4">
-                    <Sparkles className="w-5 h-5 text-muted-foreground" />
-                    <span className="text-xs tracking-widest text-muted-foreground uppercase">
-                      {project.category || "Featured Project"}
-                    </span>
-                  </div>
-                  
-                  <h3 className="text-xl md:text-2xl font-semibold mb-4 pr-16">{project.title}</h3>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">{project.description}</p>
-                  
-                  {project.features && project.features.length > 0 && (
-                    <div className="mb-6 space-y-2">
-                      {project.features.map((feature, fIdx) => (
-                        <div key={fIdx} className="flex items-start gap-3">
-                          <span className="w-1 h-1 rounded-full bg-foreground/40 mt-2 flex-shrink-0" />
-                          <p className="text-sm text-muted-foreground leading-relaxed">{feature}</p>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                  
-                  {project.note && (
-                    <div className="flex items-start gap-3 p-4 bg-foreground/5 rounded-lg mb-6 border border-foreground/5">
-                      <ExternalLink className="w-4 h-4 mt-0.5 text-muted-foreground flex-shrink-0" />
-                      <p className="text-sm text-muted-foreground">{project.note}</p>
-                    </div>
-                  )}
-                  
-                  {project.status && (
-                    <div className="mb-6 flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-foreground animate-pulse" />
-                      <span className="text-xs tracking-widest text-muted-foreground">{project.status}</span>
-                    </div>
-                  )}
-
-                  <div className="pt-4 border-t border-border/30">
-                    <p className="text-xs tracking-widest text-muted-foreground mb-3 flex items-center gap-2">
-                      <Code className="w-3 h-3" />
-                      TECH STACK
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech) => (
-                        <span key={tech} className="px-3 py-1.5 border border-foreground/20 rounded-full text-xs tracking-wider hover:bg-foreground hover:text-background transition-all duration-300">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <span className="section-number hidden lg:block">06</span>
-      </section>
-
-      {/* Certifications Section */}
-      <section id="certifications" className="relative py-32 px-6 lg:px-12 overflow-hidden">
-        {/* Background Decoration */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] opacity-[0.02]">
-          <div className="w-full h-full border border-foreground rounded-full animate-spin" style={{ animationDuration: '50s' }} />
-        </div>
-        
-        <div className="container mx-auto max-w-6xl relative z-10">
-          {/* Section Header */}
-          <div className="flex items-center justify-between mb-16">
-            <div className="flex items-center gap-6">
-              <span className="text-sm tracking-widest text-muted-foreground">07</span>
-              <span className="w-12 h-px bg-foreground/30" />
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">CERTIFICATIONS</h2>
-            </div>
-            <div className="hidden md:flex items-center gap-2 text-muted-foreground">
-              <FileBadge className="w-5 h-5" />
-              <span className="text-sm tracking-widest">CREDENTIALS</span>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              { 
-                icon: FileBadge, 
-                title: "Programming in C", 
-                issuer: "Data pro",
-                category: "PROGRAMMING"
-              },
-              { 
-                icon: FileBadge, 
-                title: "MS Office", 
-                issuer: "Data pro",
-                category: "PRODUCTIVITY"
-              },
-              { 
-                icon: FileBadge, 
-                title: "Python for Beginners", 
-                issuer: "Simplilearn",
-                category: "PROGRAMMING"
-              },
-              { 
-                icon: FileBadge, 
-                title: "MySQL", 
-                issuer: "Infosys Springboard",
-                category: "DATABASE"
-              },
-              { 
-                icon: FileBadge, 
-                title: "Python for Data Science", 
-                issuer: "NPTEL",
-                category: "DATA SCIENCE"
-              }
-            ].map((cert, idx) => (
-              <div 
-                key={idx}
-                className="group p-6 glass-ultra rounded-xl hover-lift border border-foreground/5"
-              >
-                <div className="flex items-start gap-5">
-                  <div className="w-14 h-14 flex-shrink-0 rounded-xl bg-foreground/5 border border-foreground/10 flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all duration-500">
-                    <cert.icon className="w-6 h-6" />
-                  </div>
-                  <div className="flex-1">
-                    <span className="inline-block px-3 py-1 mb-2 text-xs tracking-widest bg-foreground/5 rounded-full">
-                      {cert.category}
-                    </span>
-                    <h3 className="text-lg font-semibold mb-1">{cert.title}</h3>
-                    <p className="text-sm text-muted-foreground flex items-center gap-2">
-                      <Award className="w-3 h-3" />
-                      {cert.issuer}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <span className="section-number hidden lg:block">07</span>
-      </section>
-
-      {/* Achievements Section */}
-      <section id="achievements" className="relative py-32 px-6 lg:px-12 bg-card overflow-hidden">
-        {/* Background Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-foreground/5 via-transparent to-foreground/5 rounded-full blur-3xl" />
-        
-        <div className="container mx-auto max-w-6xl relative z-10">
-          {/* Section Header */}
-          <div className="flex items-center justify-between mb-16">
-            <div className="flex items-center gap-6">
-              <span className="text-sm tracking-widest text-muted-foreground">08</span>
-              <span className="w-12 h-px bg-foreground/30" />
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">ACHIEVEMENTS</h2>
-            </div>
-            <div className="hidden md:flex items-center gap-2 text-muted-foreground">
-              <TrendingUp className="w-5 h-5" />
-              <span className="text-sm tracking-widest">MILESTONES</span>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { 
-                icon: Award, 
-                label: "RESEARCH", 
-                title: "Published Research Paper", 
-                desc: "Published a research paper on pulmonary cancer prediction using machine learning and deep learning techniques.",
-                highlight: true
-              },
-              { 
-                icon: Award, 
-                label: "LEADERSHIP", 
-                title: "Team Lead at Samsung Hackathon", 
-                desc: "Developed 'Medi Predict' — an AI-based lung disease prediction system achieving 90% accuracy.",
-                highlight: false
-              },
-              { 
-                icon: Brain, 
-                label: "HACKATHON", 
-                title: "Generative AI Hackathon", 
-                desc: "Participated in a two-day Generative AI Hackathon conducted by JNTU-GV, focusing on real-world AI applications.",
-                highlight: false
-              },
-              { 
-                icon: Code, 
-                label: "PROBLEM SOLVING", 
-                title: "250+ Problems Solved", 
-                desc: "Solved 250+ coding problems on CodeChef, strengthening Data Structures and problem-solving skills.",
-                highlight: false
-              },
-              { 
-                icon: Award, 
-                label: "COMMUNITY", 
-                title: "Vizag Navy Marathon Volunteer", 
-                desc: "Volunteered at the Vizag Navy Marathon, demonstrating teamwork, communication, and event coordination skills.",
-                highlight: false
-              }
-            ].map((achievement, idx) => (
-              <div 
-                key={idx}
-                className={`group relative p-8 glass-ultra rounded-xl hover-lift border text-center ${achievement.highlight ? 'border-foreground/20 ring-1 ring-foreground/10' : 'border-foreground/5'}`}
-              >
-                {/* Highlight Badge */}
-                {achievement.highlight && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-foreground text-background text-xs tracking-widest rounded-full">
-                    FEATURED
-                  </div>
-                )}
-                
-                <div className={`w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center transition-all duration-500 ${achievement.highlight ? 'bg-foreground text-background' : 'border border-foreground/20 group-hover:bg-foreground group-hover:text-background'}`}>
-                  <achievement.icon className="w-8 h-8" />
-                </div>
-                <span className="inline-block px-3 py-1 mb-3 text-xs tracking-widest bg-foreground/5 rounded-full">{achievement.label}</span>
-                <h3 className="text-lg font-semibold mb-3">{achievement.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{achievement.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <span className="section-number hidden lg:block">08</span>
-      </section>
-
-      {/* Resume Section */}
-      <section className="relative py-32 px-6 lg:px-12 overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-[0.02]" style={{
-          backgroundImage: 'linear-gradient(45deg, hsl(var(--foreground)) 25%, transparent 25%), linear-gradient(-45deg, hsl(var(--foreground)) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, hsl(var(--foreground)) 75%), linear-gradient(-45deg, transparent 75%, hsl(var(--foreground)) 75%)',
-          backgroundSize: '20px 20px',
-          backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px'
-        }} />
-        
-        <div className="container mx-auto max-w-4xl text-center relative z-10">
-          {/* Icon with Glow */}
-          <div className="relative w-24 h-24 mx-auto mb-8">
-            <div className="absolute inset-0 bg-foreground/10 rounded-2xl blur-xl" />
-            <div className="relative w-full h-full bg-foreground/5 border border-foreground/20 rounded-2xl flex items-center justify-center">
-              <Download className="w-10 h-10" />
-            </div>
-          </div>
-          
-          <span className="inline-block px-4 py-2 mb-6 text-xs tracking-widest bg-foreground/5 border border-foreground/10 rounded-full">
-            CURRICULUM VITAE
-          </span>
-          
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">DOWNLOAD RESUME</h2>
-          <p className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto leading-relaxed">
-            Get a comprehensive overview of my qualifications, experience, and technical expertise.
-          </p>
-          
-          <Button 
-            asChild
-            className="bg-foreground text-background hover:bg-foreground/90 px-10 py-6 text-sm tracking-widest transition-all duration-300 group"
-          >
-            <a href="/Res_Chaitu.pdf" download="Srigakolapu_Chaitanya_Resume.pdf" className="flex items-center gap-3">
-              <Download className="w-4 h-4 group-hover:animate-bounce" />
-              DOWNLOAD PDF
-            </a>
-          </Button>
-
-          <div className="flex justify-center gap-12 mt-12">
-            {[
-              { value: "PDF", label: "FORMAT" },
-              { value: "1 PAGE", label: "LENGTH" },
-              { value: "2026", label: "UPDATED" }
-            ].map((item) => (
-              <div key={item.label} className="text-center">
-                <div className="text-3xl font-bold mb-1">{item.value}</div>
-                <div className="text-xs tracking-widest text-muted-foreground">{item.label}</div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="relative py-32 px-6 lg:px-12 bg-card diagonal-line">
-        <div className="container mx-auto max-w-6xl">
-          {/* Section Header */}
-          <div className="flex items-center gap-6 mb-16">
-            <span className="text-sm tracking-widest text-muted-foreground">09</span>
-            <span className="w-12 h-px bg-foreground/30" />
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">CONTACT</h2>
-          </div>
+      <section id="about" className="py-24 md:py-32"><div className="editorial-shell"><SectionHeading number="01" title="Career profile" note="Biography" /><div className="mt-14 grid gap-12 md:grid-cols-12"><p className="text-2xl leading-snug md:col-span-7 md:text-4xl">I apply Python, SQL, machine learning, and software development to turn real problems into clear, reliable products.</p><div className="space-y-7 text-muted-foreground md:col-span-4 md:col-start-9"><p>Seeking opportunities to learn new technologies, contribute to team goals, and grow as a software professional.</p><div className="grid grid-cols-3 gap-4 border-t border-border pt-6"><div><b className="block text-3xl text-foreground">7.62</b><span className="eyebrow">CGPA</span></div><div><b className="block text-3xl text-foreground">250+</b><span className="eyebrow">Problems</span></div><div><b className="block text-3xl text-foreground">3</b><span className="eyebrow">Major builds</span></div></div></div></div></div></section>
 
-          <div className="grid lg:grid-cols-2 gap-16">
-            {/* Contact Info */}
-            <div className="space-y-8 opacity-0 animate-slide-in-left">
-              <p className="text-xl text-muted-foreground leading-relaxed">
-                Feel free to reach out for internships, collaboration, or project opportunities. 
-                I'd love to hear from you!
-              </p>
-              
-              <div className="space-y-6 pt-8">
-                {[
-                  { icon: Mail, label: "EMAIL", value: "chaitanyababu0017@gmail.com", href: "mailto:chaitanyababu0017@gmail.com" },
-                  { icon: Phone, label: "PHONE", value: "+91 9948087894", href: "tel:+919948087894" },
-                  { icon: MapPin, label: "LOCATION", value: "Andhra Pradesh, India", href: null }
-                ].map((contact) => (
-                  <div key={contact.label} className="group">
-                    {contact.href ? (
-                      <a href={contact.href} className="flex items-center gap-4 p-4 border-gradient rounded-lg hover-lift">
-                        <div className="w-12 h-12 border border-foreground/20 rounded-lg flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all duration-300">
-                          <contact.icon className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <p className="text-xs tracking-widest text-muted-foreground mb-1">{contact.label}</p>
-                          <p className="font-medium">{contact.value}</p>
-                        </div>
-                      </a>
-                    ) : (
-                      <div className="flex items-center gap-4 p-4 border-gradient rounded-lg">
-                        <div className="w-12 h-12 border border-foreground/20 rounded-lg flex items-center justify-center">
-                          <contact.icon className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <p className="text-xs tracking-widest text-muted-foreground mb-1">{contact.label}</p>
-                          <p className="font-medium">{contact.value}</p>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
+      <section id="education" className="surface py-24 md:py-32"><div className="editorial-shell"><SectionHeading number="02" title="Education" note="Academic record" /><div className="mt-14 grid gap-px bg-border md:grid-cols-2">{[
+        ["2022 — 2026", "B.Tech · CSE with Data Science", "Dadi Institute of Engineering and Technology", "Anakapalle, Andhra Pradesh", "CGPA 7.62"],
+        ["2020 — 2022", "Board of Intermediate Education", "Sri Chaitanya Junior College", "Visakhapatnam, Andhra Pradesh", "81%"],
+      ].map((item) => <article key={item[0]} className="bg-card p-7 md:p-10"><p className="eyebrow">{item[0]}</p><h3 className="mt-8 text-2xl font-medium">{item[1]}</h3><p className="mt-3 text-muted-foreground">{item[2]}<br/>{item[3]}</p><p className="mt-10 inline-block border-b border-primary pb-1 font-mono text-xs text-primary">{item[4]}</p></article>)}</div></div></section>
 
-            {/* Contact Form */}
-            <div className="opacity-0 animate-slide-in-right">
-              <div className="p-8 border-gradient rounded-lg">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <Label htmlFor="name" className="text-xs tracking-widest text-muted-foreground">YOUR NAME</Label>
-                    <Input 
-                      id="name" 
-                      placeholder="Enter your name" 
-                      value={formData.name} 
-                      onChange={e => setFormData({ ...formData, name: e.target.value })} 
-                      required 
-                      className="mt-2 bg-transparent border-foreground/20 focus:border-foreground transition-colors" 
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="email" className="text-xs tracking-widest text-muted-foreground">YOUR EMAIL</Label>
-                    <Input 
-                      id="email" 
-                      type="email" 
-                      placeholder="your.email@example.com" 
-                      value={formData.email} 
-                      onChange={e => setFormData({ ...formData, email: e.target.value })} 
-                      required 
-                      className="mt-2 bg-transparent border-foreground/20 focus:border-foreground transition-colors" 
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="message" className="text-xs tracking-widest text-muted-foreground">YOUR MESSAGE</Label>
-                    <Textarea 
-                      id="message" 
-                      placeholder="Tell me about your project or opportunity..." 
-                      value={formData.message} 
-                      onChange={e => setFormData({ ...formData, message: e.target.value })} 
-                      required 
-                      className="mt-2 bg-transparent border-foreground/20 focus:border-foreground transition-colors resize-none" 
-                      rows={5} 
-                    />
-                  </div>
-                  <Button 
-                    type="submit" 
-                    disabled={isSubmitting}
-                    className="w-full border border-foreground/20 bg-foreground text-background hover:bg-transparent hover:text-foreground px-10 py-6 text-sm tracking-widest transition-all duration-300 disabled:opacity-50"
-                  >
-                    {isSubmitting ? "SENDING..." : "SEND MESSAGE"}
-                  </Button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
+      <section id="experience" className="py-24 md:py-32"><div className="editorial-shell"><SectionHeading number="03" title="Experience" note="Field work" /><article className="mt-14 grid gap-10 border border-border bg-card p-7 md:grid-cols-12 md:p-10"><div className="md:col-span-4"><p className="eyebrow">Jan — Jun 2026</p><h3 className="mt-6 text-3xl font-medium">Student Performance Management System</h3><p className="mt-3 text-primary">DATAVALLEY · Data Science, ML & AI</p></div><div className="space-y-5 md:col-span-7 md:col-start-6">{[
+        "Built a full-stack platform with Flask, MySQL/TiDB Cloud, HTML, CSS, and Chart.js for student records, automated results, and roll-number search.",
+        "Implemented interactive performance visualizations, debugging, testing, troubleshooting, and defect resolution while maintaining technical documentation.",
+        "Used Git/GitHub for version control, Jira for issue tracking, and Render for deployment."
+      ].map((line) => <p key={line} className="flex gap-4 leading-relaxed text-muted-foreground"><Check className="mt-1 size-4 shrink-0 text-primary" />{line}</p>)}</div></article></div></section>
 
-        <span className="section-number hidden lg:block">09</span>
-      </section>
+      <section id="skills" className="surface py-24 md:py-32"><div className="editorial-shell"><SectionHeading number="04" title="Technical index" note="Capabilities" /><div className="mt-14 divide-y divide-border border-y border-border">{Object.entries(skills).map(([group, items], index) => <div key={group} className="grid gap-5 py-7 md:grid-cols-12 md:items-start"><p className="font-mono text-xs text-primary md:col-span-3">0{index + 1} / {group}</p><div className="flex flex-wrap gap-2 md:col-span-9">{items.map((item) => <span key={item} className="border border-border bg-background px-3 py-2 text-sm text-muted-foreground transition-colors hover:border-primary hover:text-foreground">{item}</span>)}</div></div>)}</div></div></section>
 
-      {/* Footer */}
-      <footer className="py-16 px-6 lg:px-12 border-t border-border/30">
-        <div className="container mx-auto max-w-6xl">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="text-center md:text-left">
-              <h3 className="text-2xl font-bold tracking-widest mb-2">CHAITANYA</h3>
-              <p className="text-sm text-muted-foreground">Data Scientist | ML Engineer | Developer</p>
-            </div>
-            
-            <div className="flex items-center gap-6">
-              {["ABOUT", "PROJECTS", "CONTACT"].map((item) => (
-                <button 
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
-                  className="text-xs tracking-widest text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {item}
-                </button>
-              ))}
-            </div>
-          </div>
-          
-          <div className="mt-12 pt-8 border-t border-border/30 text-center">
-            <p className="text-sm text-muted-foreground">
-              © 2026 Srigakolapu Chaitanya. Built with passion and code.
-            </p>
-          </div>
-        </div>
-      </footer>
-    </div>
+      <section id="projects" className="py-24 md:py-32"><div className="editorial-shell"><SectionHeading number="05" title="Selected work" note="Project archive" /><div className="mt-16 space-y-16">{projects.map((project, index) => <article key={project.title} className="grid gap-8 border-t border-border pt-8 md:grid-cols-12"><div className="md:col-span-2"><span className="text-6xl font-semibold text-primary/25">0{index + 1}</span></div><div className="md:col-span-5"><p className="eyebrow">{project.type}</p><h3 className="mt-5 text-3xl font-medium md:text-4xl">{project.title}</h3><p className="mt-5 leading-relaxed text-muted-foreground">{project.description}</p></div><div className="md:col-span-4 md:col-start-9"><div className="space-y-3">{project.details.map((detail) => <p key={detail} className="flex gap-3 text-sm text-muted-foreground"><ArrowUpRight className="size-4 shrink-0 text-primary" />{detail}</p>)}</div><div className="mt-8 flex flex-wrap gap-2">{project.tech.map((tech) => <span key={tech} className="border border-border px-2 py-1 font-mono text-[10px] text-primary">{tech}</span>)}</div></div></article>)}</div></div></section>
+
+      <section id="certifications" className="surface py-24 md:py-32"><div className="editorial-shell"><SectionHeading number="06" title="Credentials" note="Certifications" /><div className="mt-14 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">{certifications.map(([title, issuer], index) => <article key={title} className="editorial-card bg-card p-7"><span className="font-mono text-xs text-primary">CERT / 0{index + 1}</span><h3 className="mt-12 text-xl font-medium">{title}</h3><p className="mt-2 text-sm text-muted-foreground">{issuer}</p></article>)}</div></div></section>
+
+      <section id="achievements" className="py-24 md:py-32"><div className="editorial-shell"><SectionHeading number="07" title="Milestones" note="Achievements" /><div className="mt-14 divide-y divide-border border-y border-border">{achievements.map(([number, title, description]) => <article key={number} className="group grid gap-5 py-7 md:grid-cols-12 md:items-center"><span className="font-mono text-xs text-primary md:col-span-2">{number}</span><h3 className="text-xl font-medium transition-colors group-hover:text-primary md:col-span-4">{title}</h3><p className="leading-relaxed text-muted-foreground md:col-span-6">{description}</p></article>)}</div></div></section>
+
+      <section className="surface py-24 md:py-32"><div className="editorial-shell grid gap-10 border-y border-border py-12 md:grid-cols-12 md:items-center"><div className="md:col-span-8"><p className="eyebrow">Résumé / Updated 2026</p><h2 className="mt-5 text-4xl font-semibold md:text-6xl">The complete record,<br/>in one page.</h2></div><div className="md:col-span-4 md:text-right"><Button asChild size="lg" className="w-full justify-between rounded-sm md:w-auto"><a href={resumeAsset.url} download="Srigakolapu_Chaitanya_Resume.pdf">Download PDF <Download className="size-4" /></a></Button></div></div></section>
+
+      <section id="contact" className="py-24 md:py-32"><div className="editorial-shell"><SectionHeading number="08" title="Start a conversation" note="Contact" /><div className="mt-14 grid gap-14 md:grid-cols-12"><div className="md:col-span-5"><p className="max-w-md text-2xl leading-snug">Open to internships, collaborations, and technology-driven opportunities.</p><div className="mt-10 space-y-5 text-sm">{[
+        [Mail, "Email", "chaitanyababu0017@gmail.com", "mailto:chaitanyababu0017@gmail.com"],
+        [Phone, "Phone", "+91 9948087894", "tel:+919948087894"],
+        [MapPin, "Location", "Andhra Pradesh, India", ""],
+      ].map(([Icon, label, value, href]) => { const icon = Icon as typeof Mail; const content = <><icon className="size-4 text-primary" /><span><small className="eyebrow block">{label as string}</small>{value as string}</span></>; return href ? <a key={label as string} href={href as string} className="flex items-center gap-4 text-muted-foreground hover:text-foreground">{content}</a> : <div key={label as string} className="flex items-center gap-4 text-muted-foreground">{content}</div>; })}</div></div><form onSubmit={handleSubmit} className="space-y-6 border border-border bg-card p-6 md:col-span-7 md:p-9"><div className="grid gap-6 sm:grid-cols-2"><div><Label htmlFor="name" className="eyebrow">Name</Label><Input id="name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder="Your name" className="mt-2 rounded-sm bg-background" required /></div><div><Label htmlFor="email" className="eyebrow">Email</Label><Input id="email" type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} placeholder="you@example.com" className="mt-2 rounded-sm bg-background" required /></div></div><div><Label htmlFor="message" className="eyebrow">Message</Label><Textarea id="message" value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} placeholder="Tell me about the opportunity..." className="mt-2 min-h-36 resize-none rounded-sm bg-background" required /></div><Button type="submit" disabled={isSubmitting} className="w-full justify-between rounded-sm">{isSubmitting ? "Sending…" : "Send message"}<Send className="size-4" /></Button></form></div></div></section>
+
+      <footer className="surface border-t border-border py-10"><div className="editorial-shell flex flex-col gap-5 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between"><p>© 2026 Srigakolapu Chaitanya</p><div className="flex items-center gap-3"><BriefcaseBusiness className="size-4 text-primary" /><span>Data Science · Machine Learning · Software</span></div><Button variant="ghost" size="sm" onClick={() => scrollTo("home")} className="justify-start px-0 text-muted-foreground hover:bg-transparent hover:text-primary">Back to top <ArrowUpRight className="ml-2 size-4" /></Button></div></footer>
+    </main>
   );
 };
 
