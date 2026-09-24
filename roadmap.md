@@ -1,0 +1,4 @@
+- [ ] Audit current portfolio structure, content, links, and assets
+- [ ] Rebuild homepage in requested order with accurate resume content
+- [ ] Add responsive navigation and accessible project details
+- [ ] Verify build, interactions, links, desktop, and mobile layouts
