@@ -146,7 +146,7 @@ const Index = () => {
             Srigakolapu<br /><span className="gradient-text">Chaitanya</span>
           </h1>
           <p className="reveal-2 mx-auto mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-            Final-year Computer Science &amp; Data Science student crafting practical machine learning and full-stack products that solve real problems.
+            Computer Science &amp; Data Science graduate crafting practical machine learning and full-stack products that solve real problems.
           </p>
           <div className="reveal-3 mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button size="lg" onClick={() => scrollTo("projects")} className="rounded-full px-8 shadow-[0_0_40px_hsl(var(--primary)/0.35)]">View my work <ArrowDown className="ml-1 size-4" /></Button>
