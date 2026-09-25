@@ -34,6 +34,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import resumeAsset from "@/assets/chaitanya-resume.pdf.asset.json";
+import portraitAsset from "@/assets/chaitanya-portrait.png.asset.json";
 
 emailjs.init("fmqSq1Fhb8otDC7b2");
 
@@ -194,8 +195,8 @@ const Index = () => {
 
       <section id="home" className="hero-section section-anchor">
         <div className="hero-grid" aria-hidden="true" />
-        <div className="shell relative grid items-end gap-12 lg:grid-cols-[1fr_22rem]">
-          <div>
+        <div className="shell relative grid items-center gap-12 lg:grid-cols-[minmax(0,1.18fr)_minmax(20rem,0.82fr)] lg:gap-16">
+          <div className="hero-copy">
             <p className="eyebrow reveal"><span>Portfolio · 2026</span>Andhra Pradesh, India</p>
             <h1 className="reveal-1 mt-7 max-w-5xl text-[clamp(2.75rem,8vw,6.8rem)] font-semibold leading-[0.94]">Srigakolapu<br /><span className="text-primary">Chaitanya</span></h1>
             <p className="reveal-2 mt-7 text-xl font-medium text-foreground md:text-2xl">Data Science &amp; AI/ML Graduate</p>
@@ -205,13 +206,23 @@ const Index = () => {
               <Button variant="outline" size="lg" onClick={() => scrollTo("projects")}>Explore Projects<ArrowRight /></Button>
               <Button variant="ghost" size="lg" onClick={() => scrollTo("contact")}>Contact Me<Mail /></Button>
             </div>
-          </div>
-          <aside className="reveal-3 border-l border-primary/50 pl-6 lg:mb-2" aria-label="Primary technologies">
-            <p className="mb-4 font-mono text-xs uppercase text-muted-foreground">Core toolkit</p>
-            <div className="flex flex-wrap gap-2">
-              {["Python", "SQL", "Machine Learning", "TensorFlow / Keras", "FastAPI", "MySQL", "Git / GitHub"].map((item) => <TechBadge key={item}>{item}</TechBadge>)}
+            <div className="hero-proof reveal-3 mt-10 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-border pt-5 text-xs text-muted-foreground">
+              <span className="font-mono uppercase tracking-[0.14em] text-primary">Focused on</span>
+              <span>Applied ML</span><span>Full-stack systems</span><span>Data-driven products</span>
             </div>
-          </aside>
+          </div>
+          <div className="hero-visual reveal-3">
+            <div className="portrait-frame">
+              <img src={portraitAsset.url} alt="Professional portrait of Srigakolapu Chaitanya" className="portrait-image" />
+              <div className="portrait-caption"><span className="status-dot" aria-hidden="true" />Available for opportunities</div>
+            </div>
+            <aside className="hero-toolkit" aria-label="Primary technologies">
+              <p className="mb-4 font-mono text-xs uppercase text-muted-foreground">Core toolkit</p>
+              <div className="flex flex-wrap gap-2">
+                {["Python", "SQL", "Machine Learning", "TensorFlow / Keras", "FastAPI", "MySQL", "Git / GitHub"].map((item) => <TechBadge key={item}>{item}</TechBadge>)}
+              </div>
+            </aside>
+          </div>
         </div>
       </section>
 
