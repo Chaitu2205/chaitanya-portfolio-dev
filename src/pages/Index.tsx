@@ -33,12 +33,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import resumeAsset from "@/assets/chaitanya-resume.pdf.asset.json";
-import portraitAsset from "@/assets/chaitanya-portrait.png.asset.json";
+import portraitImage from "@/assets/linkedin_profile_pic.jpeg";
 
 emailjs.init("fmqSq1Fhb8otDC7b2");
 
 const navItems = ["about", "skills", "experience", "projects", "achievements", "certifications", "education", "contact"];
+const resumeUrl = "/Chaitanya_Resume.pdf";
 
 const skills = [
   { group: "Languages & Web", items: ["Python", "HTML", "CSS"] },
@@ -179,7 +179,7 @@ const Index = () => {
             {navItems.map((item) => <Button key={item} variant="ghost" size="sm" onClick={() => scrollTo(item)} className="capitalize text-muted-foreground hover:text-foreground">{item}</Button>)}
           </div>
           <div className="flex items-center gap-2">
-            <Button asChild size="sm" className="hidden sm:inline-flex"><a href={resumeAsset.url} target="_blank" rel="noreferrer"><FileText />Resume</a></Button>
+            <Button asChild size="sm" className="hidden sm:inline-flex"><a href={resumeUrl} target="_blank" rel="noreferrer"><FileText />Resume</a></Button>
             <Button variant="ghost" size="icon" className="xl:hidden" aria-label={isMenuOpen ? "Close navigation" : "Open navigation"} aria-expanded={isMenuOpen} onClick={() => setIsMenuOpen((open) => !open)}>{isMenuOpen ? <X /> : <Menu />}</Button>
           </div>
         </div>
@@ -187,7 +187,7 @@ const Index = () => {
           <div className="absolute inset-x-0 top-16 min-h-[calc(100vh-4rem)] border-t border-border bg-background p-5 xl:hidden">
             <div className="mx-auto grid max-w-lg gap-1">
               {navItems.map((item) => <Button key={item} variant="ghost" onClick={() => scrollTo(item)} className="h-12 justify-between capitalize text-foreground">{item}<ChevronRight /></Button>)}
-              <Button asChild className="mt-4"><a href={resumeAsset.url} target="_blank" rel="noreferrer">View Resume<FileText /></a></Button>
+              <Button asChild className="mt-4"><a href={resumeUrl} target="_blank" rel="noreferrer">View Resume<FileText /></a></Button>
             </div>
           </div>
         )}
@@ -202,7 +202,7 @@ const Index = () => {
             <p className="reveal-2 mt-7 text-xl font-medium text-foreground md:text-2xl">Data Science &amp; AI/ML Graduate</p>
             <p className="reveal-2 mt-4 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">B.Tech graduate with practical experience in Python, SQL, Machine Learning, Data Science, and software development. Interested in building practical, data-driven and AI-powered applications.</p>
             <div className="reveal-3 mt-8 flex flex-wrap gap-3">
-              <Button asChild size="lg"><a href={resumeAsset.url} target="_blank" rel="noreferrer">View Resume<FileText /></a></Button>
+              <Button asChild size="lg"><a href={resumeUrl} target="_blank" rel="noreferrer">View Resume<FileText /></a></Button>
               <Button variant="outline" size="lg" onClick={() => scrollTo("projects")}>Explore Projects<ArrowRight /></Button>
               <Button variant="ghost" size="lg" onClick={() => scrollTo("contact")}>Contact Me<Mail /></Button>
             </div>
@@ -213,7 +213,7 @@ const Index = () => {
           </div>
           <div className="hero-visual reveal-3">
             <div className="portrait-frame">
-              <img src={portraitAsset.url} alt="Professional portrait of Srigakolapu Chaitanya" className="portrait-image" />
+              <img src={portraitImage} alt="Professional portrait of Srigakolapu Chaitanya" className="portrait-image" />
               <div className="portrait-caption"><span className="status-dot" aria-hidden="true" />Available for opportunities</div>
             </div>
             <aside className="hero-toolkit" aria-label="Primary technologies">
@@ -343,8 +343,8 @@ const Index = () => {
           <div className="resume-panel">
             <div><p className="eyebrow">Résumé · Updated 2026</p><h2 className="mt-4 text-3xl font-semibold md:text-5xl">A concise view of my technical journey.</h2></div>
             <div className="flex flex-wrap gap-3">
-              <Button asChild size="lg"><a href={resumeAsset.url} target="_blank" rel="noreferrer">View Resume<ExternalLink /></a></Button>
-              <Button asChild variant="outline" size="lg"><a href={resumeAsset.url} download="Srigakolapu_Chaitanya_Resume.pdf">Download Resume<Download /></a></Button>
+              <Button asChild size="lg"><a href={resumeUrl} target="_blank" rel="noreferrer">View Resume<ExternalLink /></a></Button>
+              <Button asChild variant="outline" size="lg"><a href={resumeUrl} download="Srigakolapu_Chaitanya_Resume.pdf">Download Resume<Download /></a></Button>
             </div>
           </div>
         </div>

@@ -1,73 +1,40 @@
-# Welcome to My portfolio Project 
+# Srigakolapu Chaitanya — Portfolio
 
-## Project info
+A React and Vite portfolio for Srigakolapu Chaitanya, Data Science and AI/ML graduate.
 
-**URL**: https://lovable.dev/projects/cd68e5a3-fd75-420d-af28-dcc94bea7f42
+## Local development
 
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/cd68e5a3-fd75-420d-af28-dcc94bea7f42) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+Install dependencies and start the development server:
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Create a production build and preview it locally:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```sh
+npm run build
+npm run preview
+```
 
-**Use GitHub Codespaces**
+## Deployment to Vercel
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. Connect the GitHub repository to Vercel.
+2. Select **Vite** as the framework preset.
+3. Set the build command to `npm run build`.
+4. Set the output directory to `dist`.
 
-## What technologies are used for this project?
+The portfolio uses local project assets for the profile image, resume, favicon, and other public files. No hosted project-specific asset service is required.
 
-This project is built with:
+## Contact form configuration
 
-- Vite
-- TypeScript
+The contact form uses EmailJS in the browser. To preserve contact-form functionality in another deployment, configure the same EmailJS public key, service, and template values currently used by `src/pages/Index.tsx`, or replace that integration with your own email provider. No private server secrets are stored in this project.
+
+## Project stack
+
 - React
-- shadcn-ui
+- TypeScript
+- Vite
 - Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/cd68e5a3-fd75-420d-af28-dcc94bea7f42) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- shadcn/ui
